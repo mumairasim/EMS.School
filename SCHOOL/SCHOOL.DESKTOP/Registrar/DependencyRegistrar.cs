@@ -25,7 +25,7 @@ namespace SCHOOL.DESKTOP.Registrar
                     .AsImplementedInterfaces()
                     .InstancePerLifetimeScope();
             var container = builder.Build();
-            MainWindow mainWindow = container.Resolve<MainWindow>();
+            //MainWindow mainWindow = container.Resolve<MainWindow>();
         }
     }
 }
