@@ -31,8 +31,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,7 +50,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseEntity.cs" />
+    <Compile Include="Implementation\EFRepository.cs" />
+    <Compile Include="Implementation\UnitOfWork.cs" />
+    <Compile Include="Infrastructure\IDbContext.cs" />
+    <Compile Include="Infrastructure\IRepository.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Models\Assignment.cs" />
+    <Compile Include="Models\Class.cs" />
+    <Compile Include="Models\ClassAssignement.cs" />
+    <Compile Include="Models\ClassStudentDiary.cs" />
+    <Compile Include="Models\ClassTeacherDiary.cs" />
+    <Compile Include="Models\Course.cs" />
+    <Compile Include="Models\CourseClass.cs" />
+    <Compile Include="Models\Designation.cs" />
+    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\EmployeeFinance.cs" />
+    <Compile Include="Models\EmployeeFinanceDetail.cs" />
+    <Compile Include="Models\FinanceType.cs" />
+    <Compile Include="Models\LessonPlan.cs" />
+    <Compile Include="Models\Period.cs" />
+    <Compile Include="Models\Person.cs" />
+    <Compile Include="Models\SchoolSystem.cs" />
+    <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\StudentAssignment.cs" />
+    <Compile Include="Models\StudentDiary.cs" />
+    <Compile Include="Models\StudentFinanceDetail.cs" />
+    <Compile Include="Models\StudentStudentDiary.cs" />
+    <Compile Include="Models\Student_Finances.cs" />
+    <Compile Include="Models\TeacherDiary.cs" />
+    <Compile Include="Models\TimeTable.cs" />
+    <Compile Include="Models\TimeTableDetail.cs" />
+    <Compile Include="Models\Worksheet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
