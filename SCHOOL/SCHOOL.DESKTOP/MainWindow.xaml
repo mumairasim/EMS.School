@@ -1,0 +1,11 @@
+﻿<Window x:Class="SCHOOL.DESKTOP.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button Content="Main window button" HorizontalAlignment="Left" Margin="262,150,0,0" VerticalAlignment="Top" Width="242" Height="63" Click="Button_Click"/>
+    </Grid>
+</Window>
