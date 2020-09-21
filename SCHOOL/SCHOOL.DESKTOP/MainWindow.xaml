@@ -3,9 +3,39 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SCHOOL.DESKTOP"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="SMS" Height="720" Width="1320" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
-        <Button Content="Main window button" HorizontalAlignment="Left" Margin="262,150,0,0" VerticalAlignment="Top" Width="242" Height="63" Click="Button_Click"/>
+        <TabControl Height="690" VerticalAlignment="Top" Width="1315" DockPanel.Dock="Left" TabStripPlacement="Left" BorderBrush="{x:Null}">
+            <TabItem Header="Dashboard" Width="200" Height="45" FontSize="18" Margin="0" BorderBrush="{x:Null}">
+                <Grid Background="#E2E5E7">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="86*"/>
+                        <RowDefinition Height="85*"/>
+                    </Grid.RowDefinitions>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="StudentTab" Header="Student" Width="200" Height="45" FontSize="18" Margin="0" BorderBrush="{x:Null}" MouseDown="StudentTab_MouseDown">
+                <Grid Background="#E2E5E7">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="86*"/>
+                        <RowDefinition Height="85*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid HorizontalAlignment="Left" Height="684" VerticalAlignment="Top" Width="1108" Grid.RowSpan="2" CanUserAddRows="False">
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="ClassTab" Header="Class" Width="200" Height="45" FontSize="18" Margin="0" BorderBrush="{x:Null}" MouseDown="ClassTab_MouseDown">
+                <Grid Background="#E2E5E7">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="86*"/>
+                        <RowDefinition Height="85*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid x:Name="ClassDatagrid" HorizontalAlignment="Left" Height="684" VerticalAlignment="Top" Width="1108" Grid.RowSpan="2" CanUserAddRows="False" AutoGenerateColumns="True">
+                    </DataGrid>
+                </Grid>
+            </TabItem>
+        </TabControl>
     </Grid>
 </Window>

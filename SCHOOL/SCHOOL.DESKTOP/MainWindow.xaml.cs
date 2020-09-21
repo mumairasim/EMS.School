@@ -1,4 +1,6 @@
 ﻿using System.Windows;
+using SCHOOL.Services.Implementation;
+using SCHOOL.Services.Infrastructure;
 
 namespace SCHOOL.DESKTOP
 {
@@ -7,14 +9,24 @@ namespace SCHOOL.DESKTOP
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private readonly IClassService _classService;
+        public MainWindow(IClassService classService)
         {
+            _classService = classService;
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void StudentTab_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            MessageBox.Show("Its Working fine");
+
+        }
+
+        private void ClassTab_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var classList = _classService.Get();
+            ClassDatagrid.ItemsSource = classList;
         }
     }
+
 }
+

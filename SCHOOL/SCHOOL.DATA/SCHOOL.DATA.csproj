@@ -57,6 +57,7 @@
     <Compile Include="Infrastructure\IRepository.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Models\Assignment.cs" />
+    <Compile Include="Models\AttendanceStatus.cs" />
     <Compile Include="Models\Class.cs" />
     <Compile Include="Models\ClassAssignement.cs" />
     <Compile Include="Models\ClassStudentDiary.cs" />

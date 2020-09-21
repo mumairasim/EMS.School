@@ -4,11 +4,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace SCHOOL.DATA.Models
 {
     [Table("ClassStudentDiary")]
-    public partial class ClassStudentDiary:BaseEntity
+    public partial class ClassStudentDiary : BaseEntity
     {
-        public int? StudentDiaryId { get; set; }
 
-        public int? ClassId { get; set; }
+        public Guid? StudentDiaryId { get; set; }
+
+        public Guid? ClassId { get; set; }
 
         public virtual Class Class { get; set; }
 

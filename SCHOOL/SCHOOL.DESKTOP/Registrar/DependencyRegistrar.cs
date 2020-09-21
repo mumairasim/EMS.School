@@ -2,6 +2,8 @@
 using SCHOOL.DATA.Implementation;
 using SCHOOL.DATA.Infrastructure;
 using System.Reflection;
+using AutoMapper;
+using SCHOOL.MAP;
 
 namespace SCHOOL.DESKTOP.Registrar
 {
@@ -19,13 +21,22 @@ namespace SCHOOL.DESKTOP.Registrar
                     .Where(t => t.Name.EndsWith("Service"))
                     .AsImplementedInterfaces()
                     .InstancePerLifetimeScope();
+            var autoMapperProfile = new MapperConfigurationInternal();
 
-            builder.RegisterAssemblyTypes(Assembly.Load("SCHOOL.FACADE"))
-                    .Where(t => t.Name.EndsWith("Facade"))
-                    .AsImplementedInterfaces()
-                    .InstancePerLifetimeScope();
+            builder.Register(ctx => new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(autoMapperProfile);
+            }));
+
+            //register your mapper
+            builder.Register(c => c.Resolve<MapperConfiguration>().CreateMapper(c.Resolve)).As<IMapper>().SingleInstance();
             var container = builder.Build();
-            MainWindow mainWindow = container.Resolve<MainWindow>();
+            //MainWindow mainWindow = container.Resolve<MainWindow>();
+            using (var scope = container.BeginLifetimeScope())
+            {
+                var main = scope.Resolve<MainWindow>();
+                main.ShowDialog();
+            }
         }
     }
 }
