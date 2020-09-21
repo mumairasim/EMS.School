@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace SCHOOL.DATA
+namespace SCHOOL.DTOs.DTOs
 {
-    public class BaseEntity
+    public class DtoBaseEntity
     {
         public Guid Id { get; set; }
         public DateTime? CreatedDate { get; set; }
@@ -18,5 +18,13 @@ namespace SCHOOL.DATA
         public string DeletedBy { get; set; }
 
         public bool? IsDeleted { get; set; }
+        public Guid? SchoolId { get; set; }
+        public School School { get; set; }
+
+        public string RequestTypeString { get; set; }
+        public string RequestStatusString { get; set; }
+        public Guid? RequestTypeId { get; set; }
+        public Guid? RequestStatusId { get; set; }
+
     }
 }

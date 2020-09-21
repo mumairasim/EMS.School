@@ -1,21 +1,23 @@
 ﻿using System;
 
-namespace SCHOOL.DATA
+namespace SCHOOL.DTOs.DTOs
 {
-    public class BaseEntity
+    public class RequestStatus
     {
         public Guid Id { get; set; }
+        public string Type { get; set; }
+
         public DateTime? CreatedDate { get; set; }
 
-        public string CreatedBy { get; set; }
+        public Guid? CreatedBy { get; set; }
 
         public DateTime? UpdateDate { get; set; }
 
-        public string UpdateBy { get; set; }
+        public Guid? UpdateBy { get; set; }
 
         public DateTime? DeletedDate { get; set; }
 
-        public string DeletedBy { get; set; }
+        public Guid? DeletedBy { get; set; }
 
         public bool? IsDeleted { get; set; }
     }
