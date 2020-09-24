@@ -37,9 +37,9 @@ namespace SCHOOL.DESKTOP
             ClassDatagrid.ItemsSource = classList;
         }
 
-        private void StudentTab_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void StudentTab_GotFocus(object sender, RoutedEventArgs e)
         {
-            StudentBase.Content = new StudentBase();
+            StudentBase.Content = new StudentBase(_classService);
         }
     }
 

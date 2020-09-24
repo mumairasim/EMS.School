@@ -17,7 +17,7 @@
                     </Grid.RowDefinitions>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="StudentTab" Header="Student" Width="200" Height="45" FontSize="18" Margin="0" BorderBrush="{x:Null}" MouseLeftButtonDown="StudentTab_MouseLeftButtonDown">
+            <TabItem x:Name="StudentTab" Header="Student" Width="200" Height="45" FontSize="18" Margin="0" BorderBrush="{x:Null}" GotFocus="StudentTab_GotFocus">
                 <Grid Background="#E2E5E7">
                     <TabControl>
                         <TabItem x:Name="SearchStudent" Header="Search Student ">

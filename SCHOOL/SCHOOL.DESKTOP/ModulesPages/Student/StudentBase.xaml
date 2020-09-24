@@ -17,7 +17,7 @@
                 </StackPanel>
             </Grid>
             <Grid Margin="0,30,0,0" DockPanel.Dock="Bottom" >
-                <DataGrid x:Name="ClassDatagrid" HorizontalAlignment="Left" VerticalAlignment="Top" CanUserAddRows="False" AutoGenerateColumns="True" >
+                <DataGrid x:Name="StudentDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" CanUserAddRows="False" AutoGenerateColumns="True" >
                 </DataGrid>
             </Grid>
         </DockPanel>
