@@ -14,30 +14,12 @@ namespace SCHOOL.DESKTOP
     public partial class MainWindow : Window
     {
         private readonly IClassService _classService;
-        public ObservableCollection<Item> Items { get; set; } = new ObservableCollection<Item>();
         public List<Class> ClassList { get; set; } = new List<Class>();
         public MainWindow(IClassService classService)
         {
             _classService = classService;
             InitializeComponent();
-            FetchClasses();
-            Items.Add(new Item
-            {
-                Name = "Printer",
-                IconKind = PackIconKind.Printer
-            });
-
-            Items.Add(new Item
-            {
-                Name = "AbTesting",
-                IconKind = PackIconKind.AbTesting
-            });
-
-            Items.Add(new Item
-            {
-                Name = "GoogleHome",
-                IconKind = PackIconKind.GoogleHome
-            });
+            
         }
 
         private void StudentTab_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
