@@ -5,7 +5,7 @@ namespace SCHOOL.DATA.Models
 {
     public partial class Student_Finances:BaseEntity
     {
-        public int? StudentFinanceDetailsId { get; set; }
+        public Guid? StudentFinanceDetailsId { get; set; }
 
         public bool? FeeSubmitted { get; set; }
 
@@ -18,8 +18,6 @@ namespace SCHOOL.DATA.Models
         public string FeeYear { get; set; }
 
         public DateTime? LastDateSubmission { get; set; }
-
-        public DateTime? CreatedDate { get; set; }
 
         public virtual StudentFinanceDetail StudentFinanceDetail { get; set; }
     }

@@ -17,7 +17,7 @@ namespace SCHOOL.DATA.Models
 
         public DateTime? DairyDate { get; set; }
 
-        public int? InstructorId { get; set; }
+        public Guid? InstructorId { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClassTeacherDiary> ClassTeacherDiaries { get; set; }

@@ -26,6 +26,13 @@ namespace SCHOOL.DESKTOP
             var classList = _classService.Get();
             ClassDatagrid.ItemsSource = classList;
         }
+
+
+        private void getClass_Click(object sender, RoutedEventArgs e)
+        {
+            var classList = _classService.Get();
+            ClassDatagrid.ItemsSource = classList;
+        }
     }
 
 }

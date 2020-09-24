@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace SCHOOL.DATA.Models
 {
     [Table("StudentDiary")]
-    public partial class StudentDiary:BaseEntity
+    public partial class StudentDiary : BaseEntity
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public StudentDiary()
@@ -18,7 +18,7 @@ namespace SCHOOL.DATA.Models
 
         public DateTime? DairyDate { get; set; }
 
-        public int? InstructorId { get; set; }
+        public Guid? InstructorId { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ClassStudentDiary> ClassStudentDiaries { get; set; }
