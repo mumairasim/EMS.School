@@ -47,19 +47,16 @@ namespace SCHOOL.DESKTOP
 
         private void ClassTab_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            //var classList = _classService.Get();
-            //ClassDatagrid.ItemsSource = classList;
+            var classList = _classService.Get();
+            ClassDatagrid.ItemsSource = classList;
         }
 
-        private void FetchClasses()
+
+        private void getClass_Click(object sender, RoutedEventArgs e)
         {
-            ClassList = _classService.Get(1, 10).Classes;
+            var classList = _classService.Get();
+            ClassDatagrid.ItemsSource = classList;
         }
-    }
-    public class Item
-    {
-        public string Name { get; set; }
-        public PackIconKind IconKind { get; set; }
     }
 
 }

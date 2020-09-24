@@ -5,7 +5,7 @@ namespace SCHOOL.DATA.Models
 {
     public partial class EmployeeFinance : BaseEntity
     {
-        public int? EmployeeFinanceDetailsId { get; set; }
+        public Guid? EmployeeFinanceDetailsId { get; set; }
 
         public bool? SalaryTransfered { get; set; }
 
