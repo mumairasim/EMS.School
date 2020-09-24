@@ -2,6 +2,7 @@
 using System.Collections.ObjectModel;
 using System.Windows;
 using MaterialDesignThemes.Wpf;
+using SCHOOL.DESKTOP.ModulesPages.Student;
 using SCHOOL.DTOs.DTOs;
 using SCHOOL.Services.Implementation;
 using SCHOOL.Services.Infrastructure;
@@ -22,11 +23,7 @@ namespace SCHOOL.DESKTOP
             
         }
 
-        private void StudentTab_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-
-        }
-
+        
         private void ClassTab_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             var classList = _classService.Get();
@@ -38,6 +35,11 @@ namespace SCHOOL.DESKTOP
         {
             var classList = _classService.Get();
             ClassDatagrid.ItemsSource = classList;
+        }
+
+        private void StudentTab_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            StudentBase.Content = new StudentBase();
         }
     }
 
