@@ -11,13 +11,14 @@ namespace SCHOOL.DATA.Models
         {
             Student_Finances = new HashSet<Student_Finances>();
         }
-
-        public int? StudentId { get; set; }
+        public Guid? StudentId { get; set; }
 
         [Column(TypeName = "money")]
         public decimal? Fee { get; set; }
+        [Column(TypeName = "money")]
+        public decimal? Arears { get; set; }
 
-        public int? FinanceTypeId { get; set; }
+        public Guid? FinanceTypeId { get; set; }
 
         public virtual FinanceType FinanceType { get; set; }
 

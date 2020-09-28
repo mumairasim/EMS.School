@@ -16,15 +16,19 @@ namespace SCHOOL.DATA.Models
             StudentStudentDiaries = new HashSet<StudentStudentDiary>();
         }
 
-        [Required]
-        [StringLength(50)]
-        public string RegistrationNumber { get; set; }
 
-        public int? PersonId { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int RegistrationNumber { get; set; }
 
-        public int? ClassId { get; set; }
+        public Guid? PersonId { get; set; }
+
+        public Guid? ClassId { get; set; }
+        public Guid? ImageId { get; set; }
 
         public virtual Class Class { get; set; }
+        public virtual File Image { get; set; }
+        public string PreviousSchoolName { get; set; }
+        public string ReasonForLeaving { get; set; }
 
         public virtual Person Person { get; set; }
 

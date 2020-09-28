@@ -1,14 +1,16 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SCHOOL.DATA.Models
 {
-    public partial class Student_Finances:BaseEntity
+    public partial class Student_Finances : BaseEntity
     {
         public Guid? StudentFinanceDetailsId { get; set; }
 
         public bool? FeeSubmitted { get; set; }
-
+        [Column(TypeName = "money")]
+        public decimal? Arears { get; set; }
         public DateTime? FeeSubmissionDate { get; set; }
 
         [StringLength(250)]

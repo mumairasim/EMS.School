@@ -3,6 +3,7 @@ using SCHOOL.DATA.Implementation;
 using SCHOOL.DATA.Infrastructure;
 using System.Reflection;
 using AutoMapper;
+using SCHOOL.DESKTOP.ModulesPages.Student;
 using SCHOOL.MAP;
 
 namespace SCHOOL.DESKTOP.Registrar
@@ -31,7 +32,7 @@ namespace SCHOOL.DESKTOP.Registrar
             //register your mapper
             builder.Register(c => c.Resolve<MapperConfiguration>().CreateMapper(c.Resolve)).As<IMapper>().SingleInstance();
             var container = builder.Build();
-            //MainWindow mainWindow = container.Resolve<MainWindow>();
+
             using (var scope = container.BeginLifetimeScope())
             {
                 var main = scope.Resolve<MainWindow>();

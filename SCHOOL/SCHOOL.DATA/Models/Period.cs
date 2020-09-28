@@ -8,20 +8,19 @@ namespace SCHOOL.DATA.Models
     [Table("Period")]
     public partial class Period : BaseEntity
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Period()
-        {
-            TimeTableDetails = new HashSet<TimeTableDetail>();
-        }
+        public TimeSpan? StartTime { get; set; }
 
-        [StringLength(50)]
-        public string PeriodNumber { get; set; }
+        public TimeSpan? EndTime { get; set; }
+        public Guid? TeacherId { get; set; }
 
-        public TimeSpan? FromTime { get; set; }
+        public Guid? TimeTableDetailId { get; set; }
 
-        public TimeSpan? ToTime { get; set; }
+        public Guid? CourseId { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TimeTableDetail> TimeTableDetails { get; set; }
+        public virtual Course Course { get; set; }
+        public virtual Employee Employee { get; set; }
+
+
+        public virtual TimeTableDetail TimeTableDetail { get; set; }
     }
 }

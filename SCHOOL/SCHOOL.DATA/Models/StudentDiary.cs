@@ -13,7 +13,6 @@ namespace SCHOOL.DATA.Models
             ClassStudentDiaries = new HashSet<ClassStudentDiary>();
             StudentStudentDiaries = new HashSet<StudentStudentDiary>();
         }
-
         public string DiaryText { get; set; }
 
         public DateTime? DairyDate { get; set; }

@@ -1,10 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Windows;
-using MaterialDesignThemes.Wpf;
 using SCHOOL.DESKTOP.ModulesPages.Student;
 using SCHOOL.DTOs.DTOs;
-using SCHOOL.Services.Implementation;
 using SCHOOL.Services.Infrastructure;
 
 namespace SCHOOL.DESKTOP
@@ -15,10 +12,12 @@ namespace SCHOOL.DESKTOP
     public partial class MainWindow : Window
     {
         private readonly IClassService _classService;
+        private readonly StudentBase _studentBase;
         public List<Class> ClassList { get; set; } = new List<Class>();
         public MainWindow(IClassService classService)
         {
             _classService = classService;
+            _studentBase = new StudentBase(_classService);
             InitializeComponent();
             
         }
@@ -39,7 +38,7 @@ namespace SCHOOL.DESKTOP
 
         private void StudentTab_GotFocus(object sender, RoutedEventArgs e)
         {
-            StudentBase.Content = new StudentBase(_classService);
+            StudentBase.Content = _studentBase;
         }
     }
 

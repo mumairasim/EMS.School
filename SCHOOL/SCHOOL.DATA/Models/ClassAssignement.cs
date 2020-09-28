@@ -6,7 +6,6 @@ namespace SCHOOL.DATA.Models
     [Table("ClassAssignement")]
     public partial class ClassAssignement : BaseEntity
     {
-
         public Guid? ClassId { get; set; }
 
         public Guid? AssignmentId { get; set; }

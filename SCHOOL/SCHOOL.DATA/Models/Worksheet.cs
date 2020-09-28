@@ -11,7 +11,6 @@ namespace SCHOOL.DATA.Models
         public DateTime? ForDate { get; set; }
 
         public Guid? InstructorId { get; set; }
-
         public virtual Employee Employee { get; set; }
     }
 }
