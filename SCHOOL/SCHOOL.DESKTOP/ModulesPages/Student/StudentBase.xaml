@@ -12,8 +12,8 @@
         <DockPanel>
             <Grid DockPanel.Dock="Top">
                 <StackPanel>
-                    <TextBox MinWidth="100" MinHeight="30" Margin="0,0,0,10" ></TextBox>
-                    <Button Click="SearchStudents">Search</Button>
+                    <TextBox MinWidth="100" MinHeight="30" Margin="495,10,40,10" BorderThickness="1" BorderBrush="Black"/>
+                    <Button Click="SearchStudents" Margin="663,0,40,10" Content="Search" RenderTransformOrigin="0.512,0.525" Height="30"/>
                 </StackPanel>
             </Grid>
             <Grid Margin="0,30,0,0" DockPanel.Dock="Bottom" >
