@@ -1,6 +1,9 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
-using SCHOOL.Services.Infrastructure;
+using AutoMapper;
+using SCHOOL.DTOs.ViewModels.Student;
+using SCHOOL.SERVICES.Infrastructure;
 
 namespace SCHOOL.DESKTOP.ModulesPages.Student
 {
@@ -9,19 +12,28 @@ namespace SCHOOL.DESKTOP.ModulesPages.Student
     /// </summary>
     public partial class StudentBase : Page
     {
-        private readonly IClassService _classService;
-        public StudentBase(IClassService classService)
+        private readonly IStudentService _studentService;
+        private readonly IMapper _mapper;
+        public StudentBase(IStudentService studentService, IMapper mapper)
         {
-            _classService = classService;
+            _studentService = studentService;
+            _mapper = mapper;
             InitializeComponent();
-            var classList = _classService.Get();
-            StudentDataGrid.ItemsSource = classList;
+            PreLoads();
         }
-
+        public void PreLoads()
+        {
+            var studentList = _studentService.Get(1, 20);
+            var students = new List<StudentBaseViewModel>();
+            _mapper.Map(studentList.Students, students);
+            StudentDataGrid.ItemsSource = students;
+        }
         public void SearchStudents(object sender, RoutedEventArgs e)
         {
-            var classList = _classService.Get();
-            StudentDataGrid.ItemsSource = classList;
+            var studentList = _studentService.Get(searchStudentTextBox.Text, 1, 20);
+            var students = new List<StudentBaseViewModel>();
+            _mapper.Map(studentList.Students, students);
+            StudentDataGrid.ItemsSource = students;
         }
     }
 }

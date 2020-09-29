@@ -45,7 +45,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementation\ClassService.cs" />
+    <Compile Include="Implementation\PersonService.cs" />
+    <Compile Include="Implementation\StudentService.cs" />
     <Compile Include="Infrastructure\IClassService.cs" />
+    <Compile Include="Infrastructure\IPersonService.cs" />
+    <Compile Include="Infrastructure\IStudentService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -8,16 +8,28 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="StudentBase">
 
+    <Page.Resources>
+        <Style x:Key="DynamicGridColumns" TargetType="DataGrid">
+            <Setter Property="ColumnWidth" Value="*" />
+        </Style>
+        <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="Background" Value="WhiteSmoke" />
+        </Style>
+    </Page.Resources>
     <Grid>
+
         <DockPanel>
             <Grid DockPanel.Dock="Top">
                 <StackPanel>
-                    <TextBox MinWidth="100" MinHeight="30" Margin="495,10,40,10" BorderThickness="1" BorderBrush="Black"/>
-                    <Button Click="SearchStudents" Margin="663,0,40,10" Content="Search" RenderTransformOrigin="0.512,0.525" Height="30"/>
+                    <TextBox x:Name="searchStudentTextBox" MinWidth="100" MaxWidth="400" MinHeight="30" MaxHeight="40" Margin="495,10,40,10" BorderThickness="1" BorderBrush="Black"/>
+                    <Button Click="SearchStudents" Margin="663,0,40,10" Content="Search" RenderTransformOrigin="0.512,0.525" MinWidth="100" MaxWidth="150" MinHeight="30" MaxHeight="40"/>
                 </StackPanel>
             </Grid>
-            <Grid Margin="0,30,0,0" DockPanel.Dock="Bottom" >
-                <DataGrid x:Name="StudentDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" CanUserAddRows="False" AutoGenerateColumns="True" >
+            <Grid Margin="0,30,0,0" DockPanel.Dock="Top" MinHeight="300" >
+                <DataGrid x:Name="StudentDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" CanUserAddRows="False" AutoGenerateColumns="True" Style="{StaticResource DynamicGridColumns}" 
+                          Background="{x:Null}" 
+                          VerticalScrollBarVisibility="Auto"
+                          Margin="10,10,10,10">
                 </DataGrid>
             </Grid>
         </DockPanel>

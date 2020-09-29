@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
+using AutoMapper;
 using SCHOOL.DESKTOP.ModulesPages.Student;
 using SCHOOL.DTOs.DTOs;
 using SCHOOL.Services.Infrastructure;
+using SCHOOL.SERVICES.Infrastructure;
 
 namespace SCHOOL.DESKTOP
 {
@@ -13,16 +15,20 @@ namespace SCHOOL.DESKTOP
     {
         private readonly IClassService _classService;
         private readonly StudentBase _studentBase;
+        private readonly IStudentService _studentService;
+        private readonly IMapper _mapper;
         public List<Class> ClassList { get; set; } = new List<Class>();
-        public MainWindow(IClassService classService)
+        public MainWindow(IClassService classService, IStudentService studentService, IMapper mapper)
         {
             _classService = classService;
-            _studentBase = new StudentBase(_classService);
+            _studentService = studentService;
+            _mapper = mapper;
+            _studentBase = new StudentBase(_studentService, _mapper);
             InitializeComponent();
-            
+
         }
 
-        
+
         private void ClassTab_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             var classList = _classService.Get();

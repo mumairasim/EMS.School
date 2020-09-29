@@ -8,6 +8,7 @@ namespace SCHOOL.DATA.Models
         public SchoolSystem()
             : base("name=SchoolSystem")
         {
+            //Configuration.LazyLoadingEnabled = false;
         }
         public virtual new DbSet<TEntity> Set<TEntity>() where TEntity : BaseEntity
         {
