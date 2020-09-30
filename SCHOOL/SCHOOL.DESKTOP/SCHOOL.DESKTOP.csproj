@@ -117,6 +117,9 @@
     <Compile Include="ModulesPages\Class\ClassBase.xaml.cs">
       <DependentUpon>ClassBase.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ModulesPages\Student\AddStudent.xaml.cs">
+      <DependentUpon>AddStudent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ModulesPages\Student\StudentBase.xaml.cs">
       <DependentUpon>StudentBase.xaml</DependentUpon>
     </Compile>
@@ -125,6 +128,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="ModulesPages\Class\ClassBase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModulesPages\Student\AddStudent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

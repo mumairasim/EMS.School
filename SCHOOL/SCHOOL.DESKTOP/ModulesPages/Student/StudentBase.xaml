@@ -17,7 +17,6 @@
         </Style>
     </Page.Resources>
     <Grid>
-
         <DockPanel>
             <Grid DockPanel.Dock="Top">
                 <StackPanel>
@@ -26,10 +25,18 @@
                 </StackPanel>
             </Grid>
             <Grid Margin="0,30,0,0" DockPanel.Dock="Top" MinHeight="300" >
-                <DataGrid x:Name="StudentDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" CanUserAddRows="False" AutoGenerateColumns="True" Style="{StaticResource DynamicGridColumns}" 
+                <DataGrid x:Name="StudentDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" CanUserAddRows="False" AutoGenerateColumns="False" Style="{StaticResource DynamicGridColumns}" 
                           Background="{x:Null}" 
                           VerticalScrollBarVisibility="Auto"
                           Margin="10,10,10,10">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Registration Number" Binding="{Binding RegistrationNumber}" />
+                        <DataGridTextColumn Header="Name" Binding="{Binding PersonName}" />
+                        <DataGridTextColumn Header="CNIC" Binding="{Binding PersonCnic}" />
+                        <DataGridTextColumn Header="Nationality" Binding="{Binding PersonNationality}" />
+                        <DataGridTextColumn Header="Religion" Binding="{Binding PersonReligion}" />
+                        <DataGridTextColumn Header="Class" Binding="{Binding ClassName}" />
+                    </DataGrid.Columns>
                 </DataGrid>
             </Grid>
         </DockPanel>

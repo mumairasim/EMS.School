@@ -25,15 +25,10 @@
                                 <Frame x:Name="StudentBase"/>
                             </Grid>
                         </TabItem>
-                        <TabItem x:Name="AddStudent" Header="Add Student ">
-                            <DockPanel>
-                                <Grid DockPanel.Dock="Top">
-                                    <StackPanel>
-                                        <Label Name="Heading" Content="Add Student"></Label>
-                                    </StackPanel>
-                                    <Label Name="SubHeading" Content="Student Information"></Label>
-                                </Grid>
-                            </DockPanel>
+                        <TabItem x:Name="AddStudentTabItem" Header="Add Student" GotFocus="AddStudentTabItem_GotFocus">
+                            <Grid>
+                                <Frame x:Name="AddStudent"/>
+                            </Grid>
                         </TabItem>
                     </TabControl>
                 </Grid>

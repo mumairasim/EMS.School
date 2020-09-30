@@ -15,6 +15,7 @@ namespace SCHOOL.DESKTOP
     {
         private readonly IClassService _classService;
         private readonly StudentBase _studentBase;
+        private readonly AddStudent _addStudent;
         private readonly IStudentService _studentService;
         private readonly IMapper _mapper;
         public List<Class> ClassList { get; set; } = new List<Class>();
@@ -24,6 +25,7 @@ namespace SCHOOL.DESKTOP
             _studentService = studentService;
             _mapper = mapper;
             _studentBase = new StudentBase(_studentService, _mapper);
+            _addStudent = new AddStudent();
             InitializeComponent();
 
         }
@@ -45,6 +47,10 @@ namespace SCHOOL.DESKTOP
         private void StudentTab_GotFocus(object sender, RoutedEventArgs e)
         {
             StudentBase.Content = _studentBase;
+        }
+        private void AddStudentTabItem_GotFocus(object sender, RoutedEventArgs e)
+        {
+            AddStudent.Content = _addStudent;
         }
     }
 
