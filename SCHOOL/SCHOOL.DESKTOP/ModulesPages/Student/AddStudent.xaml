@@ -14,11 +14,11 @@
             </Grid>-->
             <Grid DockPanel.Dock="Top">
                 <Label Content="Add Student" FontSize="24" FontWeight="SemiBold" Foreground="#FF00A2DD" Height="44" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="239,10,0,0" Name="Label3" VerticalAlignment="Top" Width="282" />
-                <TextBox BorderBrush="#FF1A0202" Height="23" HorizontalAlignment="Left" Margin="103,161,0,0" Name="Txtemail" VerticalAlignment="Top" Width="246" />
+                <TextBox BorderBrush="#FF1A0202" Height="23" HorizontalAlignment="Left" Margin="103,161,0,0" Name="Txtemail" VerticalAlignment="Top" Width="246" BorderThickness="1" />
                 <Label Content="Email ID :" FontSize="13" FontWeight="Bold" Foreground="#FF0062FF" Height="28" HorizontalAlignment="Left" Margin="27,156,0,0" Name="Label1" VerticalAlignment="Top" />
-                <TextBox BorderBrush="#FF1A0202" Height="23" HorizontalAlignment="Left" Margin="103,96,0,0" Name="Txtname" VerticalAlignment="Top" Width="246" />
+                <TextBox BorderBrush="#FF1A0202" Height="23" HorizontalAlignment="Left" Margin="103,96,0,0" Name="Txtname" VerticalAlignment="Top" Width="246" BorderThickness="1"/>
                 <Label Content="Name :" FontSize="13" FontWeight="Bold" Foreground="#FF0062FF" Height="28" HorizontalAlignment="Left" Margin="43,91,0,0" Name="Label2" VerticalAlignment="Top" />
-                <PasswordBox BorderBrush="#FF1A0202" Height="23" HorizontalAlignment="Left" Margin="103,215,0,0" Name="Txtpassword" VerticalAlignment="Top" Width="246" />
+                <PasswordBox BorderBrush="#FF1A0202" Height="23" HorizontalAlignment="Left" Margin="103,215,0,0" Name="Txtpassword" VerticalAlignment="Top" Width="246" BorderThickness="1"/>
                 <Label Content="Password :" FontSize="13" FontWeight="Bold" Foreground="#FF0062FF" Height="28" HorizontalAlignment="Left" Margin="21,212,0,0" Name="Label4" VerticalAlignment="Top" />
                 <Button Content="Save Student" Height="30" HorizontalAlignment="Left" Margin="639,410,0,0" Name="Btnreg" VerticalAlignment="Top" Width="151" />
                 <Image HorizontalAlignment="Left" Height="138" Margin="606,46,0,0" VerticalAlignment="Top" Width="133"/>

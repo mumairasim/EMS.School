@@ -123,6 +123,9 @@
     <Compile Include="ModulesPages\Student\StudentBase.xaml.cs">
       <DependentUpon>StudentBase.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ModulesPages\Student\UpdateStudent.xaml.cs">
+      <DependentUpon>UpdateStudent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Registrar\DependencyRegistrar.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -136,6 +139,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ModulesPages\Student\StudentBase.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModulesPages\Student\UpdateStudent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
