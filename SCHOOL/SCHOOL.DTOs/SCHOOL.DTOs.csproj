@@ -82,7 +82,12 @@
     <Compile Include="DTOs\UserInfo.cs" />
     <Compile Include="DTOs\Worksheet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReponseDTOs\EmployeeResponse.cs" />
     <Compile Include="ReponseDTOs\GenericApiResponse.cs" />
+    <Compile Include="ReponseDTOs\LessonPlanResponse.cs" />
+    <Compile Include="ReponseDTOs\StudentAttendanceResponse.cs" />
+    <Compile Include="ReponseDTOs\StudentResponse.cs" />
+    <Compile Include="ReponseDTOs\TeacherDiaryResponse.cs" />
     <Compile Include="ViewModels\Student\StudentBaseViewModel.cs" />
   </ItemGroup>
   <ItemGroup />

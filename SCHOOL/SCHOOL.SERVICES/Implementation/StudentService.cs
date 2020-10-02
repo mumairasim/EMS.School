@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using SCHOOL.DATA.Infrastructure;
 using SCHOOL.DTOs.DTOs;
 using SCHOOL.SERVICES.Infrastructure;
-using Student = SCHOOL.DATA.Models.Student;
+using System.Collections.Generic;
+using System.Linq;
 using DTOStudent = SCHOOL.DTOs.DTOs.Student;
+using Student = SCHOOL.DATA.Models.Student;
 
 namespace SCHOOL.SERVICES.Implementation
 {
