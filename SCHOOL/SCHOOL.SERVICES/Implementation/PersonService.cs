@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using SCHOOL.DATA.Infrastructure;
 using SCHOOL.DATA.Models;
 using SCHOOL.SERVICES.Infrastructure;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using DTOPerson = SCHOOL.DTOs.DTOs.Person;
 
 
