@@ -3,10 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:SCHOOL.DESKTOP"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="SMS" Height="800" Width="1320" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="SMS" Height="720" Width="1320" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
         <TabControl Height="770" VerticalAlignment="Top" Width="1315" DockPanel.Dock="Left" TabStripPlacement="Left" BorderBrush="{x:Null}">
             <TabItem Header="Dashboard" Width="200" Height="45" FontSize="18" Margin="0" BorderBrush="{x:Null}">
@@ -26,7 +24,7 @@
                             </Grid>
                         </TabItem>
                         <TabItem x:Name="AddStudentTabItem" Header="Add Student" GotFocus="AddStudentTabItem_GotFocus">
-                            <Grid>
+                            <Grid Height="700" Width="1100">
                                 <Frame x:Name="AddStudent"/>
                             </Grid>
                         </TabItem>

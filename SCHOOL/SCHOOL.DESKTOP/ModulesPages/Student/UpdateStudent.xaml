@@ -6,13 +6,21 @@
         mc:Ignorable="d"
         Title="UpdateStudent" Height="450" Width="800">
     <Grid>
-        <Label Content="Update Student" FontSize="24" FontWeight="SemiBold" Foreground="#FF00A2DD" Height="44" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="239,10,0,0" Name="Label3" VerticalAlignment="Top" Width="282" />
-        <Label Content="Registration Number" Margin="100,135,0,0"></Label>
-        <TextBox BorderBrush="#FF1A0202" Height="23" HorizontalAlignment="Left" Margin="103,161,0,0" Name="RegistrationNumber" VerticalAlignment="Top" Width="246" BorderThickness="1" />
-        <Label Content="Class Name" Margin="100,200,0,0"></Label>
-        <TextBox BorderBrush="#FF1A0202" Height="23" HorizontalAlignment="Left" Margin="103,230,0,0" Name="ClassName" VerticalAlignment="Top" Width="246" BorderThickness="1" />
-        <Label Content="Name" Margin="100,260,0,0"></Label>
+        <Label Grid.Column="0" Grid.Row="0" Content="Update Student" FontSize="24" FontWeight="SemiBold" Foreground="#FF00A2DD" Height="44" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="239,10,0,0" Name="Label3" VerticalAlignment="Top" Width="282" />
+        <Label Grid.Column="0" Grid.Row="0" Content="Firstname" Margin="10,95,16.6,40"/>
+        <TextBox Grid.Column="0" Grid.Row="0" BorderBrush="#FF1A0202" Height="23" HorizontalAlignment="Left" Margin="9,121,0,0" x:Name="Firstname" VerticalAlignment="Top" Width="246" BorderThickness="1" />
+        <Label Content="Lastname" Margin="291,93,-191.4,42"/>
+        <TextBox BorderBrush="#FF1A0202" Height="23" HorizontalAlignment="Left" Margin="291,121,0,0" x:Name="Lastname" VerticalAlignment="Top" Width="246" BorderThickness="1" />
+        <Label Content="Registration Number" Margin="6,153,19.6,-18"></Label>
+        <TextBox BorderBrush="#FF1A0202" Height="23" HorizontalAlignment="Left" Margin="10,181,0,0" Name="RegistrationNumber" VerticalAlignment="Top" Width="246" BorderThickness="1" />
+        <Label Content="Class Name" Margin="7,209,18.6,-9"></Label>
+        <TextBox BorderBrush="#FF1A0202" Height="23" HorizontalAlignment="Left" Margin="10,237,0,0" Name="ClassName" VerticalAlignment="Top" Width="246" BorderThickness="1" />
+        <Label Content="Name" Margin="100,260,-0.4,0" Grid.ColumnSpan="2"></Label>
         <TextBox BorderBrush="#FF1A0202" Height="23" HorizontalAlignment="Left" Margin="103,290,0,0" Name="PersonName" VerticalAlignment="Top" Width="246" BorderThickness="1" />
-        <Button Click="CloseWindow" Margin="249,346,444.6,42" Content="Cancel" RenderTransformOrigin="0.512,0.525" MinWidth="100" MaxWidth="150" MinHeight="30" MaxHeight="40"/>
+        <Button Click="CloseWindow" Margin="249,346,371.014,42" Content="Cancel" RenderTransformOrigin="0.512,0.525" MinWidth="100" MaxWidth="150" MinHeight="30" MaxHeight="40"/>
+
+        <Label Content="Lastname" Margin="291,158,-191.4,-23"/>
+        <TextBox BorderBrush="#FF1A0202" Height="23" HorizontalAlignment="Left" Margin="291,186,0,0" x:Name="Lastname_Copy" VerticalAlignment="Top" Width="246" BorderThickness="1" />
+
     </Grid>
 </Window>
