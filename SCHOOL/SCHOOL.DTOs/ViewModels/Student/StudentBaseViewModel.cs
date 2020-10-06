@@ -1,7 +1,10 @@
-﻿namespace SCHOOL.DTOs.ViewModels.Student
+﻿using System;
+
+namespace SCHOOL.DTOs.ViewModels.Student
 {
     public class StudentBaseViewModel
     {
+        public Guid Id { get; set; }
         public int RegistrationNumber { get; set; }
 
         public string PersonName { get; set; }

@@ -43,7 +43,7 @@ namespace SCHOOL.DESKTOP.ModulesPages.Student
         public void rowEditButton_Click(object sender, RoutedEventArgs e)
         {
             var row = (StudentBaseViewModel)StudentDataGrid.SelectedItems[0];
-            var updateStudent = new UpdateStudent(row);
+            var updateStudent = new UpdateStudent(row,_studentService);
             updateStudent.ShowDialog();
         }
 

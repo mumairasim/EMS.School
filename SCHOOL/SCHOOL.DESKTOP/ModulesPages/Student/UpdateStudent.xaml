@@ -4,23 +4,124 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="UpdateStudent" Height="450" Width="800">
+        Title="UpdateStudent" Height="600" Width="1100">
     <Grid>
-        <Label Grid.Column="0" Grid.Row="0" Content="Update Student" FontSize="24" FontWeight="SemiBold" Foreground="#FF00A2DD" Height="44" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="239,10,0,0" Name="Label3" VerticalAlignment="Top" Width="282" />
-        <Label Grid.Column="0" Grid.Row="0" Content="Firstname" Margin="10,95,16.6,40"/>
-        <TextBox Grid.Column="0" Grid.Row="0" BorderBrush="#FF1A0202" Height="23" HorizontalAlignment="Left" Margin="9,121,0,0" x:Name="Firstname" VerticalAlignment="Top" Width="246" BorderThickness="1" />
-        <Label Content="Lastname" Margin="291,93,-191.4,42"/>
-        <TextBox BorderBrush="#FF1A0202" Height="23" HorizontalAlignment="Left" Margin="291,121,0,0" x:Name="Lastname" VerticalAlignment="Top" Width="246" BorderThickness="1" />
-        <Label Content="Registration Number" Margin="6,153,19.6,-18"></Label>
-        <TextBox BorderBrush="#FF1A0202" Height="23" HorizontalAlignment="Left" Margin="10,181,0,0" Name="RegistrationNumber" VerticalAlignment="Top" Width="246" BorderThickness="1" />
-        <Label Content="Class Name" Margin="7,209,18.6,-9"></Label>
-        <TextBox BorderBrush="#FF1A0202" Height="23" HorizontalAlignment="Left" Margin="10,237,0,0" Name="ClassName" VerticalAlignment="Top" Width="246" BorderThickness="1" />
-        <Label Content="Name" Margin="100,260,-0.4,0" Grid.ColumnSpan="2"></Label>
-        <TextBox BorderBrush="#FF1A0202" Height="23" HorizontalAlignment="Left" Margin="103,290,0,0" Name="PersonName" VerticalAlignment="Top" Width="246" BorderThickness="1" />
-        <Button Click="CloseWindow" Margin="249,346,371.014,42" Content="Cancel" RenderTransformOrigin="0.512,0.525" MinWidth="100" MaxWidth="150" MinHeight="30" MaxHeight="40"/>
+        <ScrollViewer Margin="40,0,10,0" VerticalScrollBarVisibility="Visible" CanContentScroll="True" >
+            <DockPanel>
+                <Grid DockPanel.Dock="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition MinHeight="50"  />
+                        <!--0-->
+                        <RowDefinition MinHeight="50"/>
+                        <!--1-->
+                        <RowDefinition MinHeight="50"/>
+                        <!--2-->
+                        <RowDefinition MinHeight="50"/>
+                        <!--3-->
+                        <RowDefinition MinHeight="50"/>
+                        <!--4-->
+                        <RowDefinition MinHeight="50"/>
+                        <!--5-->
+                        <RowDefinition MinHeight="50" Height="110"/>
+                        <!--6-->
+                        <RowDefinition MinHeight="50" Height="110"/>
+                        <!--7-->
+                        <RowDefinition MinHeight="50"/>
+                        <!--8-->
+                        <RowDefinition MinHeight="50"/>
+                        <!--9-->
+                        <RowDefinition MinHeight="50"/>
+                        <!--10-->
+                        <RowDefinition MinHeight="50" Height="80"/>
+                        <!--11-->
+                        <RowDefinition MinHeight="50"/>
+                        <!--12-->
+                        <RowDefinition MinHeight="50"/>
+                        <!--13-->
+                        <RowDefinition MinHeight="50"/>
+                        <!--14-->
+                        <RowDefinition MinHeight="60"/>
+                        <!--15-->
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="350*" MaxWidth="500" />
+                        <ColumnDefinition Width="350*" MaxWidth="500" />
+                        <ColumnDefinition Width="298*" MaxWidth="500"/>
+                        <ColumnDefinition Width="75*" MaxWidth="500"/>
+                    </Grid.ColumnDefinitions>
 
-        <Label Content="Lastname" Margin="291,158,-191.4,-23"/>
-        <TextBox BorderBrush="#FF1A0202" Height="23" HorizontalAlignment="Left" Margin="291,186,0,0" x:Name="Lastname_Copy" VerticalAlignment="Top" Width="246" BorderThickness="1" />
-
+                    <Label Grid.Row="0" Content="Update Student" FontSize="30" FontWeight="SemiBold" Foreground="#FF00A2DD" Height="55" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Name="Label3" VerticalAlignment="Top" Width="282" Margin="4.6,5,0,0" Grid.Column="1" />
+                    <Border Grid.Column="2" Grid.Row="1" Margin="84.2,10,42.967,0.6" Grid.RowSpan="4" BorderThickness="1" BorderBrush="#FF1A0202"></Border>
+                    <Image Grid.Column="2" Grid.Row="1" Margin="84.2,10,42.967,0.6" Grid.RowSpan="4" ></Image>
+                    <Label Grid.Column="0" Grid.Row="1" Content="Firstname" Margin="5,10,0.4,0.4"/>
+                    <TextBox Grid.Column="0" Grid.Row="1" BorderBrush="#FF1A0202" Margin="5,30,0,0" Height="30" HorizontalAlignment="Left"  x:Name="Firstname" VerticalAlignment="Top" Width="324" BorderThickness="1" Grid.RowSpan="2" />
+                    <Label Grid.Column="1" Grid.Row="1" Content="Lastname" Margin="4.6,10,254.967,0.4" Grid.ColumnSpan="2"/>
+                    <TextBox Grid.Column="1" Grid.Row="1" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="4.6,30,0,0" x:Name="Lastname" VerticalAlignment="Top" Width="324" BorderThickness="1" Grid.RowSpan="2" />
+                    <Label Grid.Column="0" Grid.Row="2" Content="B.Form/CNIC" Margin="5,9.6,0.4,0.8"/>
+                    <TextBox Grid.Column="0" Grid.Row="2" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="5,29.6,0,0" x:Name="Cnic" VerticalAlignment="Top" Width="150" BorderThickness="1" Grid.RowSpan="2" />
+                    <Label Grid.Column="0" Grid.Row="2" Content="Phone" Margin="179,9.6,0.4,0.8" />
+                    <TextBox Grid.Column="0" Grid.Row="2" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="179,29.6,0,0" x:Name="Phone" VerticalAlignment="Top" Width="150" BorderThickness="1" Grid.RowSpan="2" />
+                    <Label Grid.Column="1" Grid.Row="2" Content="Nationality" Margin="4.6,9.6,254.967,0.8" Grid.ColumnSpan="2"/>
+                    <TextBox Grid.Column="1" Grid.Row="2" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="4.6,29.6,0,0" x:Name="Nationality" VerticalAlignment="Top" Width="149" BorderThickness="1" Grid.RowSpan="2" />
+                    <Label Grid.Column="1" Grid.Row="2" Content="Religion" Margin="178.6,9.6,254.967,0.8" Grid.ColumnSpan="2"/>
+                    <TextBox Grid.Column="1" Grid.Row="2" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="178.6,29.6,0,0" x:Name="Religion" VerticalAlignment="Top" Width="150" BorderThickness="1" Grid.RowSpan="2" />
+                    <Label Grid.Column="0" Grid.Row="3" Content="Age" Margin="5,10.2,0.4,0"/>
+                    <TextBox Grid.Column="0" Grid.Row="3" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="5,30.2,0,0" x:Name="Age" VerticalAlignment="Top" Width="150" BorderThickness="1" Grid.RowSpan="2" />
+                    <Label Grid.Column="0" Grid.Row="3" Content="Date of Birth" Margin="179,10.2,0.4,0"/>
+                    <TextBox Grid.Column="0" Grid.Row="3" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="179,30.2,0,0" x:Name="Dob" VerticalAlignment="Top" Width="150" BorderThickness="1" Grid.RowSpan="2" />
+                    <Label Grid.Column="1" Grid.Row="3" Content="Gender" Margin="4.6,10.2,254.967,0" Grid.ColumnSpan="2"/>
+                    <Label Grid.Column="1" Grid.Row="3" Content="Male" Margin="4.6,35.2,254.967,0" Grid.ColumnSpan="2"/>
+                    <RadioButton Grid.Column="1" Grid.Row="3" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="49.6,30.2,0,0" x:Name="MaleGender" VerticalAlignment="Top" Width="50" BorderThickness="1" Grid.RowSpan="2" />
+                    <Label Grid.Column="1" Grid.Row="3" Content="Female" Margin="99.6,35.2,254.967,0" Grid.ColumnSpan="2" />
+                    <RadioButton Grid.Column="1" Grid.Row="3" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="159.6,30.2,0,0" x:Name="FeMaleGender" VerticalAlignment="Top" Width="50" BorderThickness="1" Grid.RowSpan="2" />
+                    <Label Grid.Column="1" Grid.Row="3" Content="Other" Margin="199.6,35.2,254.967,0" Grid.ColumnSpan="2"/>
+                    <RadioButton Grid.Column="1" Grid.Row="3" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="259.6,30.2,0,0" x:Name="OtherGender" VerticalAlignment="Top" Width="50" BorderThickness="1" Grid.RowSpan="2" />
+                    <Label Grid.Column="0" Grid.Row="4" Content="Class" Margin="5,10,0.4,0.6"/>
+                    <TextBox Grid.Column="0" Grid.Row="4" BorderBrush="#FF1A0202" Margin="5,30,0,0" Height="30" HorizontalAlignment="Left"  x:Name="Class" VerticalAlignment="Top" Width="324" BorderThickness="1" Grid.RowSpan="2"/>
+                    <Label Grid.Column="1" Grid.Row="4" Content="City" Margin="5,10,0.4,0.6"/>
+                    <TextBox Grid.Column="1" Grid.Row="4" BorderBrush="#FF1A0202" Margin="4.6,30,0,0" Height="30" HorizontalAlignment="Left"  x:Name="City" VerticalAlignment="Top" Width="324" BorderThickness="1" Grid.RowSpan="2"/>
+                    <Label Grid.Column="0" Grid.Row="5" Content="Previous School" Margin="5,10.4,0.4,0.2"/>
+                    <TextBox Grid.Column="0" Grid.Row="5" BorderBrush="#FF1A0202" Margin="5,30.4,0,0" Height="30" HorizontalAlignment="Left"  x:Name="PreviousSchool" VerticalAlignment="Top" Width="324" BorderThickness="1" Grid.RowSpan="2" />
+                    <Label Grid.Column="1" Grid.Row="5" Content="Reason For Leaving" Margin="4.6,10.4,254.967,0.2" Grid.ColumnSpan="2"/>
+                    <TextBox Grid.Column="1" Grid.Row="5" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="4.6,30.6,0,0" x:Name="ReasonForLeaving" VerticalAlignment="Top" Width="324" BorderThickness="1" Grid.RowSpan="2" />
+                    <Label Grid.Column="0" Grid.Row="6" Content="Present Address" Margin="5,9.8,0.4,0.6"/>
+                    <RichTextBox Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="3" BorderBrush="#FF1A0202" Height="71" HorizontalAlignment="Left" Margin="5,28.8,0,0" x:Name="PresentAddress" VerticalAlignment="Top" Width="941" BorderThickness="1" />
+                    <Label Grid.Column="0" Grid.Row="7" Content="Permanent Address" Margin="5,8.4,0.4,1"/>
+                    <RichTextBox Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="3" BorderBrush="#FF1A0202" Height="71" HorizontalAlignment="Left" Margin="5,27.4,0,0" x:Name="PermanentAddress" VerticalAlignment="Top" Width="941" BorderThickness="1" />
+                    <Label Grid.Row="8" Content="Parent/Guardian Information" FontSize="30" FontWeight="SemiBold" Foreground="#555F78" Height="55" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="435" Margin="311,4,0,0" Grid.ColumnSpan="3" Grid.Column="0" Grid.RowSpan="2" />
+                    <Label Grid.Column="0" Grid.Row="9" Content="Parent/Guardian Name" Margin="5,8.4,0.4,60.6" Grid.RowSpan="2"/>
+                    <TextBox Grid.Column="0" Grid.Row="9" BorderBrush="#FF1A0202" Margin="5,28.4,0,0" Height="30" HorizontalAlignment="Left"  x:Name="ParentName" VerticalAlignment="Top" Width="323" BorderThickness="1" />
+                    <Label Grid.Column="1" Grid.Row="9" Content="Parent/Guardian Cnic" Margin="4.6,8.4,254.967,60.6" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+                    <TextBox Grid.Column="1" Grid.Row="9" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="4.6,28.4,0,0" x:Name="ParentCnic" VerticalAlignment="Top" Width="323" BorderThickness="1" />
+                    <Label Grid.Column="2" Grid.Row="9" Content="Relation" Margin="5.2,8.4,11.967,60.6" Grid.RowSpan="2"/>
+                    <TextBox Grid.Column="2" Grid.Row="9" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="5.2,28.8,0,0" x:Name="Relation" VerticalAlignment="Top" Width="273" BorderThickness="1" />
+                    <Label Grid.Column="0" Grid.Row="10" Content="Occupation" Margin="5,10.2,0.4,79.6" Grid.RowSpan="2"/>
+                    <TextBox Grid.Column="0" Grid.Row="10" BorderBrush="#FF1A0202" Margin="5,30.2,0,0" Height="30" HorizontalAlignment="Left"  x:Name="Occupation" VerticalAlignment="Top" Width="323" BorderThickness="1" />
+                    <Label Grid.Column="1" Grid.Row="10" Content="Highest Education" Margin="4.6,10.2,254.967,79.6" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+                    <TextBox Grid.Column="1" Grid.Row="10" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="4.6,30.2,0,0" x:Name="HighestEducation" VerticalAlignment="Top" Width="323" BorderThickness="1" />
+                    <Label Grid.Column="2" Grid.Row="10" Content="Nationality" Margin="5.2,10.2,11.967,79.6" Grid.RowSpan="2"/>
+                    <TextBox Grid.Column="2" Grid.Row="10" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="5.2,30.2,0,0" x:Name="ParentNationality" VerticalAlignment="Top" Width="273" BorderThickness="1" Grid.ColumnSpan="2" />
+                    <Label Grid.Column="0" Grid.Row="11" Content="Email" Margin="5,10.4,0.4,60.4" Grid.RowSpan="2"/>
+                    <TextBox Grid.Column="0" Grid.Row="11" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="5,30.4,0,0" x:Name="Email" VerticalAlignment="Top" Width="323" BorderThickness="1" />
+                    <Label Grid.Column="1" Grid.Row="11" Content="Office Address" Margin="4.6,10.4,254.967,60.4" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+                    <RichTextBox Grid.Column="1" Grid.Row="11" Grid.ColumnSpan="2" BorderBrush="#FF1A0202" Height="65" HorizontalAlignment="Left" Margin="4.8,30.4,0,0" x:Name="OfficeAddress" VerticalAlignment="Top" Width="604" BorderThickness="1" Grid.RowSpan="2" />
+                    <Label Grid.Column="0" Grid.Row="12" Content="City" Margin="5,10.4,0.4,10.4"/>
+                    <TextBox Grid.Column="0" Grid.Row="12" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="5,30.4,0,0" x:Name="ParentCity" VerticalAlignment="Top" Width="323" BorderThickness="1" />
+                    <Label Grid.Column="1" Grid.Row="12" Content="Mobile1" Margin="4.6,10.4,254.967,10.4" Grid.ColumnSpan="2"/>
+                    <TextBox Grid.Column="1" Grid.Row="12" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="4.6,30.4,0,0" x:Name="Mobile1" VerticalAlignment="Top" Width="323" BorderThickness="1" />
+                    <Label Grid.Column="2" Grid.Row="12" Content="Mobile2" Margin="5.2,10.4,11.967,10.4"/>
+                    <TextBox Grid.Column="2" Grid.Row="12" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="5.2,30.4,0,0" x:Name="Mobile2" VerticalAlignment="Top" Width="273" BorderThickness="1" Grid.ColumnSpan="2" />
+                    <Label Grid.Column="0" Grid.Row="13" Content="Emergency Contact" FontSize="30" FontWeight="SemiBold" Foreground="#555F78" Height="55" HorizontalAlignment="Left" HorizontalContentAlignment="Center" VerticalAlignment="Top" Width="435" Margin="311,5.6,0,0" Grid.ColumnSpan="3" Grid.RowSpan="2" />
+                    <Label Grid.Column="0" Grid.Row="14" Content="Name" Margin="5,11,0.4,0.8"/>
+                    <TextBox Grid.Column="0" Grid.Row="14" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="5,31,0,0" x:Name="Name" VerticalAlignment="Top" Width="323" BorderThickness="1" Grid.RowSpan="2" />
+                    <Label Grid.Column="1" Grid.Row="14" Content="Relation" Margin="4.6,11,254.967,0.8" Grid.ColumnSpan="2"/>
+                    <TextBox Grid.Column="1" Grid.Row="14" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="4.6,31,0,-0.2" x:Name="EmergencyRelation" VerticalAlignment="Top" Width="323" BorderThickness="1" />
+                    <Label Grid.Column="2" Grid.Row="14" Content="Mobile" Margin="5.2,11,11.967,0.8"/>
+                    <TextBox Grid.Column="2" Grid.Row="14" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="5.2,31,0,-0.2" x:Name="Mobile" VerticalAlignment="Top" Width="273" BorderThickness="1" Grid.ColumnSpan="2" />
+                    <Button Grid.Column="2" Grid.Row="15" Content="Save" BorderBrush="#FF1A0202" Height="40" HorizontalAlignment="Left" Margin="49.6,10.2,0,0" x:Name="SaveBtn" VerticalAlignment="Top" Width="100" BorderThickness="1" />
+                    <Button Grid.Column="2" Grid.Row="15" Content="Close" BorderBrush="#FF1A0202" Height="40" HorizontalAlignment="Left" Margin="171.6,10.2,0,0" x:Name="CloseBtn" VerticalAlignment="Top" Width="100" BorderThickness="1" Click="CloseBtn_Click" />
+                </Grid>
+            </DockPanel>
+        </ScrollViewer>
     </Grid>
 </Window>

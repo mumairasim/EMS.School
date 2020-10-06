@@ -24,11 +24,9 @@
                             </Grid>
                         </TabItem>
                         <TabItem x:Name="AddStudentTabItem" Header="Add Student" GotFocus="AddStudentTabItem_GotFocus">
-                            <ScrollViewer VerticalScrollBarVisibility="Auto" CanContentScroll="True">
-                                <Grid Height="550" Width="1100">
-                                    <Frame x:Name="AddStudent"/>
-                                </Grid>
-                            </ScrollViewer>
+                            <Grid Width="1100" Height="550" Margin="0,-70,0,0">
+                                <Frame x:Name="AddStudent"/>
+                            </Grid>
                         </TabItem>
                     </TabControl>
                 </Grid>

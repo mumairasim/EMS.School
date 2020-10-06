@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using SCHOOL.DATA.Infrastructure;
 using SCHOOL.DTOs.DTOs;
 using SCHOOL.SERVICES.Infrastructure;
@@ -74,6 +75,12 @@ namespace SCHOOL.SERVICES.Implementation
             };
 
             return studentsList;
+        }
+        public DTOStudent Get(Guid id)
+        {
+            var studentRecord = _repository.Get().FirstOrDefault(st => st.Id == id && st.IsDeleted == false);
+            var student = _mapper.Map<Student, DTOStudent>(studentRecord);
+            return student;
         }
     }
 }
