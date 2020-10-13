@@ -29,7 +29,7 @@
                           Background="{x:Null}" 
                           VerticalScrollBarVisibility="Auto"
                           Margin="10,10,10,10"
-                          SelectionMode="Single">
+                          SelectionMode="Single" SelectionChanged="StudentDataGrid_SelectionChanged">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Registration Number" Binding="{Binding RegistrationNumber}" />
                         <DataGridTextColumn Header="Name" Binding="{Binding PersonName}" />
@@ -40,7 +40,10 @@
                         <DataGridTemplateColumn Header="Action">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button x:Name="rowEditButton" Content="Edit" Click="rowEditButton_Click" Background="#FF2196F3" BorderBrush="#FF2196F3" Foreground="White"></Button>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Button x:Name="rowEditButton" Content="Edit" Click="rowEditButton_Click" Background="#FF2196F3" BorderBrush="#FF2196F3" Foreground="White"></Button>
+                                        <Button x:Name="rowDeleteButton" Content="Delete" Background="#FF2196F3" BorderBrush="#FF2196F3" Foreground="White" Click="rowDeleteButton_Click"></Button>
+                                    </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

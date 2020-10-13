@@ -118,7 +118,7 @@
                     <TextBox Grid.Column="1" Grid.Row="14" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="4.6,31,0,-0.2" x:Name="EmergencyRelation" VerticalAlignment="Top" Width="323" BorderThickness="1" />
                     <Label Grid.Column="2" Grid.Row="14" Content="Mobile" Margin="5.2,11,11.967,0.8"/>
                     <TextBox Grid.Column="2" Grid.Row="14" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="5.2,31,0,-0.2" x:Name="Mobile" VerticalAlignment="Top" Width="273" BorderThickness="1" Grid.ColumnSpan="2" />
-                    <Button Grid.Column="2" Grid.Row="15" Content="Save" BorderBrush="#FF1A0202" Height="40" HorizontalAlignment="Left" Margin="49.6,10.2,0,0" x:Name="SaveBtn" VerticalAlignment="Top" Width="100" BorderThickness="1" />
+                    <Button Grid.Column="2" Grid.Row="15" Content="Save" BorderBrush="#FF1A0202" Height="40" HorizontalAlignment="Left" Margin="49.6,10.2,0,0" x:Name="SaveBtn" VerticalAlignment="Top" Width="100" BorderThickness="1" Click="SaveBtn_Click" />
                     <Button Grid.Column="2" Grid.Row="15" Content="Close" BorderBrush="#FF1A0202" Height="40" HorizontalAlignment="Left" Margin="171.6,10.2,0,0" x:Name="CloseBtn" VerticalAlignment="Top" Width="100" BorderThickness="1" Click="CloseBtn_Click" />
                 </Grid>
             </DockPanel>

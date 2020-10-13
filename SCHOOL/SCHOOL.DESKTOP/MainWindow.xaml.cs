@@ -25,7 +25,7 @@ namespace SCHOOL.DESKTOP
             _studentService = studentService;
             _mapper = mapper;
             _studentBase = new StudentBase(_studentService, _mapper);
-            _addStudent = new AddStudent();
+            _addStudent = new AddStudent(_studentService, _classService, _mapper); ;
             InitializeComponent();
 
         }

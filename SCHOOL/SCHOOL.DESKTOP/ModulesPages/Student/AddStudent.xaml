@@ -52,15 +52,17 @@
                         <ColumnDefinition Width="75*" MaxWidth="500"/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Grid.Row="0" Content="Update Student" FontSize="30" FontWeight="SemiBold" Foreground="#FF00A2DD" Height="55" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Name="Label3" VerticalAlignment="Top" Width="282" Margin="4.6,5,0,0" Grid.Column="1" />
+                    <Label Grid.Row="0" Content="Add Student" FontSize="30" FontWeight="SemiBold" Foreground="#FF00A2DD" Height="55" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Name="Label3" VerticalAlignment="Top" Width="282" Margin="4.6,5,0,0" Grid.Column="1" />
                     <Border Grid.Column="2" Grid.Row="1" Margin="84.2,10,42.967,0.6" Grid.RowSpan="4" BorderThickness="1" BorderBrush="#FF1A0202"></Border>
-                    <Image Grid.Column="2" Grid.Row="1" Margin="84.2,10,42.967,0.6" Grid.RowSpan="4" ></Image>
+                    <Image Grid.Column="2" Grid.Row="1" Margin="84.2,10,42.967,0.6" Grid.RowSpan="4"></Image>
                     <Label Grid.Column="0" Grid.Row="1" Content="Firstname" Margin="5,10,0.4,0.4"/>
                     <TextBox Grid.Column="0" Grid.Row="1" BorderBrush="#FF1A0202" Margin="5,30,0,0" Height="30" HorizontalAlignment="Left"  x:Name="Firstname" VerticalAlignment="Top" Width="324" BorderThickness="1" Grid.RowSpan="2" />
                     <Label Grid.Column="1" Grid.Row="1" Content="Lastname" Margin="4.6,10,254.967,0.4" Grid.ColumnSpan="2"/>
                     <TextBox Grid.Column="1" Grid.Row="1" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="4.6,30,0,0" x:Name="Lastname" VerticalAlignment="Top" Width="324" BorderThickness="1" Grid.RowSpan="2" />
                     <Label Grid.Column="0" Grid.Row="2" Content="B.Form/CNIC" Margin="5,9.6,0.4,0.8"/>
                     <TextBox Grid.Column="0" Grid.Row="2" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="5,29.6,0,0" x:Name="Cnic" VerticalAlignment="Top" Width="150" BorderThickness="1" Grid.RowSpan="2" />
+
+
                     <Label Grid.Column="0" Grid.Row="2" Content="Phone" Margin="179,9.6,0.4,0.8" />
                     <TextBox Grid.Column="0" Grid.Row="2" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="179,29.6,0,0" x:Name="Phone" VerticalAlignment="Top" Width="150" BorderThickness="1" Grid.RowSpan="2" />
                     <Label Grid.Column="1" Grid.Row="2" Content="Nationality" Margin="4.6,9.6,254.967,0.8" Grid.ColumnSpan="2"/>
@@ -78,8 +80,20 @@
                     <RadioButton Grid.Column="1" Grid.Row="3" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="159.6,30.2,0,0" x:Name="FeMaleGender" VerticalAlignment="Top" Width="50" BorderThickness="1" Grid.RowSpan="2" />
                     <Label Grid.Column="1" Grid.Row="3" Content="Other" Margin="199.6,35.2,254.967,0" Grid.ColumnSpan="2"/>
                     <RadioButton Grid.Column="1" Grid.Row="3" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="259.6,30.2,0,0" x:Name="OtherGender" VerticalAlignment="Top" Width="50" BorderThickness="1" Grid.RowSpan="2" />
+
                     <Label Grid.Column="0" Grid.Row="4" Content="Class" Margin="5,10,0.4,0.6"/>
-                    <TextBox Grid.Column="0" Grid.Row="4" BorderBrush="#FF1A0202" Margin="5,30,0,0" Height="30" HorizontalAlignment="Left"  x:Name="Class" VerticalAlignment="Top" Width="324" BorderThickness="1" Grid.RowSpan="2"/>
+                    <!--<TextBox Grid.Column="0" Grid.Row="4" BorderBrush="#FF1A0202" Margin="5,30,0,0" Height="30" HorizontalAlignment="Left"  x:Name="Class" VerticalAlignment="Top" Width="324" BorderThickness="1" Grid.RowSpan="2"/>-->
+                    <ComboBox  Grid.Column="0" Grid.Row="4" BorderBrush="#FF1A0202" Margin="5,30,0,0" x:Name="ClassDDL">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Rectangle Fill="{Binding Name}" Width="16" Height="16" Margin="0,2,5,2" />
+                                    <TextBlock Text="{Binding Name}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+
                     <Label Grid.Column="1" Grid.Row="4" Content="City" Margin="5,10,0.4,0.6"/>
                     <TextBox Grid.Column="1" Grid.Row="4" BorderBrush="#FF1A0202" Margin="4.6,30,0,0" Height="30" HorizontalAlignment="Left"  x:Name="City" VerticalAlignment="Top" Width="324" BorderThickness="1" Grid.RowSpan="2"/>
                     <Label Grid.Column="0" Grid.Row="5" Content="Previous School" Margin="5,10.4,0.4,0.2"/>
@@ -120,7 +134,7 @@
                     <TextBox Grid.Column="1" Grid.Row="14" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="4.6,31,0,-0.2" x:Name="EmergencyRelation" VerticalAlignment="Top" Width="323" BorderThickness="1" />
                     <Label Grid.Column="2" Grid.Row="14" Content="Mobile" Margin="5.2,11,11.967,0.8"/>
                     <TextBox Grid.Column="2" Grid.Row="14" BorderBrush="#FF1A0202" Height="30" HorizontalAlignment="Left" Margin="5.2,31,0,-0.2" x:Name="Mobile" VerticalAlignment="Top" Width="273" BorderThickness="1" Grid.ColumnSpan="2" />
-                    <Button Grid.Column="2" Grid.Row="15" Content="Save" BorderBrush="#FF1A0202" Height="40" HorizontalAlignment="Left" Margin="173.2,10.2,0,0" x:Name="SaveBtn" VerticalAlignment="Top" Width="100" BorderThickness="1" />
+                    <Button Grid.Column="2" Grid.Row="15" Content="Save" BorderBrush="#FF1A0202" Height="40" HorizontalAlignment="Left" Margin="173.2,10.2,0,0" x:Name="SaveBtn" VerticalAlignment="Top" Width="100" BorderThickness="1" Click="SaveBtn_Click" />
                 </Grid>
             </DockPanel>
         </ScrollViewer>

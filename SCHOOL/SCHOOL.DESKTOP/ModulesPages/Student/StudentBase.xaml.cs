@@ -43,7 +43,7 @@ namespace SCHOOL.DESKTOP.ModulesPages.Student
         public void rowEditButton_Click(object sender, RoutedEventArgs e)
         {
             var row = (StudentBaseViewModel)StudentDataGrid.SelectedItems[0];
-            var updateStudent = new UpdateStudent(row,_studentService);
+            var updateStudent = new UpdateStudent(row, _studentService);
             updateStudent.ShowDialog();
         }
 
@@ -89,6 +89,11 @@ namespace SCHOOL.DESKTOP.ModulesPages.Student
         private void NextPage_Click(object sender, RoutedEventArgs e)
         {
             Page++;
+            GetStudentAndBind();
+        }
+
+        private void GetStudentAndBind()
+        {
             var studentList = _studentService.Get(SearchStudentTextBox.Text, Page, PageSize);
             var students = new List<StudentBaseViewModel>();
             _mapper.Map(studentList.Students, students);
@@ -102,6 +107,27 @@ namespace SCHOOL.DESKTOP.ModulesPages.Student
             var students = new List<StudentBaseViewModel>();
             _mapper.Map(studentList.Students, students);
             StudentDataGrid.ItemsSource = students;
+        }
+
+        private void StudentDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void rowDeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure?", "Delete Confirmation", System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                var row = (StudentBaseViewModel)StudentDataGrid.SelectedItems[0];
+                _studentService.Delete(row.Id, "");
+                GetStudentAndBind();
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("Delete operation Terminated");
+            }
+
         }
     }
 }

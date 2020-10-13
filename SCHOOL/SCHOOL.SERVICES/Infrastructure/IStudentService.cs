@@ -1,5 +1,6 @@
 ﻿using System;
 using SCHOOL.DTOs.DTOs;
+using SCHOOL.DTOs.ReponseDTOs;
 using DTOStudent = SCHOOL.DTOs.DTOs.Student;
 
 namespace SCHOOL.SERVICES.Infrastructure
@@ -9,5 +10,8 @@ namespace SCHOOL.SERVICES.Infrastructure
         StudentsList Get(int pageNumber, int pageSize);
         StudentsList Get(string searchString, int pageNumber, int pageSize);
         DTOStudent Get(Guid id);
+        void Create(DTOStudent student);
+        void Update(DTOStudent dtoStudent);
+        void Delete(Guid? id, string DeletedBy);
     }
 }

@@ -88,6 +88,7 @@
     <Compile Include="ReponseDTOs\StudentAttendanceResponse.cs" />
     <Compile Include="ReponseDTOs\StudentResponse.cs" />
     <Compile Include="ReponseDTOs\TeacherDiaryResponse.cs" />
+    <Compile Include="ViewModels\Common\CustomComboBoxItem.cs" />
     <Compile Include="ViewModels\Student\StudentBaseViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
