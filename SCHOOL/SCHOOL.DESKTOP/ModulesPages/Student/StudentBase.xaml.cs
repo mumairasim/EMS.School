@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using AutoMapper;
 using SCHOOL.DTOs.ViewModels.Student;
 using SCHOOL.SERVICES.Infrastructure;
@@ -128,6 +129,17 @@ namespace SCHOOL.DESKTOP.ModulesPages.Student
                 System.Windows.MessageBox.Show("Delete operation Terminated");
             }
 
+        }
+        private void OnKeyDownHandlerSearch(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                Page = 1;
+                var studentList = _studentService.Get(SearchStudentTextBox.Text, 1, PageSize);
+                var students = new List<StudentBaseViewModel>();
+                _mapper.Map(studentList.Students, students);
+                StudentDataGrid.ItemsSource = students;
+            }
         }
     }
 }
