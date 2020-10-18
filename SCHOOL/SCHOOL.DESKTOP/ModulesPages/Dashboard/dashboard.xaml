@@ -1,0 +1,148 @@
+﻿<Page x:Class="SCHOOL.DESKTOP.ModulesPages.Dashboard.Dashboard"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="700"
+      Title="dashboard">
+    <Page.Resources>
+        <Style x:Key="GridRoundCorner" TargetType="{x:Type ContentControl}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ContentControl}">
+                        <Grid x:Name="grid">
+                            <Border x:Name="border" CornerRadius="5"  BorderThickness="2" Background="{x:Null}">
+                                <ContentPresenter >
+                                </ContentPresenter>
+                            </Border>
+
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="border" Value="LightSkyBlue" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="GridRoundCornerHeader" TargetType="{x:Type ContentControl}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type ContentControl}">
+                        <Grid x:Name="grid">
+                            <Border x:Name="border"  BorderBrush="DarkGray" BorderThickness="1" Background="{x:Null}">
+                                <ContentPresenter >
+                                </ContentPresenter>
+                            </Border>
+
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <Grid Background="White" Margin="20,0,20,20">
+        <Grid.RowDefinitions>
+            <RowDefinition MinHeight="60" MaxHeight="70"></RowDefinition>
+            <RowDefinition MinHeight="80" MaxHeight="100"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0"  Margin="10,5,10,5">
+            <ContentControl Style="{DynamicResource GridRoundCornerHeader}">
+                <Grid>
+                    <Label Content="Excellence Educational Services" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,5,5,5" FontSize="22" FontWeight="Bold" Foreground="#FF00A2DD"></Label>
+                    <ComboBox HorizontalAlignment="Right" VerticalAlignment="Center" MinWidth="50" MaxWidth="100" Margin="5,10,15,10">
+                        <ComboBoxItem IsSelected="True" >
+                            <WrapPanel>
+                                <Button Width="30" Height="30" >
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Image Height="25" Source="../../Images/profile.jpg"></Image>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <Label Content="Umair" VerticalAlignment="Center" />
+                            </WrapPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <WrapPanel>
+                                <Button Width="30" Height="30" >
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Image Height="25" Source="../../Images/user.png"></Image>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <Label Content="Profile" VerticalAlignment="Center" />
+                            </WrapPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem>
+                            <WrapPanel>
+                                <Button Width="30" Height="30" >
+                                    <Button.Template>
+                                        <ControlTemplate>
+                                            <Image Height="25" Source="../../Images/signout.png"></Image>
+                                        </ControlTemplate>
+                                    </Button.Template>
+                                </Button>
+                                <Label Content="Sign out" VerticalAlignment="Center" />
+                            </WrapPanel>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </Grid>
+            </ContentControl>
+        </Grid>
+        <Grid Grid.Row="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" Margin="10,10,5,5" >
+                <ContentControl >
+                    <Grid Margin="1" Background="#355276">
+                        <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" >
+                            <Label Content="Total Students Register" Foreground="White" FontSize="15"  ></Label>
+                        </Grid>
+                        <Grid HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"  >
+                            <Label Content="920" Foreground="White" FontSize="18" FontWeight="Bold" ></Label>
+                        </Grid>
+                    </Grid>
+                </ContentControl>
+            </Grid>
+            <Grid Grid.Column="1" Margin="5,10" >
+                <ContentControl>
+                    <Grid Margin="1" Background="#37C0F0">
+                        <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" >
+                            <Label Content="Total Profit this Year" Foreground="White" FontSize="15"  ></Label>
+                        </Grid>
+                        <Grid HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"  >
+                            <Label Content="$ 689" Foreground="White" FontSize="18" FontWeight="Bold" ></Label>
+                        </Grid>
+                    </Grid>
+                </ContentControl>
+            </Grid>
+            <Grid Grid.Column="2" Margin="5,10,10,10" >
+                <ContentControl>
+                    <Grid Margin="1" Background="#36B78B" >
+                        <Grid HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" >
+                            <Label Content="Total Employees" Foreground="White" FontSize="15"  ></Label>
+                        </Grid>
+                        <Grid HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5"  >
+                            <Label Content="50" Foreground="White" FontSize="18" FontWeight="Bold" ></Label>
+                        </Grid>
+                    </Grid>
+                </ContentControl>
+            </Grid>
+        </Grid>
+        <Grid Grid.Row="2" >
+            <Image Source="../../Images/Temp.JPG" Margin="10" ></Image>
+        </Grid>
+    </Grid>
+</Page>

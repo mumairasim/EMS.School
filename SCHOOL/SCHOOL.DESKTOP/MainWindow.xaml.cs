@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using AutoMapper;
+using SCHOOL.DESKTOP.ModulesPages.Dashboard;
 using SCHOOL.DESKTOP.ModulesPages.Student;
 using SCHOOL.DTOs.DTOs;
 using SCHOOL.Services.Infrastructure;
@@ -15,6 +16,7 @@ namespace SCHOOL.DESKTOP
     {
         private readonly IClassService _classService;
         private readonly StudentBase _studentBase;
+        private readonly Dashboard _dashboard;
         private readonly AddStudent _addStudent;
         private readonly IStudentService _studentService;
         private readonly IMapper _mapper;
@@ -24,10 +26,11 @@ namespace SCHOOL.DESKTOP
             _classService = classService;
             _studentService = studentService;
             _mapper = mapper;
+            _dashboard = new Dashboard();
             _studentBase = new StudentBase(_studentService, _mapper);
-            _addStudent = new AddStudent(_studentService, _classService, _mapper); ;
+            _addStudent = new AddStudent(_studentService, _classService, _mapper);
             InitializeComponent();
-
+            DashboardPage.Content = _dashboard;
         }
 
 
@@ -47,6 +50,10 @@ namespace SCHOOL.DESKTOP
         private void StudentTab_GotFocus(object sender, RoutedEventArgs e)
         {
             StudentBase.Content = _studentBase;
+        }
+        private void DashboardTab_GotFocus(object sender, RoutedEventArgs e)
+        {
+            DashboardPage.Content = _dashboard;
         }
         private void AddStudentTabItem_GotFocus(object sender, RoutedEventArgs e)
         {

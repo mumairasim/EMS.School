@@ -59,7 +59,7 @@
                 </StackPanel>
             </Grid>
             <Grid Margin="0,30,0,0" DockPanel.Dock="Top" MinHeight="270" MaxHeight="500" >
-                <Border Name="DataGridBorder" BorderThickness="2,2,2,2" BorderBrush="DarkGray" CornerRadius="5,5,5,5" Margin="10,10,10,10">
+                <Border Name="DataGridBorder" BorderThickness="1" BorderBrush="DarkGray" Margin="10,10,10,10">
                     <DataGrid x:Name="StudentDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" CanUserAddRows="False" AutoGenerateColumns="False" Style="{StaticResource DynamicGridColumns}" 
                           Background="{x:Null}" 
                           VerticalScrollBarVisibility="Auto"
