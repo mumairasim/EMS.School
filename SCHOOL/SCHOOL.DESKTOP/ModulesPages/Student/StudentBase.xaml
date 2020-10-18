@@ -58,7 +58,7 @@
                     <Button Click="SearchStudents"  Content="Search" MinWidth="90" MaxWidth="150" MinHeight="30" MaxHeight="40" Margin="750,0,40,10" Style="{DynamicResource RoundCorner}"/>
                 </StackPanel>
             </Grid>
-            <Grid Margin="0,30,0,0" DockPanel.Dock="Top" MinHeight="270" MaxHeight="500" >
+            <Grid Margin="0,30,0,0" DockPanel.Dock="Top" MinHeight="270" MaxHeight="470" >
                 <Border Name="DataGridBorder" BorderThickness="1" BorderBrush="DarkGray" Margin="10,10,10,10">
                     <DataGrid x:Name="StudentDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" CanUserAddRows="False" AutoGenerateColumns="False" Style="{StaticResource DynamicGridColumns}" 
                           Background="{x:Null}" 
@@ -92,12 +92,12 @@
                 </Border>
             </Grid>
             <Grid Margin="0,10,0,0" DockPanel.Dock="Top">
-                <Button x:Name="FirstPage" Content="&lt;&lt;" Background="#FF2196F3" BorderBrush="#FF2196F3" Foreground="White"  Margin="522,0,240,9.8" Height="37" Width="38" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Medium" Padding="0" Click="FirstPage_Click" />
-                <Button x:Name="PreviousPage" Content="&lt;" Background="#FF2196F3" BorderBrush="#FF2196F3" Foreground="White"  Margin="568,0,193,9.8" Height="37" Width="39" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Medium" Padding="0" Click="PreviousPage_Click" />
-                <Button x:Name="Page2" Content="2" Background="#FF2196F3" BorderBrush="#FF2196F3" Foreground="White"  Margin="613,0,147,9.8" Height="37" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Medium" Padding="0" Click="Page2_Click" />
-                <Button x:Name="Page3" Content="3" Background="#FF2196F3" BorderBrush="#FF2196F3" Foreground="White"  Margin="660,0,102,9.8" Height="37" Width="38" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Medium" Padding="0" Click="Page3_Click" />
-                <Button x:Name="NextPage" Content=">" Background="#FF2196F3" BorderBrush="#FF2196F3" Foreground="White"  Margin="705,0,55,9.8" Height="37" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Medium" Padding="0" Click="NextPage_Click" />
-                <Button x:Name="LastPage" Content=">>" Background="#FF2196F3" BorderBrush="#FF2196F3" Foreground="White"  Margin="751,0,10,9.8" Height="37" Width="39" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" FontWeight="Medium" Padding="0" Click="LastPage_Click" />
+                <Button x:Name="FirstPage" Content="&lt;&lt;" Margin="522,0,240,9.8" Height="37" Width="38" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13" Style="{DynamicResource RoundCorner}" Click="FirstPage_Click" />
+                <Button x:Name="PreviousPage" Content="&lt;"  Margin="568,0,193,9.8" Height="37" Width="39" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13" Style="{DynamicResource RoundCorner}" Click="PreviousPage_Click" />
+                <Button x:Name="Page2" Content="2" Margin="613,0,147,9.8" Height="37" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13" Style="{DynamicResource RoundCorner}" Click="Page2_Click" />
+                <Button x:Name="Page3" Content="3" Margin="660,0,102,9.8" Height="37" Width="38" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13" Style="{DynamicResource RoundCorner}" Click="Page3_Click" />
+                <Button x:Name="NextPage" Content=">" Margin="705,0,55,9.8" Height="37" Width="40" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13" Style="{DynamicResource RoundCorner}" Click="NextPage_Click" />
+                <Button x:Name="LastPage" Content=">>" Margin="751,0,10,9.8" Height="37" Width="39" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="13" Style="{DynamicResource RoundCorner}" Click="LastPage_Click" />
             </Grid>
         </DockPanel>
     </Grid>
