@@ -118,15 +118,11 @@
 
                     <Label Grid.Column="0" Grid.Row="4" Content="Class" Margin="5,10,0.4,0.6"/>
                     <!--<TextBox Grid.Column="0" Grid.Row="4" BorderBrush="DarkGray" Margin="5,30,0,0" Height="30" HorizontalAlignment="Left"  x:Name="Class" VerticalAlignment="Top" Width="324" BorderThickness="1" Grid.RowSpan="2"/>-->
-                    <ComboBox  Grid.Column="0" Grid.Row="4" BorderBrush="DarkGray" Margin="5,30,0,0" x:Name="ClassDDL">
-                        <ComboBox.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Orientation="Horizontal">
-                                    <Rectangle Fill="{Binding Name}" Width="16" Height="16" Margin="0,2,5,2" />
-                                    <TextBlock Text="{Binding Name}" />
-                                </StackPanel>
-                            </DataTemplate>
-                        </ComboBox.ItemTemplate>
+                    <ComboBox  Grid.Column="0" Grid.Row="4" Margin="5,30,0,0" x:Name="ClassDdl"
+                               ItemsSource="{Binding Path=ClassEntries}"
+                               DisplayMemberPath="ClassName"
+                               SelectedValuePath="ClassName"
+                               SelectedValue="{Binding Path=ClassEntry}">
                     </ComboBox>
 
                     <Label Grid.Column="1" Grid.Row="4" Content="City" Margin="5,10,0.4,0.6"/>
