@@ -3,6 +3,7 @@ using System.Windows;
 using AutoMapper;
 using SCHOOL.DESKTOP.ModulesPages.Dashboard;
 using SCHOOL.DESKTOP.ModulesPages.Student;
+using SCHOOL.DESKTOP.ModulesPages.TimeTable;
 using SCHOOL.DTOs.DTOs;
 using SCHOOL.Services.Infrastructure;
 using SCHOOL.SERVICES.Infrastructure;
@@ -18,6 +19,7 @@ namespace SCHOOL.DESKTOP
         private readonly StudentBase _studentBase;
         private readonly Dashboard _dashboard;
         private readonly AddStudent _addStudent;
+        private readonly AddTimeTable _addTimeTable;
         private readonly IStudentService _studentService;
         private readonly IMapper _mapper;
         public List<Class> ClassList { get; set; } = new List<Class>();
@@ -29,6 +31,7 @@ namespace SCHOOL.DESKTOP
             _dashboard = new Dashboard();
             _studentBase = new StudentBase(_studentService, _mapper);
             _addStudent = new AddStudent(_studentService, _classService, _mapper);
+            _addTimeTable = new AddTimeTable();
             InitializeComponent();
             DashboardPage.Content = _dashboard;
         }
@@ -58,6 +61,10 @@ namespace SCHOOL.DESKTOP
         private void AddStudentTabItem_GotFocus(object sender, RoutedEventArgs e)
         {
             AddStudent.Content = _addStudent;
+        }
+        private void AddTimeTableTabItem_GotFocus(object sender, RoutedEventArgs e)
+        {
+            AddTimeTable.Content = _addTimeTable;
         }
     }
 

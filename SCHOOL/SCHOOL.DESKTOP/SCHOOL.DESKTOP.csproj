@@ -129,6 +129,9 @@
     <Compile Include="ModulesPages\Student\UpdateStudent.xaml.cs">
       <DependentUpon>UpdateStudent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ModulesPages\TimeTable\AddTimeTable.xaml.cs">
+      <DependentUpon>AddTimeTable.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Registrar\DependencyRegistrar.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -150,6 +153,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ModulesPages\Student\UpdateStudent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModulesPages\TimeTable\AddTimeTable.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -214,6 +221,7 @@
   <ItemGroup>
     <Resource Include="Images\Temp.JPG" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.1.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
