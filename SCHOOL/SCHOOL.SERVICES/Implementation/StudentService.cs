@@ -36,7 +36,7 @@ namespace SCHOOL.SERVICES.Implementation
                 studentTempList.Add(_mapper.Map<Student, DTOStudent>(student));
             }
 
-            var studentsList = new StudentsList()
+            var studentsList = new StudentsList
             {
                 Students = studentTempList,
                 StudentsCount = studentCount
