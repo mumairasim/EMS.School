@@ -7,6 +7,12 @@
       d:DesignHeight="450" d:DesignWidth="1000"
       Title="AddTimeTable">
     <Page.Resources>
+        <Style x:Key="DynamicGridColumns" TargetType="DataGrid">
+            <Setter Property="ColumnWidth" Value="*" />
+        </Style>
+        <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="Background" Value="{x:Null}" />
+        </Style>
         <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -123,9 +129,11 @@
                     <Grid Grid.Column="0" Grid.Row="4" ColumnSpan="3" MinHeight="170"  MaxHeight="250">
                         <Border Name="DataGridBorder" BorderThickness="1" BorderBrush="DarkGray" Margin="10,10,10,10">
                             <DataGrid x:Name="TimeTableDataGrid"
+                                      AutoGenerateColumns="True"
                                       VerticalScrollBarVisibility="Auto"
                                       SelectionMode="Single"
-                                      BorderBrush="{x:Null}" IsReadOnly="True">
+                                      BorderBrush="{x:Null}" IsReadOnly="True"
+                                      Style="{StaticResource DynamicGridColumns}">
                             </DataGrid>
                         </Border>
                     </Grid>
