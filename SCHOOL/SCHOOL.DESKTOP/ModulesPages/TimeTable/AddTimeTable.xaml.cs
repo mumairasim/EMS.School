@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SCHOOL.DTOs.Enums;
 
 namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
 {
@@ -42,78 +43,90 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
         }
         private void Monday_Checked(object sender, RoutedEventArgs e)
         {
-            Dr = Dt.NewRow();
-
-            Dr[0] = "Monday";
-
-            Dt.Rows.Add(Dr);
-
-            TimeTableDataGrid.ItemsSource = Dt.DefaultView;
+            AddDayRow(DaysOfWeek.Monday.ToString());
         }
 
         private void Tuesday_Checked(object sender, RoutedEventArgs e)
         {
-            Dr = Dt.NewRow();
-
-            Dr[0] = "Tuesday";
-
-            Dt.Rows.Add(Dr);
-
-            TimeTableDataGrid.ItemsSource = Dt.DefaultView;
+            AddDayRow(DaysOfWeek.Tuesday.ToString());
         }
 
         private void Wednesday_Checked(object sender, RoutedEventArgs e)
         {
-            Dr = Dt.NewRow();
-
-            Dr[0] = "Wednesday";
-
-            Dt.Rows.Add(Dr);
-
-            TimeTableDataGrid.ItemsSource = Dt.DefaultView;
+            AddDayRow(DaysOfWeek.Wednesday.ToString());
         }
 
         private void Thursday_Checked(object sender, RoutedEventArgs e)
         {
-            Dr = Dt.NewRow();
-
-            Dr[0] = "Thursday";
-
-            Dt.Rows.Add(Dr);
-
-            TimeTableDataGrid.ItemsSource = Dt.DefaultView;
+            AddDayRow(DaysOfWeek.Thursday.ToString());
         }
 
         private void Friday_Checked(object sender, RoutedEventArgs e)
         {
-            Dr = Dt.NewRow();
-
-            Dr[0] = "Friday";
-
-            Dt.Rows.Add(Dr);
-
-            TimeTableDataGrid.ItemsSource = Dt.DefaultView;
+            AddDayRow(DaysOfWeek.Friday.ToString());
         }
 
         private void Saturday_Checked(object sender, RoutedEventArgs e)
         {
-            Dr = Dt.NewRow();
-
-            Dr[0] = "Saturday";
-
-            Dt.Rows.Add(Dr);
-
-            TimeTableDataGrid.ItemsSource = Dt.DefaultView;
+            AddDayRow(DaysOfWeek.Saturday.ToString());
         }
 
         private void Sunday_Checked(object sender, RoutedEventArgs e)
         {
+            AddDayRow(DaysOfWeek.Sunday.ToString());
+        }
+
+        private void Monday_Unchecked(object sender, RoutedEventArgs e)
+        {
+            RemoveDayRow(DaysOfWeek.Monday.ToString());
+        }
+        private void Tuesday_Unchecked(object sender, RoutedEventArgs e)
+        {
+            RemoveDayRow(DaysOfWeek.Tuesday.ToString());
+        }
+        private void Wednesday_Unchecked(object sender, RoutedEventArgs e)
+        {
+            RemoveDayRow(DaysOfWeek.Wednesday.ToString());
+        }
+        private void Thursday_Unchecked(object sender, RoutedEventArgs e)
+        {
+            RemoveDayRow(DaysOfWeek.Thursday.ToString());
+        }
+        private void Friday_Unchecked(object sender, RoutedEventArgs e)
+        {
+            RemoveDayRow(DaysOfWeek.Friday.ToString());
+        }
+        private void Saturday_Unchecked(object sender, RoutedEventArgs e)
+        {
+            RemoveDayRow(DaysOfWeek.Saturday.ToString());
+        }
+        private void Sunday_Unchecked(object sender, RoutedEventArgs e)
+        {
+            RemoveDayRow(DaysOfWeek.Sunday.ToString());
+        }
+
+
+
+
+        private void RemoveDayRow(string day)
+        {
+            for (int i = 0; i < Dt.Rows.Count; i++)
+            {
+                DataRow dr = Dt.Rows[i];
+                if ((string)dr[0] == day)
+                {
+                    dr.Delete();
+                    Dt.AcceptChanges();
+                    break;
+                }
+            }
+            TimeTableDataGrid.ItemsSource = Dt.DefaultView;
+        }
+        private void AddDayRow(string day)
+        {
             Dr = Dt.NewRow();
-
-            Dr[0] = "Sunday";
-
+            Dr[0] = day;
             Dt.Rows.Add(Dr);
-
             TimeTableDataGrid.ItemsSource = Dt.DefaultView;
         }
     }

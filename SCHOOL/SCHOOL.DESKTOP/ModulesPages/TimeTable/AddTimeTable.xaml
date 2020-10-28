@@ -68,19 +68,19 @@
                     <TextBox Grid.Column="1" Grid.Row="1" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="10,30,0,0" x:Name="TimeTableName" VerticalAlignment="Top" Width="291" BorderThickness="1" />
                     <Label Grid.Column="0" Grid.Row="2" Content="Days" Margin="5"/>
                     <Label Grid.Column="0" Grid.Row="2" Content="Monday" Margin="10,30,0,0" VerticalAlignment="Center"/>
-                    <CheckBox Grid.Column="0" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="65,45.2,0,14.4" x:Name="Monday" VerticalAlignment="Center" BorderThickness="1" Checked="Monday_Checked" />
+                    <CheckBox Grid.Column="0" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="65,45.2,0,14.4" x:Name="Monday" VerticalAlignment="Center" BorderThickness="1" Checked="Monday_Checked" Unchecked="Monday_Unchecked" />
                     <Label Grid.Column="0" Grid.Row="2" Content="Tuesday" Margin="100,30,0,0" VerticalAlignment="Center"/>
-                    <CheckBox Grid.Column="0" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="165,30,0,0" x:Name="Tuesday" VerticalAlignment="Center" BorderThickness="1" Checked="Tuesday_Checked" />
+                    <CheckBox Grid.Column="0" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="165,30,0,0" x:Name="Tuesday" VerticalAlignment="Center" BorderThickness="1" Checked="Tuesday_Checked" Unchecked="Tuesday_Unchecked"/>
                     <Label Grid.Column="0" Grid.Row="2" Content="Wednesday" Margin="190,30,0,0" VerticalAlignment="Center"/>
-                    <CheckBox Grid.Column="0" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="265,30,0,0" x:Name="Wednesday" VerticalAlignment="Center" BorderThickness="1" Checked="Wednesday_Checked" />
+                    <CheckBox Grid.Column="0" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="265,30,0,0" x:Name="Wednesday" VerticalAlignment="Center" BorderThickness="1" Checked="Wednesday_Checked" Unchecked="Wednesday_Unchecked"/>
                     <Label Grid.Column="1" Grid.Row="2" Content="Thursday" Margin="10,30,0,0" VerticalAlignment="Center"/>
-                    <CheckBox Grid.Column="1" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="75,30,0,0" x:Name="Thursday" VerticalAlignment="Center" BorderThickness="1" Checked="Thursday_Checked" />
+                    <CheckBox Grid.Column="1" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="75,30,0,0" x:Name="Thursday" VerticalAlignment="Center" BorderThickness="1" Checked="Thursday_Checked" Unchecked="Thursday_Unchecked"/>
                     <Label Grid.Column="1" Grid.Row="2" Content="Friday" Margin="100,30,0,0" VerticalAlignment="Center"/>
-                    <CheckBox Grid.Column="1" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="155,30,0,0" x:Name="Friday" VerticalAlignment="Center" BorderThickness="1" Checked="Friday_Checked" />
+                    <CheckBox Grid.Column="1" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="155,30,0,0" x:Name="Friday" VerticalAlignment="Center" BorderThickness="1" Checked="Friday_Checked" Unchecked="Friday_Unchecked"/>
                     <Label Grid.Column="1" Grid.Row="2" Content="Saturday" Margin="190,30,0,0" VerticalAlignment="Center"/>
-                    <CheckBox Grid.Column="1" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="255,30,0,0" x:Name="Saturday" VerticalAlignment="Center" BorderThickness="1" Checked="Saturday_Checked" />
+                    <CheckBox Grid.Column="1" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="255,30,0,0" x:Name="Saturday" VerticalAlignment="Center" BorderThickness="1" Checked="Saturday_Checked" Unchecked="Saturday_Unchecked"/>
                     <Label Grid.Column="2" Grid.Row="2" Content="Sunday" Margin="10,30,0,0" VerticalAlignment="Center"/>
-                    <CheckBox Grid.Column="2" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="65,30,0,0" x:Name="Sunday" VerticalAlignment="Center" BorderThickness="1" Checked="Sunday_Checked" />
+                    <CheckBox Grid.Column="2" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="65,30,0,0" x:Name="Sunday" VerticalAlignment="Center" BorderThickness="1" Checked="Sunday_Checked" Unchecked="Sunday_Unchecked"/>
                     <Grid Grid.Column="0" Grid.Row="3">
                         <Grid.RowDefinitions>
                             <RowDefinition MinHeight="50"  />
@@ -120,14 +120,14 @@
                         <Button Grid.Column="1" Grid.Row="0" Content="Add Period" Width="100" Height="35" Style="{DynamicResource RoundCorner}" VerticalAlignment="Bottom" Margin="7,7,7,7" HorizontalAlignment="Left" />
 
                     </Grid>
-                    <Grid Grid.Column="0" Grid.Row="4" ColumnSpan="3" Margin="10,10,10,15">
-                        <DataGrid x:Name="TimeTableDataGrid">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Days">
-
-                                </DataGridTextColumn>
-                            </DataGrid.Columns>
-                        </DataGrid>
+                    <Grid Grid.Column="0" Grid.Row="4" ColumnSpan="3" MinHeight="170"  MaxHeight="250">
+                        <Border Name="DataGridBorder" BorderThickness="1" BorderBrush="DarkGray" Margin="10,10,10,10">
+                            <DataGrid x:Name="TimeTableDataGrid"
+                                      VerticalScrollBarVisibility="Auto"
+                                      SelectionMode="Single"
+                                      BorderBrush="{x:Null}" IsReadOnly="True">
+                            </DataGrid>
+                        </Border>
                     </Grid>
                 </Grid>
             </DockPanel>
