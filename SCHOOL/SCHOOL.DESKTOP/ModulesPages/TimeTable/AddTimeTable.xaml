@@ -117,16 +117,21 @@
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Grid.Row="0" Content="TeacherName" Margin="5"/>
                         <ComboBox Grid.Column="0" Grid.Row="0" BorderBrush="DarkGray" Margin="10,30,0,0" Height="30" HorizontalAlignment="Left"  x:Name="TeacherName" VerticalAlignment="Top" Width="130" BorderThickness="1" />
-                        <Button Grid.Column="1" Grid.Row="0" Content="Add Period" Width="100" Height="35" Style="{DynamicResource RoundCorner}" VerticalAlignment="Bottom" Margin="7,7,7,7" HorizontalAlignment="Left" />
+                        <Button Grid.Column="1" Grid.Row="0" Content="Add Period" Width="100" Height="35" Style="{DynamicResource RoundCorner}" VerticalAlignment="Bottom" Margin="7,7,7,7" HorizontalAlignment="Left" Click="AddPeriod_Click"  />
 
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="4" ColumnSpan="3" MinHeight="170"  MaxHeight="250">
                         <Border Name="DataGridBorder" BorderThickness="1" BorderBrush="DarkGray" Margin="10,10,10,10">
-                            <DataGrid x:Name="TimeTableDataGrid"
+                            <!--<DataGrid x:Name="TimeTableDataGrid"
                                       VerticalScrollBarVisibility="Auto"
                                       SelectionMode="Single"
                                       BorderBrush="{x:Null}" IsReadOnly="True">
-                            </DataGrid>
+                            </DataGrid>-->
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                                <Grid x:Name="TimeTableGrid">
+
+                                </Grid>
+                            </ScrollViewer>
                         </Border>
                     </Grid>
                 </Grid>
