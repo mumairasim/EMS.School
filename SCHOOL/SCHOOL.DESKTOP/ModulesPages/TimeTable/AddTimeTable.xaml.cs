@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Media;
 using SCHOOL.DTOs.Enums;
 
@@ -36,10 +34,10 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
             {
                 TimeTableGrid.RowDefinitions.Add(new RowDefinition
                 {
-                    Height = new GridLength(MinHeight = 60)
+                    Height = new GridLength(MinHeight = 70)
                 });
             }
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 25; i++)
             {
                 TimeTableGrid.ColumnDefinitions.Add(new ColumnDefinition
                 {
@@ -51,9 +49,8 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
             var dynamicLabel = new Label
             {
                 Content = "Days",
-                //Foreground = new SolidColorBrush(Colors.White),
-                //Background = new SolidColorBrush(Colors.Black),
-                FontWeight = FontWeights.Bold
+                FontWeight = FontWeights.Bold,
+                FontSize = 20
             };
             Grid.SetRow(dynamicLabel, 0);
             Grid.SetColumn(dynamicLabel, 0);
@@ -70,12 +67,13 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
             SubjectName.Items.Add(new ComboBoxItem { Content = "Urdu" });
             SubjectName.Items.Add(new ComboBoxItem { Content = "Maths" });
             SubjectName.Items.Add(new ComboBoxItem { Content = "Science" });
-
+            SubjectName.SelectedItem = SubjectName.Items[0];
 
             TeacherName.Items.Add(new ComboBoxItem { Content = "Asif Ali" });
             TeacherName.Items.Add(new ComboBoxItem { Content = "Kashif Naeem" });
             TeacherName.Items.Add(new ComboBoxItem { Content = "Nabiha Batool" });
             TeacherName.Items.Add(new ComboBoxItem { Content = "Farzana Khan" });
+            TeacherName.SelectedItem = TeacherName.Items[0];
 
 
             Day.Items.Add(new ComboBoxItem { Content = DaysOfWeek.Monday.ToString() });
@@ -85,6 +83,7 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
             Day.Items.Add(new ComboBoxItem { Content = DaysOfWeek.Friday.ToString() });
             Day.Items.Add(new ComboBoxItem { Content = DaysOfWeek.Saturday.ToString() });
             Day.Items.Add(new ComboBoxItem { Content = DaysOfWeek.Sunday.ToString() });
+            Day.SelectedItem = Day.Items[0];
 
         }
         private void Monday_Checked(object sender, RoutedEventArgs e)
@@ -152,12 +151,13 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
         }
         private void AddPeriod_Click(object sender, RoutedEventArgs e)
         {
+            int maxPeriods = 20;
             ComboBoxItem typeItem = (ComboBoxItem)Day.SelectedItem;
             string selectedDay = typeItem.Content.ToString();
             var day = (DaysOfWeek)Enum.Parse(typeof(DaysOfWeek), selectedDay);
             if (day == DaysOfWeek.Monday)
             {
-                if (MondayPeriod < 9)
+                if (MondayPeriod < maxPeriods)
                 {
                     MondayPeriod++;
                     PrepareStringAndInsertColumn(day, MondayPeriod);
@@ -169,7 +169,7 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
             }
             if (day == DaysOfWeek.Tuesday)
             {
-                if (TuesdayPeriod < 9)
+                if (TuesdayPeriod < maxPeriods)
                 {
                     TuesdayPeriod++;
                     PrepareStringAndInsertColumn(day, TuesdayPeriod);
@@ -181,7 +181,7 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
             }
             if (day == DaysOfWeek.Wednesday)
             {
-                if (WednesdayPeriod < 9)
+                if (WednesdayPeriod < maxPeriods)
                 {
                     WednesdayPeriod++;
                     PrepareStringAndInsertColumn(day, WednesdayPeriod);
@@ -193,7 +193,7 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
             }
             if (day == DaysOfWeek.Thursday)
             {
-                if (ThursdayPeriod < 9)
+                if (ThursdayPeriod < maxPeriods)
                 {
                     ThursdayPeriod++;
                     PrepareStringAndInsertColumn(day, ThursdayPeriod);
@@ -205,7 +205,7 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
             }
             if (day == DaysOfWeek.Friday)
             {
-                if (FridayPeriod < 9)
+                if (FridayPeriod < maxPeriods)
                 {
                     FridayPeriod++;
                     PrepareStringAndInsertColumn(day, FridayPeriod);
@@ -217,7 +217,7 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
             }
             if (day == DaysOfWeek.Saturday)
             {
-                if (SaturdayPeriod < 9)
+                if (SaturdayPeriod < maxPeriods)
                 {
                     SaturdayPeriod++;
                     PrepareStringAndInsertColumn(day, SaturdayPeriod);
@@ -229,7 +229,7 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
             }
             if (day == DaysOfWeek.Sunday)
             {
-                if (SundayPeriod < 9)
+                if (SundayPeriod < maxPeriods)
                 {
                     SundayPeriod++;
                     PrepareStringAndInsertColumn(day, SundayPeriod);
@@ -265,7 +265,9 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
             {
                 Name = day + "_" + period + "_Label",
                 Content = text,
-                Margin = new Thickness(5, 5, 5, 5)
+                Margin = new Thickness(5, 5, 5, 5),
+                BorderBrush = new SolidColorBrush(Colors.DarkGray),
+                BorderThickness = new Thickness(1)
             };
             Grid.SetRow(dynamicLabel, (int)day);
             Grid.SetColumn(dynamicLabel, period);

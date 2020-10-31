@@ -3,8 +3,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="1000"
+      d:DesignHeight="470" d:DesignWidth="1000"
       Title="AddTimeTable">
     <Page.Resources>
         <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
@@ -55,6 +56,8 @@
                         <RowDefinition MinHeight="50" MaxHeight="70"/>
                         <!--3-->
                         <RowDefinition MinHeight="50"/>
+                        <!--4-->
+                        <RowDefinition MinHeight="50"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="350*" MaxWidth="500" />
@@ -103,9 +106,9 @@
                             <ColumnDefinition Width="250*" MaxWidth="500" />
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Grid.Row="0" Content="Start Time" Margin="5"/>
-                        <TextBox Grid.Column="0" Grid.Row="0" BorderBrush="DarkGray" Margin="10,30,0,0" Height="30" HorizontalAlignment="Left"  x:Name="StartTime" VerticalAlignment="Top" Width="130" BorderThickness="1" />
+                        <materialDesign:TimePicker Grid.Column="0" Grid.Row="0" BorderBrush="DarkGray" Margin="10,30,0,0" Height="30" HorizontalAlignment="Left"  x:Name="StartTime" VerticalAlignment="Top" Width="130" BorderThickness="1" />
                         <Label Grid.Column="1" Grid.Row="0" Content="End Time" Margin="5"/>
-                        <TextBox Grid.Column="1" Grid.Row="0" BorderBrush="DarkGray" Margin="10,30,0,0" Height="30" HorizontalAlignment="Left"  x:Name="EndTime" VerticalAlignment="Top" Width="130" BorderThickness="1" />
+                        <materialDesign:TimePicker Grid.Column="1" Grid.Row="0" BorderBrush="DarkGray" Margin="10,30,0,0" Height="30" HorizontalAlignment="Left"  x:Name="EndTime" VerticalAlignment="Top" Width="130" BorderThickness="1" />
                     </Grid>
                     <Grid Grid.Column="2" Grid.Row="3">
                         <Grid.RowDefinitions>
@@ -121,7 +124,11 @@
 
                     </Grid>
                     <Grid Grid.Column="0" Grid.Row="4" ColumnSpan="3" MinHeight="170"  MaxHeight="250">
-                        <Border Name="DataGridBorder" BorderThickness="1" BorderBrush="DarkGray" Margin="10,10,10,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="95*"/>
+                            <ColumnDefinition Width="141*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Name="DataGridBorder" BorderThickness="1" BorderBrush="DarkGray" Margin="10,10,10.2,10" Grid.ColumnSpan="2">
                             <!--<DataGrid x:Name="TimeTableDataGrid"
                                       VerticalScrollBarVisibility="Auto"
                                       SelectionMode="Single"
@@ -133,6 +140,16 @@
                                 </Grid>
                             </ScrollViewer>
                         </Border>
+                    </Grid>
+                    <Grid Grid.Column="2" Grid.Row="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition MinHeight="50"  />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250*" MaxWidth="500" />
+                            <ColumnDefinition Width="250*" MaxWidth="500" />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="2" Grid.Row="5" Content="Save Time Table" Width="100" Height="35" Style="{DynamicResource RoundCorner}" VerticalAlignment="Bottom" Margin="7,7,7,7" HorizontalAlignment="Left" />
                     </Grid>
                 </Grid>
             </DockPanel>
