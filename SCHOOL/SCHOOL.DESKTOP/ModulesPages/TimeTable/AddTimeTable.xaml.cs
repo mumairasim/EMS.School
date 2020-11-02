@@ -1,9 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using SCHOOL.DTOs.DTOs;
 using SCHOOL.DTOs.Enums;
+using DTOTimeTable = SCHOOL.DTOs.DTOs.TimeTable;
+using DTOTimeTableDetail = SCHOOL.DTOs.DTOs.TimeTableDetail;
+using DTOPeriod = SCHOOL.DTOs.DTOs.Period;
 
 namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
 {
@@ -25,9 +31,11 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
         public int FridayPeriod { get; set; }
         public int SaturdayPeriod { get; set; }
         public int SundayPeriod { get; set; }
+        public List<DTOTimeTableDetail> TimeTableDetails { get; set; }
 
         private void PageInitialization()
         {
+            TimeTableDetails = new List<DTOTimeTableDetail>();
             TimeTableGrid.RowDefinitions.Add(new RowDefinition());
             TimeTableGrid.ColumnDefinitions.Add(new ColumnDefinition());
             for (int i = 0; i < 7; i++)
@@ -89,36 +97,43 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
         private void Monday_Checked(object sender, RoutedEventArgs e)
         {
             AddRow(DaysOfWeek.Monday);
+            PrepareTimeTableDetailObject(DaysOfWeek.Monday);
         }
 
         private void Tuesday_Checked(object sender, RoutedEventArgs e)
         {
             AddRow(DaysOfWeek.Tuesday);
+            PrepareTimeTableDetailObject(DaysOfWeek.Tuesday);
         }
 
         private void Wednesday_Checked(object sender, RoutedEventArgs e)
         {
             AddRow(DaysOfWeek.Wednesday);
+            PrepareTimeTableDetailObject(DaysOfWeek.Wednesday);
         }
 
         private void Thursday_Checked(object sender, RoutedEventArgs e)
         {
             AddRow(DaysOfWeek.Thursday);
+            PrepareTimeTableDetailObject(DaysOfWeek.Thursday);
         }
 
         private void Friday_Checked(object sender, RoutedEventArgs e)
         {
             AddRow(DaysOfWeek.Friday);
+            PrepareTimeTableDetailObject(DaysOfWeek.Friday);
         }
 
         private void Saturday_Checked(object sender, RoutedEventArgs e)
         {
             AddRow(DaysOfWeek.Saturday);
+            PrepareTimeTableDetailObject(DaysOfWeek.Saturday);
         }
 
         private void Sunday_Checked(object sender, RoutedEventArgs e)
         {
             AddRow(DaysOfWeek.Sunday);
+            PrepareTimeTableDetailObject(DaysOfWeek.Sunday);
         }
 
         private void Monday_Unchecked(object sender, RoutedEventArgs e)
@@ -161,6 +176,7 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
                 {
                     MondayPeriod++;
                     PrepareStringAndInsertColumn(day, MondayPeriod);
+                    AddTimeTablePeriod(DaysOfWeek.Monday);
                 }
                 else
                 {
@@ -173,6 +189,7 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
                 {
                     TuesdayPeriod++;
                     PrepareStringAndInsertColumn(day, TuesdayPeriod);
+                    AddTimeTablePeriod(DaysOfWeek.Tuesday);
                 }
                 else
                 {
@@ -185,6 +202,7 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
                 {
                     WednesdayPeriod++;
                     PrepareStringAndInsertColumn(day, WednesdayPeriod);
+                    AddTimeTablePeriod(DaysOfWeek.Wednesday);
                 }
                 else
                 {
@@ -197,6 +215,7 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
                 {
                     ThursdayPeriod++;
                     PrepareStringAndInsertColumn(day, ThursdayPeriod);
+                    AddTimeTablePeriod(DaysOfWeek.Thursday);
                 }
                 else
                 {
@@ -209,6 +228,7 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
                 {
                     FridayPeriod++;
                     PrepareStringAndInsertColumn(day, FridayPeriod);
+                    AddTimeTablePeriod(DaysOfWeek.Friday);
                 }
                 else
                 {
@@ -221,6 +241,7 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
                 {
                     SaturdayPeriod++;
                     PrepareStringAndInsertColumn(day, SaturdayPeriod);
+                    AddTimeTablePeriod(DaysOfWeek.Saturday);
                 }
                 else
                 {
@@ -233,6 +254,7 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
                 {
                     SundayPeriod++;
                     PrepareStringAndInsertColumn(day, SundayPeriod);
+                    AddTimeTablePeriod(DaysOfWeek.Sunday);
                 }
                 else
                 {
@@ -293,6 +315,63 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
 
 
             AddColumn(day, query.ToString(), period);
+        }
+
+        private void PrepareTimeTableDetailObject(DaysOfWeek day)
+        {
+            if (!IfDayAlreadyExist(day))
+            {
+                var timeTableDetail = new DTOTimeTableDetail
+                {
+                    Day = day.ToString(),
+                    Periods = new List<Period>()
+                };
+                TimeTableDetails.Add(timeTableDetail);
+            }
+        }
+        private void AddTimeTablePeriod(DaysOfWeek day)
+        {
+            foreach (var ttD in TimeTableDetails)
+            {
+                if (ttD.Day.Equals(day.ToString()))
+                {
+                    var period = new Period
+                    {
+                        StartTime = new TimeSpan(),
+                        EndTime = new TimeSpan()
+                    };
+                    ttD.Periods.Add(period);
+                    break;
+                }
+            }
+        }
+        private DTOTimeTable PrepareTimeTableObject()
+        {
+            var timeTable = new DTOTimeTable
+            {
+                Class = new DTOs.DTOs.Class
+                {
+                    ClassName = ClassName.Text
+                },
+                TimeTableName = TimeTableName.Text,
+                TimeTableDetails = TimeTableDetails
+            };
+            return timeTable;
+        }
+        private bool IfDayAlreadyExist(DaysOfWeek day)
+        {
+            foreach (var ttD in TimeTableDetails)
+            {
+                if (ttD.Day.Equals(day.ToString()))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+            PrepareTimeTableObject();
         }
     }
 }
