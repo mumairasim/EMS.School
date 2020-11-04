@@ -16,6 +16,7 @@ namespace SCHOOL.DESKTOP
     public partial class MainWindow : Window
     {
         private readonly IClassService _classService;
+        private readonly ICourseService _courseService;
         private readonly StudentBase _studentBase;
         private readonly Dashboard _dashboard;
         private readonly AddStudent _addStudent;
@@ -23,15 +24,16 @@ namespace SCHOOL.DESKTOP
         private readonly IStudentService _studentService;
         private readonly IMapper _mapper;
         public List<Class> ClassList { get; set; } = new List<Class>();
-        public MainWindow(IClassService classService, IStudentService studentService, IMapper mapper)
+        public MainWindow(IClassService classService, IStudentService studentService, IMapper mapper, ICourseService courseService)
         {
             _classService = classService;
             _studentService = studentService;
             _mapper = mapper;
+            _courseService = courseService;
             _dashboard = new Dashboard();
             _studentBase = new StudentBase(_studentService, _mapper);
             _addStudent = new AddStudent(_studentService, _classService, _mapper);
-            _addTimeTable = new AddTimeTable();
+            _addTimeTable = new AddTimeTable(classService, courseService);
             InitializeComponent();
             DashboardPage.Content = _dashboard;
         }

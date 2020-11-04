@@ -4,12 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Media;
 using SCHOOL.DTOs.DTOs;
 using SCHOOL.DTOs.Enums;
+using SCHOOL.Services.Infrastructure;
 using DTOTimeTable = SCHOOL.DTOs.DTOs.TimeTable;
 using DTOTimeTableDetail = SCHOOL.DTOs.DTOs.TimeTableDetail;
 using DTOPeriod = SCHOOL.DTOs.DTOs.Period;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
 {
@@ -18,8 +22,12 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
     /// </summary>
     public partial class AddTimeTable
     {
-        public AddTimeTable()
+        private readonly IClassService _classService;
+        private readonly ICourseService _courseService;
+        public AddTimeTable(IClassService classService, ICourseService courseService)
         {
+            _classService = classService;
+            _courseService = courseService;
             InitializeComponent();
             PageInitialization();
         }
@@ -32,10 +40,17 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
         public int SaturdayPeriod { get; set; }
         public int SundayPeriod { get; set; }
         public List<DTOTimeTableDetail> TimeTableDetails { get; set; }
+        public ClassDropDownViewModel ClassDropDown { get; set; }
 
         private void PageInitialization()
         {
             TimeTableDetails = new List<DTOTimeTableDetail>();
+            ClassDropDown = new ClassDropDownViewModel(_classService);
+            DataContext = ClassDropDown;
+            ClassName.SelectedIndex = 0;
+
+
+
             TimeTableGrid.RowDefinitions.Add(new RowDefinition());
             TimeTableGrid.ColumnDefinitions.Add(new ColumnDefinition());
             for (int i = 0; i < 7; i++)
@@ -71,11 +86,12 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
             SaturdayPeriod = 0;
             SundayPeriod = 0;
 
-            SubjectName.Items.Add(new ComboBoxItem { Content = "English" });
-            SubjectName.Items.Add(new ComboBoxItem { Content = "Urdu" });
-            SubjectName.Items.Add(new ComboBoxItem { Content = "Maths" });
-            SubjectName.Items.Add(new ComboBoxItem { Content = "Science" });
-            SubjectName.SelectedItem = SubjectName.Items[0];
+            //SubjectName.Items.Add(new ComboBoxItem { Content = "English" });
+            //SubjectName.Items.Add(new ComboBoxItem { Content = "Urdu" });
+            //SubjectName.Items.Add(new ComboBoxItem { Content = "Maths" });
+            //SubjectName.Items.Add(new ComboBoxItem { Content = "Science" });
+            //SubjectName.SelectedItem = SubjectName.Items[0];
+            GetCourses();
 
             TeacherName.Items.Add(new ComboBoxItem { Content = "Asif Ali" });
             TeacherName.Items.Add(new ComboBoxItem { Content = "Kashif Naeem" });
@@ -369,9 +385,56 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
             }
             return false;
         }
+
         private void Save_Click(object sender, RoutedEventArgs e)
         {
             PrepareTimeTableObject();
         }
+
+        private void GetCourses()
+        {
+            var courseList = _courseService.GetAll();
+            foreach (var course in courseList)
+            {
+                SubjectName.Items.Add(new ComboBoxItem
+                {
+                    Content = course.CourseCode + " - " + course.CourseName
+                });
+            }
+            SubjectName.SelectedItem = SubjectName.Items[0];
+        }
+
     }
+
+    #region Class Dropdown
+    public class ClassDropDownViewModel : INotifyPropertyChanged
+    {
+        public CollectionView ClassEntries { get; set; }
+        private string _classEntry;
+        public ClassDropDownViewModel(IClassService classService)
+        {
+            var classList = classService.Get();
+            ClassEntries = new CollectionView(classList);
+            ClassEntry = classList[0].ClassName;
+        }
+
+        public string ClassEntry
+        {
+            get => _classEntry;
+            set
+            {
+                if (_classEntry == value) return;
+                _classEntry = value;
+                OnPropertyChanged(_classEntry);
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+    #endregion
+
 }

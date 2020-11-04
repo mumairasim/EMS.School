@@ -66,8 +66,14 @@
                     </Grid.ColumnDefinitions>
                     <Label Grid.Row="0" Content="Add Time Table" FontSize="30" FontWeight="SemiBold" Foreground="#FF00A2DD" Height="55" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Name="Label3" VerticalAlignment="Top" Width="282" Margin="4.6,5,0,0" Grid.Column="1" />
                     <Label Grid.Column="0" Grid.Row="1" Content="Class" Margin="5"/>
-                    <TextBox Grid.Column="0" Grid.Row="1" BorderBrush="DarkGray" Margin="10,29.6,0,1.2" HorizontalAlignment="Left"  x:Name="ClassName" Width="291" BorderThickness="1" />
-                    <Label Grid.Column="1" Grid.Row="1" Content="Time Table Name" Margin="5"/>
+                    <ComboBox Grid.Column="0" Grid.Row="1" BorderBrush="DarkGray" Margin="10,29.6,0,1.2" HorizontalAlignment="Left"  x:Name="ClassName" Width="291" BorderThickness="1"  
+                              ItemsSource="{Binding Path=ClassEntries}"
+                              DisplayMemberPath="ClassName"
+                              SelectedValuePath="ClassName"
+                              SelectedValue="{Binding Path=ClassEntry}">
+
+                    </ComboBox>
+                        <Label Grid.Column="1" Grid.Row="1" Content="Time Table Name" Margin="5"/>
                     <TextBox Grid.Column="1" Grid.Row="1" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="10,30,0,0" x:Name="TimeTableName" VerticalAlignment="Top" Width="291" BorderThickness="1" />
                     <Label Grid.Column="0" Grid.Row="2" Content="Days" Margin="5"/>
                     <Label Grid.Column="0" Grid.Row="2" Content="Monday" Margin="10,30,0,0" VerticalAlignment="Center"/>

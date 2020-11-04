@@ -4,6 +4,9 @@ using SCHOOL.DTOs.ViewModels.Student;
 using Class = SCHOOL.DATA.Models.Class;
 using DTOClass = SCHOOL.DTOs.DTOs.Class;
 
+using Course = SCHOOL.DATA.Models.Course;
+using DTOCourse = SCHOOL.DTOs.DTOs.Course;
+
 using Student = SCHOOL.DATA.Models.Student;
 using DTOStudent = SCHOOL.DTOs.DTOs.Student;
 
@@ -29,6 +32,10 @@ namespace SCHOOL.MAP
             CreateMap<DTOClass, DTOClass>()
                 .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
 
+            CreateMap<Course, DTOCourse>();
+            CreateMap<DTOCourse, DTOCourse>()
+                .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
+
             CreateMap<Student, DTOStudent>();
             CreateMap<DTOStudent, DTOStudent>()
                 .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
@@ -48,6 +55,8 @@ namespace SCHOOL.MAP
 
             //DTO to Db
             CreateMap<DTOClass, Class>();
+
+            CreateMap<DTOCourse, Course>();
 
             CreateMap<DTOStudent, Student>();
 
