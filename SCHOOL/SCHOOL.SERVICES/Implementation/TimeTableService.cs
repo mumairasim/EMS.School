@@ -51,14 +51,12 @@ namespace SCHOOL.Services.Implementation
                     dtoTimeTable.Id = Guid.NewGuid();
                 }
 
-                HelpingMethodForRelationship(dtoTimeTable);
                 //old one
-                //var timeTable = _repository.Add(_mapper.Map<DTOTimeTable, TimeTable>(dtoTimeTable));
+                var timeTable = _repository.Add(_mapper.Map<DTOTimeTable, TimeTable>(dtoTimeTable));
                 if (dtoTimeTable.TimeTableDetails != null)
                     foreach (var timeTableDetail in dtoTimeTable.TimeTableDetails)
                     {
-                        timeTableDetail.TimeTableId = Guid.NewGuid();
-                        //timeTableDetail.TimeTableId = timeTable.Id;
+                        timeTableDetail.TimeTableId = timeTable.Id;
                         timeTableDetail.CreatedBy = dtoTimeTable.CreatedBy;
                         _timeTableDetailService.Create(timeTableDetail);
                     }
@@ -70,13 +68,7 @@ namespace SCHOOL.Services.Implementation
             }
 
         }
-        private void HelpingMethodForRelationship(DTOTimeTable dtoTimeTable)
-        {
-            dtoTimeTable.SchoolId = dtoTimeTable.School.Id;
-            dtoTimeTable.School = null;
-            dtoTimeTable.ClassId = dtoTimeTable.Class.Id;
-            dtoTimeTable.Class = null;
-        }
+        
 
         private GenericApiResponse PrepareFailureResponse(string errorMessage, string descriptionMessage)
         {

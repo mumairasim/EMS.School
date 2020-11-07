@@ -66,14 +66,14 @@
                     </Grid.ColumnDefinitions>
                     <Label Grid.Row="0" Content="Add Time Table" FontSize="30" FontWeight="SemiBold" Foreground="#FF00A2DD" Height="55" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Name="Label3" VerticalAlignment="Top" Width="282" Margin="4.6,5,0,0" Grid.Column="1" />
                     <Label Grid.Column="0" Grid.Row="1" Content="Class" Margin="5"/>
-                    <ComboBox Grid.Column="0" Grid.Row="1" BorderBrush="DarkGray" Margin="10,29.6,0,1.2" HorizontalAlignment="Left"  x:Name="ClassName" Width="291" BorderThickness="1"  
-                              ItemsSource="{Binding Path=ClassEntries}"
-                              DisplayMemberPath="ClassName"
-                              SelectedValuePath="ClassName"
-                              SelectedValue="{Binding Path=ClassEntry}">
-
+                    <ComboBox Grid.Column="0" Grid.Row="1" BorderBrush="DarkGray" Margin="10,29.6,0,1.2" HorizontalAlignment="Left"  x:Name="ClassName" Width="291" BorderThickness="1" IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ClassName}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
                     </ComboBox>
-                        <Label Grid.Column="1" Grid.Row="1" Content="Time Table Name" Margin="5"/>
+                    <Label Grid.Column="1" Grid.Row="1" Content="Time Table Name" Margin="5"/>
                     <TextBox Grid.Column="1" Grid.Row="1" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="10,30,0,0" x:Name="TimeTableName" VerticalAlignment="Top" Width="291" BorderThickness="1" />
                     <Label Grid.Column="0" Grid.Row="2" Content="Days" Margin="5"/>
                     <Label Grid.Column="0" Grid.Row="2" Content="Monday" Margin="10,30,0,0" VerticalAlignment="Center"/>
@@ -99,9 +99,21 @@
                             <ColumnDefinition Width="250*" MaxWidth="500" />
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Grid.Row="0" Content="Subject" Margin="5"/>
-                        <ComboBox Grid.Column="0" Grid.Row="0" BorderBrush="DarkGray" Margin="10,30,0,0" Height="30" HorizontalAlignment="Left"  x:Name="SubjectName" VerticalAlignment="Top" Width="130" BorderThickness="1" />
+                        <ComboBox Grid.Column="0" Grid.Row="0" BorderBrush="DarkGray" Margin="10,30,0,0" Height="30" HorizontalAlignment="Left"  x:Name="SubjectName" VerticalAlignment="Top" Width="130" BorderThickness="1" >
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding CourseName}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                         <Label Grid.Column="1" Grid.Row="0" Content="Day" Margin="5"/>
-                        <ComboBox Grid.Column="1" Grid.Row="0" BorderBrush="DarkGray" Margin="10,30,0,0" Height="30" HorizontalAlignment="Left"  x:Name="Day" VerticalAlignment="Top" Width="130" BorderThickness="1" />
+                        <ComboBox Grid.Column="1" Grid.Row="0" BorderBrush="DarkGray" Margin="10,30,0,0" Height="30" HorizontalAlignment="Left"  x:Name="Day" VerticalAlignment="Top" Width="130" BorderThickness="1" >
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Day}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                     </Grid>
                     <Grid Grid.Column="1" Grid.Row="3">
                         <Grid.RowDefinitions>
@@ -125,7 +137,13 @@
                             <ColumnDefinition Width="250*" MaxWidth="500" />
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0" Grid.Row="0" Content="TeacherName" Margin="5"/>
-                        <ComboBox Grid.Column="0" Grid.Row="0" BorderBrush="DarkGray" Margin="10,30,0,0" Height="30" HorizontalAlignment="Left"  x:Name="TeacherName" VerticalAlignment="Top" Width="130" BorderThickness="1" />
+                        <ComboBox Grid.Column="0" Grid.Row="0" BorderBrush="DarkGray" Margin="10,30,0,0" Height="30" HorizontalAlignment="Left"  x:Name="TeacherName" VerticalAlignment="Top" Width="130" BorderThickness="1" >
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Person.FirstName}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                         <Button Grid.Column="1" Grid.Row="0" Content="Add Period" Width="100" Height="35" Style="{DynamicResource RoundCorner}" VerticalAlignment="Bottom" Margin="7,7,7,7" HorizontalAlignment="Left" Click="AddPeriod_Click"  />
 
                     </Grid>

@@ -39,7 +39,7 @@ namespace SCHOOL.Services.Implementation
                     foreach (var period in dtoTimeTableDetail.Periods)
                     {
                         //period.TimeTableDetailId = timeTableDetail.Id;
-                        period.TimeTableDetailId = Guid.NewGuid();
+                        period.TimeTableDetailId = dtoTimeTableDetail.Id;
                         _periodService.Create(period);
                     }
 

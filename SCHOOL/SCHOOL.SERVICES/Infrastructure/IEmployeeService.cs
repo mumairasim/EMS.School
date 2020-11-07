@@ -11,6 +11,7 @@ namespace SCHOOL.Services.Infrastructure
     {
         #region SMS Section
         EmployeesList Get(int pageNumber, int pageSize);
+        List<DTOEmployee> GetTeachers();
         EmployeesList Get(int? employeeNumber, int pageNumber, int pageSize);
         EmployeesList Get(string searchString, int pageNumber, int pageSize);
         DTOEmployee Get(Guid? id);

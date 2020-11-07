@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Globalization;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Media;
 using SCHOOL.DTOs.DTOs;
 using SCHOOL.DTOs.Enums;
@@ -12,8 +11,9 @@ using SCHOOL.Services.Infrastructure;
 using DTOTimeTable = SCHOOL.DTOs.DTOs.TimeTable;
 using DTOTimeTableDetail = SCHOOL.DTOs.DTOs.TimeTableDetail;
 using DTOPeriod = SCHOOL.DTOs.DTOs.Period;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using DTOCourse = SCHOOL.DTOs.DTOs.Course;
+using DTOEmployee = SCHOOL.DTOs.DTOs.Employee;
+using DTOClass = SCHOOL.DTOs.DTOs.Class;
 
 namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
 {
@@ -24,10 +24,14 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
     {
         private readonly IClassService _classService;
         private readonly ICourseService _courseService;
-        public AddTimeTable(IClassService classService, ICourseService courseService)
+        private readonly IEmployeeService _employeeService;
+        private readonly ITimeTableService _timeTableService;
+        public AddTimeTable(IClassService classService, ICourseService courseService, IEmployeeService employeeService, ITimeTableService timeTableService)
         {
             _classService = classService;
             _courseService = courseService;
+            _employeeService = employeeService;
+            _timeTableService = timeTableService;
             InitializeComponent();
             PageInitialization();
         }
@@ -40,13 +44,10 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
         public int SaturdayPeriod { get; set; }
         public int SundayPeriod { get; set; }
         public List<DTOTimeTableDetail> TimeTableDetails { get; set; }
-        public ClassDropDownViewModel ClassDropDown { get; set; }
 
         private void PageInitialization()
         {
             TimeTableDetails = new List<DTOTimeTableDetail>();
-            ClassDropDown = new ClassDropDownViewModel(_classService);
-            DataContext = ClassDropDown;
             ClassName.SelectedIndex = 0;
 
 
@@ -86,18 +87,9 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
             SaturdayPeriod = 0;
             SundayPeriod = 0;
 
-            //SubjectName.Items.Add(new ComboBoxItem { Content = "English" });
-            //SubjectName.Items.Add(new ComboBoxItem { Content = "Urdu" });
-            //SubjectName.Items.Add(new ComboBoxItem { Content = "Maths" });
-            //SubjectName.Items.Add(new ComboBoxItem { Content = "Science" });
-            //SubjectName.SelectedItem = SubjectName.Items[0];
+            GetClasses();
             GetCourses();
-
-            TeacherName.Items.Add(new ComboBoxItem { Content = "Asif Ali" });
-            TeacherName.Items.Add(new ComboBoxItem { Content = "Kashif Naeem" });
-            TeacherName.Items.Add(new ComboBoxItem { Content = "Nabiha Batool" });
-            TeacherName.Items.Add(new ComboBoxItem { Content = "Farzana Khan" });
-            TeacherName.SelectedItem = TeacherName.Items[0];
+            GetTeachers();
 
 
             Day.Items.Add(new ComboBoxItem { Content = DaysOfWeek.Monday.ToString() });
@@ -315,11 +307,11 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
 
         private void PrepareStringAndInsertColumn(DaysOfWeek day, int period)
         {
-            ComboBoxItem typeItemSubject = (ComboBoxItem)SubjectName.SelectedItem;
-            string subjectName = typeItemSubject.Content.ToString();
+            var subject = (DTOCourse)SubjectName.SelectedItem;
+            string subjectName = subject.CourseName;
 
-            ComboBoxItem typeItemTeacher = (ComboBoxItem)TeacherName.SelectedItem;
-            string teacherName = typeItemTeacher.Content.ToString();
+            var typeItemTeacher = (DTOEmployee)TeacherName.SelectedItem;
+            string teacherName = typeItemTeacher.Person.FirstName + " " + typeItemTeacher.Person.LastName;
 
             var startTime = StartTime.Text;
             var endTime = EndTime.Text;
@@ -351,10 +343,26 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
             {
                 if (ttD.Day.Equals(day.ToString()))
                 {
-                    var period = new Period
+                    var startTime = ParseTime(StartTime.Text);
+                    var endTime = ParseTime(EndTime.Text);
+                    if (startTime == null)
                     {
-                        StartTime = new TimeSpan(),
-                        EndTime = new TimeSpan()
+                        MessageBox.Show("Wrong format for Start time", "Wrong Format", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                    if (endTime == null)
+                    {
+                        MessageBox.Show("Wrong format for End time", "Wrong Format", MessageBoxButton.OK, MessageBoxImage.Error);
+                        return;
+                    }
+                    var subject = (DTOCourse)SubjectName.SelectedItem;
+                    var employee = (DTOEmployee)TeacherName.SelectedItem;
+                    var period = new DTOPeriod
+                    {
+                        StartTime = startTime,
+                        EndTime = endTime,
+                        CourseId = subject.Id,
+                        TeacherId = employee.Id
                     };
                     ttD.Periods.Add(period);
                     break;
@@ -363,12 +371,10 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
         }
         private DTOTimeTable PrepareTimeTableObject()
         {
+            var classObj = (DTOClass)ClassName.SelectedItem;
             var timeTable = new DTOTimeTable
             {
-                Class = new DTOs.DTOs.Class
-                {
-                    ClassName = ClassName.Text
-                },
+                ClassId = classObj.Id,
                 TimeTableName = TimeTableName.Text,
                 TimeTableDetails = TimeTableDetails
             };
@@ -388,53 +394,47 @@ namespace SCHOOL.DESKTOP.ModulesPages.TimeTable
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
-            PrepareTimeTableObject();
+            var timeTable = PrepareTimeTableObject();
+            var result = _timeTableService.Create(timeTable);
+            if (result.StatusCode == "200")
+            {
+                MessageBox.Show("Time table saved successfully", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void GetCourses()
         {
             var courseList = _courseService.GetAll();
-            foreach (var course in courseList)
-            {
-                SubjectName.Items.Add(new ComboBoxItem
-                {
-                    Content = course.CourseCode + " - " + course.CourseName
-                });
-            }
+            SubjectName.ItemsSource = courseList;
             SubjectName.SelectedItem = SubjectName.Items[0];
+
         }
-
-    }
-
-    #region Class Dropdown
-    public class ClassDropDownViewModel : INotifyPropertyChanged
-    {
-        public CollectionView ClassEntries { get; set; }
-        private string _classEntry;
-        public ClassDropDownViewModel(IClassService classService)
+        private void GetClasses()
         {
-            var classList = classService.Get();
-            ClassEntries = new CollectionView(classList);
-            ClassEntry = classList[0].ClassName;
+            var classesList = _classService.Get();
+            ClassName.ItemsSource = classesList;
+            ClassName.SelectedItem = ClassName.Items[0];
+
         }
-
-        public string ClassEntry
+        private void GetTeachers()
         {
-            get => _classEntry;
-            set
+            var employeeList = _employeeService.GetTeachers();
+            TeacherName.ItemsSource = employeeList;
+            TeacherName.SelectedItem = TeacherName.Items[0];
+
+        }
+        public static TimeSpan? ParseTime(string input)
+        {
+            var ok = DateTime.TryParseExact(input, @"h:mm tt", CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.NoCurrentDateDefault, out var output);
+            if (ok)
             {
-                if (_classEntry == value) return;
-                _classEntry = value;
-                OnPropertyChanged(_classEntry);
+                return output.Subtract(output.Date);
             }
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            return null;
         }
+
     }
-    #endregion
+
 
 }

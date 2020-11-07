@@ -16,6 +16,22 @@ using DTOPerson = SCHOOL.DTOs.DTOs.Person;
 using File = SCHOOL.DATA.Models.File;
 using DTOFile = SCHOOL.DTOs.DTOs.File;
 
+using Employee = SCHOOL.DATA.Models.Employee;
+using DTOEmployee = SCHOOL.DTOs.DTOs.Employee;
+
+using Designation = SCHOOL.DATA.Models.Designation;
+using DTODesignation = SCHOOL.DTOs.DTOs.Designation;
+
+using TimeTable = SCHOOL.DATA.Models.TimeTable;
+using DTOTimeTable = SCHOOL.DTOs.DTOs.TimeTable;
+
+using TimeTableDetail = SCHOOL.DATA.Models.TimeTableDetail;
+using DTOTimeTableDetail = SCHOOL.DTOs.DTOs.TimeTableDetail;
+
+using Period = SCHOOL.DATA.Models.Period;
+using DTOPeriod = SCHOOL.DTOs.DTOs.Period;
+
+
 
 
 
@@ -48,6 +64,26 @@ namespace SCHOOL.MAP
             CreateMap<DTOFile, DTOFile>()
                 .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
 
+            CreateMap<Employee, DTOEmployee>();
+            CreateMap<DTOEmployee, DTOEmployee>()
+                .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
+
+            CreateMap<Designation, DTODesignation>();
+            CreateMap<DTODesignation, DTODesignation>()
+                .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
+
+            CreateMap<TimeTable, DTOTimeTable>();
+            CreateMap<DTOTimeTable, DTOTimeTable>()
+                .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
+
+            CreateMap<TimeTableDetail, DTOTimeTableDetail>();
+            CreateMap<DTOTimeTableDetail, DTOTimeTableDetail>()
+                .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
+
+            CreateMap<Period, DTOPeriod>();
+            CreateMap<DTOPeriod, DTOPeriod>()
+                .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
+
 
             #endregion
 
@@ -63,6 +99,13 @@ namespace SCHOOL.MAP
             CreateMap<DTOPerson, Person>();
 
             CreateMap<DTOFile, File>();
+            CreateMap<DTOEmployee, Employee>();
+
+            CreateMap<DTODesignation, Designation>();
+
+            CreateMap<DTOTimeTable, TimeTable>();
+            CreateMap<DTOTimeTableDetail, TimeTableDetail>();
+            CreateMap<DTOPeriod, Period>();
 
             #endregion
 

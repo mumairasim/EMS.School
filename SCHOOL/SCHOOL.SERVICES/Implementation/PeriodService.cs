@@ -31,7 +31,6 @@ namespace SCHOOL.Services.Implementation
                     {
                         dtoPeriod.Id = Guid.NewGuid();
                     }
-                    HelpingMethodForRelationship(dtoPeriod);
                     _repository.Add(_mapper.Map<DTOPeriod, Period>(dtoPeriod));
                     return PrepareSuccessResponse("success", "");
                 }
@@ -43,13 +42,6 @@ namespace SCHOOL.Services.Implementation
                 return PrepareFailureResponse("error", e.Message);
             }
 
-        }
-        private void HelpingMethodForRelationship(DTOPeriod dtoTimeTableDetail)
-        {
-            dtoTimeTableDetail.CourseId = dtoTimeTableDetail.Course.Id;
-            dtoTimeTableDetail.Course = null;
-            dtoTimeTableDetail.TeacherId = dtoTimeTableDetail.Employee.Id;
-            dtoTimeTableDetail.Employee = null;
         }
         private GenericApiResponse PrepareFailureResponse(string errorMessage, string descriptionMessage)
         {
