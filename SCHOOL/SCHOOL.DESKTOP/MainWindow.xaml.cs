@@ -20,6 +20,7 @@ namespace SCHOOL.DESKTOP
         private readonly IEmployeeService _employeeService;
         private readonly ITimeTableService _timeTableService;
         private readonly StudentBase _studentBase;
+        private readonly TimeTableBase _timeTableBase;
         private readonly Dashboard _dashboard;
         private readonly AddStudent _addStudent;
         private readonly AddTimeTable _addTimeTable;
@@ -36,6 +37,7 @@ namespace SCHOOL.DESKTOP
             _timeTableService = timeTableService;
             _dashboard = new Dashboard();
             _studentBase = new StudentBase(_studentService, _mapper);
+            _timeTableBase = new TimeTableBase(_mapper, _timeTableService);
             _addStudent = new AddStudent(_studentService, _classService, _mapper);
             _addTimeTable = new AddTimeTable(classService, courseService, employeeService, timeTableService);
             InitializeComponent();
@@ -60,6 +62,11 @@ namespace SCHOOL.DESKTOP
         {
             StudentBase.Content = _studentBase;
         }
+        private void TimeTableTab_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TimeTableBase.Content = _timeTableBase;
+        }
+
         private void DashboardTab_GotFocus(object sender, RoutedEventArgs e)
         {
             DashboardPage.Content = _dashboard;

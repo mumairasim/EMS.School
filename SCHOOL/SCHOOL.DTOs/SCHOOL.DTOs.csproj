@@ -92,6 +92,7 @@
     <Compile Include="ReponseDTOs\TeacherDiaryResponse.cs" />
     <Compile Include="ViewModels\Common\CustomComboBoxItem.cs" />
     <Compile Include="ViewModels\Student\StudentBaseViewModel.cs" />
+    <Compile Include="ViewModels\TimeTable\TimeTableBaseViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -132,6 +132,9 @@
     <Compile Include="ModulesPages\TimeTable\AddTimeTable.xaml.cs">
       <DependentUpon>AddTimeTable.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ModulesPages\TimeTable\TimeTableBase.xaml.cs">
+      <DependentUpon>TimeTableBase.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Registrar\DependencyRegistrar.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -157,6 +160,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ModulesPages\TimeTable\AddTimeTable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModulesPages\TimeTable\TimeTableBase.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
