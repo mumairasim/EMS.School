@@ -23,10 +23,17 @@ namespace SCHOOL.Services.Implementation
 
         #region Init
 
-        public EmployeeFinanceService(IMapper mapper, IStoredProcCaller storedProcCaller, IRepository<DBEmployeeFinance> repository, IRepository<DBEmployeeFinanceDetail> repositoryFinanceDetail)
+        //public EmployeeFinanceService(IMapper mapper, IStoredProcCaller storedProcCaller, IRepository<DBEmployeeFinance> repository, IRepository<DBEmployeeFinanceDetail> repositoryFinanceDetail)
+        //{
+        //    _mapper = mapper;
+        //    _storedProcCaller = storedProcCaller;
+        //    _repository = repository;
+        //    _repositoryFinanceDetail = repositoryFinanceDetail;
+        //}
+
+        public EmployeeFinanceService(IMapper mapper, IRepository<DBEmployeeFinance> repository, IRepository<DBEmployeeFinanceDetail> repositoryFinanceDetail)
         {
             _mapper = mapper;
-            _storedProcCaller = storedProcCaller;
             _repository = repository;
             _repositoryFinanceDetail = repositoryFinanceDetail;
         }
@@ -34,14 +41,16 @@ namespace SCHOOL.Services.Implementation
         #endregion
         public List<DTOEmployeeFinanceInfo> GetByFilter(Guid? schoolId, Guid? DesignationId, string SalaryMonth)
         {
-            var rs = _storedProcCaller.GetEmployeeFinance(schoolId, DesignationId, SalaryMonth);
-            return _mapper.Map<List<DBEmployeeFinanceInfo>, List<DTOEmployeeFinanceInfo>>(rs);
+            //var rs = _storedProcCaller.GetEmployeeFinance(schoolId, DesignationId, SalaryMonth);
+            //return _mapper.Map<List<DBEmployeeFinanceInfo>, List<DTOEmployeeFinanceInfo>>(rs);
+            throw new NotImplementedException("I stored proc caller dependancy problem");
         }
 
         public List<DTOEmployeeFinanceInfo> GetDetailByFilter(Guid? schoolId, Guid? DesignationId)
         {
-            var rs = _storedProcCaller.GetEmployeeFinanceDetail(schoolId, DesignationId);
-            return _mapper.Map<List<DBEmployeeFinanceInfo>, List<DTOEmployeeFinanceInfo>>(rs);
+            //    var rs = _storedProcCaller.GetEmployeeFinanceDetail(schoolId, DesignationId);
+            //    return _mapper.Map<List<DBEmployeeFinanceInfo>, List<DTOEmployeeFinanceInfo>>(rs);
+            throw new NotImplementedException("I stored proc caller dependancy problem");
         }
 
         public EmployeeFinanceDetail GetFinanceDetailByEmployeeId(Guid empId)

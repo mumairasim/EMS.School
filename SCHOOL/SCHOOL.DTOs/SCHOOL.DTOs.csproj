@@ -71,7 +71,7 @@
     <Compile Include="DTOs\StudentDiary.cs" />
     <Compile Include="DTOs\StudentFinanceDetail.cs" />
     <Compile Include="DTOs\StudentFinanceInfo.cs" />
-    <Compile Include="DTOs\StudentsAttendanceList.cs" />
+    <Compile Include="DTOs\GenericResponseCollection.cs" />
     <Compile Include="DTOs\StudentsList.cs" />
     <Compile Include="DTOs\Student_Finances.cs" />
     <Compile Include="DTOs\TeacherDiariesList.cs" />
@@ -89,6 +89,10 @@
     <Compile Include="ReponseDTOs\StudentResponse.cs" />
     <Compile Include="ReponseDTOs\TeacherDiaryResponse.cs" />
     <Compile Include="ViewModels\Common\CustomComboBoxItem.cs" />
+    <Compile Include="ViewModels\Course\CourseBaseViewModel.cs" />
+    <Compile Include="ViewModels\LessonPlan\LessonPlanBaseViewModel.cs" />
+    <Compile Include="ViewModels\Worksheet\WorksheetBaseViewModel.cs" />
+    <Compile Include="ViewModels\Employee\EmployeeBaseViewModel.cs" />
     <Compile Include="ViewModels\Student\StudentBaseViewModel.cs" />
   </ItemGroup>
   <ItemGroup />

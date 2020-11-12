@@ -1,10 +1,9 @@
 ﻿using Autofac;
+using AutoMapper;
 using SCHOOL.DATA.Implementation;
 using SCHOOL.DATA.Infrastructure;
-using System.Reflection;
-using AutoMapper;
-using SCHOOL.DESKTOP.ModulesPages.Student;
 using SCHOOL.MAP;
+using System.Reflection;
 
 namespace SCHOOL.DESKTOP.Registrar
 {

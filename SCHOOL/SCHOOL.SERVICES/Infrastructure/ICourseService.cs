@@ -1,4 +1,5 @@
-﻿using SCHOOL.DTOs.ReponseDTOs;
+﻿using SCHOOL.DTOs.DTOs;
+using SCHOOL.DTOs.ReponseDTOs;
 using System;
 using System.Collections.Generic;
 using DTOCourse = SCHOOL.DTOs.DTOs.Course;
@@ -13,6 +14,14 @@ namespace SCHOOL.Services.Infrastructure
         /// </summary>
         /// <returns></returns>
         List<DTOCourse> GetAll();
+
+        /// <summary>
+        /// Service level call : Return all records of course
+        /// </summary>
+        /// <returns></returns>
+        CoursesList Get(int pageNumber, int pageSize);
+
+        CoursesList Get(string searchString, int pageNumber, int pageSize);
 
         /// <summary>
         /// Retruns a Single Record of a Course

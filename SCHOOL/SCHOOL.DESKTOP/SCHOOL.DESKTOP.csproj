@@ -120,6 +120,42 @@
     <Compile Include="ModulesPages\Dashboard\Dashboard.xaml.cs">
       <DependentUpon>Dashboard.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ModulesPages\Employee\AddEmployee.xaml.cs">
+      <DependentUpon>AddEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesPages\Employee\EmployeeBase.xaml.cs">
+      <DependentUpon>EmployeeBase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesPages\Employee\UpdateEmployee.xaml.cs">
+      <DependentUpon>UpdateEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesPages\Course\AddCourse.xaml.cs">
+      <DependentUpon>AddCourse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesPages\Course\CourseBase.xaml.cs">
+      <DependentUpon>CourseBase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesPages\Course\UpdateCourse.xaml.cs">
+      <DependentUpon>UpdateCourse.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesPages\LessonPlan\AddLessonPlan.xaml.cs">
+      <DependentUpon>AddLessonPlan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesPages\LessonPlan\LessonPlanBase.xaml.cs">
+      <DependentUpon>LessonPlanBase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesPages\LessonPlan\UpdateLessonPlan.xaml.cs">
+      <DependentUpon>UpdateLessonPlan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesPages\Worksheet\AddWorksheet.xaml.cs">
+      <DependentUpon>AddWorksheet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesPages\Worksheet\WorksheetBase.xaml.cs">
+      <DependentUpon>WorksheetBase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesPages\Worksheet\UpdateWorksheet.xaml.cs">
+      <DependentUpon>UpdateWorksheet.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ModulesPages\Student\AddStudent.xaml.cs">
       <DependentUpon>AddStudent.xaml</DependentUpon>
     </Compile>
@@ -140,6 +176,54 @@
     <Page Include="ModulesPages\Dashboard\Dashboard.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModulesPages\Employee\AddEmployee.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModulesPages\Employee\EmployeeBase.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModulesPages\Employee\UpdateEmployee.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModulesPages\Course\AddCourse.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModulesPages\Course\CourseBase.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModulesPages\Course\UpdateCourse.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModulesPages\LessonPlan\AddLessonPlan.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModulesPages\LessonPlan\LessonPlanBase.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModulesPages\LessonPlan\UpdateLessonPlan.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModulesPages\Worksheet\AddWorksheet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModulesPages\Worksheet\WorksheetBase.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModulesPages\Worksheet\UpdateWorksheet.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="ModulesPages\Student\AddStudent.xaml">
       <SubType>Designer</SubType>
@@ -213,6 +297,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Temp.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.1.0\build\MaterialDesignThemes.targets')" />
