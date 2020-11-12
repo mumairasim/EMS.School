@@ -3,11 +3,16 @@ using SCHOOL.DTOs.ViewModels.Common;
 using SCHOOL.Services.Infrastructure;
 using SCHOOL.SERVICES.Infrastructure;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Documents;
 using DTOStudent = SCHOOL.DTOs.DTOs.Student;
+using DTOClass = SCHOOL.DTOs.DTOs.Class;
 
 
 namespace SCHOOL.DESKTOP.ModulesPages.Student
@@ -27,7 +32,7 @@ namespace SCHOOL.DESKTOP.ModulesPages.Student
             _classService = classService;
             _mapper = mapper;
             InitializeComponent();
-            initComboBox();
+            InitComboBox();
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
@@ -35,20 +40,11 @@ namespace SCHOOL.DESKTOP.ModulesPages.Student
             _studentService.Create(GetFormData());
         }
 
-        private void initComboBox()
+        private void InitComboBox()
         {
-
-            var classList = _classService.Get().Select(x => new CustomComboBoxItem
-            {
-                Text = x.ClassName,
-                Value = x.Id
-            }).ToList();
-
-            foreach (var item in classList)
-            {
-                ClassDDL.Items.Add(item);
-            }
-            ClassDDL.SelectedIndex = 0;
+            ClassDropDownViewModel vm = new ClassDropDownViewModel(_classService);
+            DataContext = vm;
+            ClassDdl.SelectedIndex = 0;
         }
 
         private DTOStudent GetFormData()
@@ -56,7 +52,7 @@ namespace SCHOOL.DESKTOP.ModulesPages.Student
             DTOStudent model = new DTOStudent
             {
                 Person = new DTOs.DTOs.Person(),
-                Class = new DTOs.DTOs.Class()
+                Class = new DTOClass()
             };
 
             model.Person.FirstName = Firstname.Text;
@@ -68,7 +64,7 @@ namespace SCHOOL.DESKTOP.ModulesPages.Student
             model.Person.DOB = Convert.ToDateTime(Dob.Text);
 
             //
-            model.Class.ClassName = ClassDDL.Text;
+            model.Class.ClassName = ClassDdl.Text;
 
             model.PreviousSchoolName = PreviousSchool.Text;
             model.ReasonForLeaving = ReasonForLeaving.Text;
@@ -89,6 +85,35 @@ namespace SCHOOL.DESKTOP.ModulesPages.Student
             model.Person.PresentAddress = new TextRange(PresentAddress.Document.ContentStart, PresentAddress.Document.ContentEnd).Text;
             model.Person.PermanentAddress = new TextRange(PermanentAddress.Document.ContentStart, PermanentAddress.Document.ContentEnd).Text;
             return model;
+        }
+    }
+
+    public class ClassDropDownViewModel : INotifyPropertyChanged
+    {
+        public CollectionView ClassEntries { get; set; }
+        private string _classEntry;
+        public ClassDropDownViewModel(IClassService classService)
+        {
+            var classList = classService.Get();
+            ClassEntries = new CollectionView(classList);
+            ClassEntry = classList[0].ClassName;
+        }
+
+        public string ClassEntry
+        {
+            get => _classEntry;
+            set
+            {
+                if (_classEntry == value) return;
+                _classEntry = value;
+                OnPropertyChanged(_classEntry);
+            }
+        }
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

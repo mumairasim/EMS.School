@@ -177,6 +177,22 @@
                             " x:Name="getclass" HorizontalAlignment="Left" Margin="50,42,0,0" VerticalAlignment="Top"  Click="getClass_Click" Width="110" RenderTransformOrigin="0.677,9.634" Grid.Row="1"/>
                 </Grid>
             </TabItem>
+            <TabItem x:Name="TimeTableTab" Header="Time Table" Width="200" Height="45" Margin="0" GotFocus="TimeTableTab_GotFocus">
+                <Grid Background="#E2E5E7">
+                    <TabControl>
+                        <TabItem x:Name="SearchTimeTable" Header="Search Time Table ">
+                            <Grid>
+                                <Frame x:Name="TimeTableBase"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem x:Name="AddTimeTableTabItem" Header="Add Time Table" GotFocus="AddTimeTableTabItem_GotFocus">
+                            <Grid Width="1100" Height="550" Margin="0,-70,0,0">
+                                <Frame x:Name="AddTimeTable"/>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

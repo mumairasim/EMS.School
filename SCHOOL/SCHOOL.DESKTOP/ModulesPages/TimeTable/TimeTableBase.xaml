@@ -1,12 +1,11 @@
-﻿<Page x:Class="SCHOOL.DESKTOP.ModulesPages.Student.StudentBase"
+﻿<Page x:Class="SCHOOL.DESKTOP.ModulesPages.TimeTable.TimeTableBase"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="1000"
-      Title="StudentBase">
-
+      d:DesignHeight="470" d:DesignWidth="1000"
+      Title="TimeTableBase">
     <Page.Resources>
         <Style x:Key="DynamicGridColumns" TargetType="DataGrid">
             <Setter Property="ColumnWidth" Value="*" />
@@ -54,15 +53,15 @@
             <Grid DockPanel.Dock="Top">
                 <StackPanel>
                     <TextBox x:Name="SearchStudentTextBox" MinWidth="100" MaxWidth="400" MinHeight="30" MaxHeight="40" Margin="495,10,40,10" KeyDown="OnKeyDownHandlerSearch"/>
-                    <Button Click="SearchStudents"  Content="Search" MinWidth="90" MaxWidth="150" MinHeight="30" MaxHeight="40" Margin="750,0,40,10" Style="{DynamicResource RoundCorner}"/>
+                    <Button Click="SearchTimeTables"  Content="Search" MinWidth="90" MaxWidth="150" MinHeight="30" MaxHeight="40" Margin="750,0,40,10" Style="{DynamicResource RoundCorner}" RenderTransformOrigin="0.642,0.5"/>
                 </StackPanel>
             </Grid>
             <Grid Margin="0,30,0,0" DockPanel.Dock="Top" MinHeight="270" MaxHeight="470" >
                 <Border Name="DataGridBorder" BorderThickness="1" BorderBrush="DarkGray" Margin="10,10,10,10">
-                    <DataGrid x:Name="StudentDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" CanUserAddRows="False" AutoGenerateColumns="False" Style="{StaticResource DynamicGridColumns}" 
+                    <DataGrid x:Name="TimeTableDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" CanUserAddRows="False" AutoGenerateColumns="False" Style="{StaticResource DynamicGridColumns}" 
                           Background="{x:Null}" 
                           VerticalScrollBarVisibility="Auto"
-                          SelectionMode="Single" SelectionChanged="StudentDataGrid_SelectionChanged" 
+                          SelectionMode="Single"
                           BorderBrush="{x:Null}" IsReadOnly="True">
                         <DataGrid.Resources>
                             <!--<Style TargetType="ScrollBar">
@@ -70,14 +69,10 @@
                             </Style>-->
                         </DataGrid.Resources>
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Registration Number" Binding="{Binding RegistrationNumber}" >
+                            <DataGridTextColumn Header="Time Table Name" Binding="{Binding TimeTableName}" >
                             </DataGridTextColumn>
-                            <DataGridTextColumn Header="Name" Binding="{Binding PersonName}" />
-                            <DataGridTextColumn Header="CNIC" Binding="{Binding PersonCnic}" />
-                            <DataGridTextColumn Header="Nationality" Binding="{Binding PersonNationality}" />
-                            <DataGridTextColumn Header="Religion" Binding="{Binding PersonReligion}" />
                             <DataGridTextColumn Header="Class" Binding="{Binding ClassName}" />
-                            <DataGridTemplateColumn Header="Action">
+                            <DataGridTemplateColumn Header="Action" MaxWidth="150">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">

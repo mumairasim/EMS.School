@@ -1,0 +1,182 @@
+﻿<Page x:Class="SCHOOL.DESKTOP.ModulesPages.TimeTable.AddTimeTable"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="470" d:DesignWidth="1000"
+      Title="AddTimeTable">
+    <Page.Resources>
+        <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="grid">
+                            <Border x:Name="border" CornerRadius="5" BorderBrush="DarkGray" BorderThickness="1" Background="{x:Null}">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              TextElement.FontWeight="Normal">
+                                </ContentPresenter>
+                            </Border>
+
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="border" Value="LightSkyBlue" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="border" Value="LightSkyBlue" />
+                                <Setter Property="Cursor" TargetName="border" Value="Hand" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <ScrollViewer Margin="30,0,10,0" VerticalScrollBarVisibility="Visible" CanContentScroll="True" >
+            <DockPanel>
+                <Grid DockPanel.Dock="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition MinHeight="50" MaxHeight="50"  />
+                        <!--0-->
+                        <RowDefinition MinHeight="50" MaxHeight="70"/>
+                        <!--1-->
+                        <RowDefinition MinHeight="50" MaxHeight="80"/>
+                        <!--2-->
+                        <RowDefinition MinHeight="50" MaxHeight="70"/>
+                        <!--3-->
+                        <RowDefinition MinHeight="50"/>
+                        <!--4-->
+                        <RowDefinition MinHeight="50"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="350*" MaxWidth="500" />
+                        <ColumnDefinition Width="350*" MaxWidth="500" />
+                        <ColumnDefinition Width="350*" MaxWidth="500" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Row="0" Content="Add Time Table" FontSize="30" FontWeight="SemiBold" Foreground="#FF00A2DD" Height="55" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Name="Label3" VerticalAlignment="Top" Width="282" Margin="4.6,5,0,0" Grid.Column="1" />
+                    <Label Grid.Column="0" Grid.Row="1" Content="Class" Margin="5"/>
+                    <ComboBox Grid.Column="0" Grid.Row="1" BorderBrush="DarkGray" Margin="10,29.6,0,1.2" HorizontalAlignment="Left"  x:Name="ClassName" Width="291" BorderThickness="1" IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding ClassName}"/>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                    <Label Grid.Column="1" Grid.Row="1" Content="Time Table Name" Margin="5"/>
+                    <TextBox Grid.Column="1" Grid.Row="1" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="10,30,0,0" x:Name="TimeTableName" VerticalAlignment="Top" Width="291" BorderThickness="1" />
+                    <Label Grid.Column="0" Grid.Row="2" Content="Days" Margin="5"/>
+                    <Label Grid.Column="0" Grid.Row="2" Content="Monday" Margin="10,30,0,0" VerticalAlignment="Center"/>
+                    <CheckBox Grid.Column="0" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="65,45.2,0,14.4" x:Name="Monday" VerticalAlignment="Center" BorderThickness="1" Checked="Monday_Checked" Unchecked="Monday_Unchecked" />
+                    <Label Grid.Column="0" Grid.Row="2" Content="Tuesday" Margin="100,30,0,0" VerticalAlignment="Center"/>
+                    <CheckBox Grid.Column="0" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="165,30,0,0" x:Name="Tuesday" VerticalAlignment="Center" BorderThickness="1" Checked="Tuesday_Checked" Unchecked="Tuesday_Unchecked"/>
+                    <Label Grid.Column="0" Grid.Row="2" Content="Wednesday" Margin="190,30,0,0" VerticalAlignment="Center"/>
+                    <CheckBox Grid.Column="0" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="265,30,0,0" x:Name="Wednesday" VerticalAlignment="Center" BorderThickness="1" Checked="Wednesday_Checked" Unchecked="Wednesday_Unchecked"/>
+                    <Label Grid.Column="1" Grid.Row="2" Content="Thursday" Margin="10,30,0,0" VerticalAlignment="Center"/>
+                    <CheckBox Grid.Column="1" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="75,30,0,0" x:Name="Thursday" VerticalAlignment="Center" BorderThickness="1" Checked="Thursday_Checked" Unchecked="Thursday_Unchecked"/>
+                    <Label Grid.Column="1" Grid.Row="2" Content="Friday" Margin="100,30,0,0" VerticalAlignment="Center"/>
+                    <CheckBox Grid.Column="1" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="155,30,0,0" x:Name="Friday" VerticalAlignment="Center" BorderThickness="1" Checked="Friday_Checked" Unchecked="Friday_Unchecked"/>
+                    <Label Grid.Column="1" Grid.Row="2" Content="Saturday" Margin="190,30,0,0" VerticalAlignment="Center"/>
+                    <CheckBox Grid.Column="1" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="255,30,0,0" x:Name="Saturday" VerticalAlignment="Center" BorderThickness="1" Checked="Saturday_Checked" Unchecked="Saturday_Unchecked"/>
+                    <Label Grid.Column="2" Grid.Row="2" Content="Sunday" Margin="10,30,0,0" VerticalAlignment="Center"/>
+                    <CheckBox Grid.Column="2" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="65,30,0,0" x:Name="Sunday" VerticalAlignment="Center" BorderThickness="1" Checked="Sunday_Checked" Unchecked="Sunday_Unchecked"/>
+                    <Grid Grid.Column="0" Grid.Row="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition MinHeight="50"  />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250*" MaxWidth="500" />
+                            <ColumnDefinition Width="250*" MaxWidth="500" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Grid.Row="0" Content="Subject" Margin="5"/>
+                        <ComboBox Grid.Column="0" Grid.Row="0" BorderBrush="DarkGray" Margin="10,30,0,0" Height="30" HorizontalAlignment="Left"  x:Name="SubjectName" VerticalAlignment="Top" Width="130" BorderThickness="1" >
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding CourseName}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Label Grid.Column="1" Grid.Row="0" Content="Day" Margin="5"/>
+                        <ComboBox Grid.Column="1" Grid.Row="0" BorderBrush="DarkGray" Margin="10,30,0,0" Height="30" HorizontalAlignment="Left"  x:Name="Day" VerticalAlignment="Top" Width="130" BorderThickness="1" >
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Day}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                    </Grid>
+                    <Grid Grid.Column="1" Grid.Row="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition MinHeight="50"  />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250*" MaxWidth="500" />
+                            <ColumnDefinition Width="250*" MaxWidth="500" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Grid.Row="0" Content="Start Time" Margin="5"/>
+                        <materialDesign:TimePicker Grid.Column="0" Grid.Row="0" BorderBrush="DarkGray" Margin="10,30,0,0" Height="30" HorizontalAlignment="Left"  x:Name="StartTime" VerticalAlignment="Top" Width="130" BorderThickness="1" />
+                        <Label Grid.Column="1" Grid.Row="0" Content="End Time" Margin="5"/>
+                        <materialDesign:TimePicker Grid.Column="1" Grid.Row="0" BorderBrush="DarkGray" Margin="10,30,0,0" Height="30" HorizontalAlignment="Left"  x:Name="EndTime" VerticalAlignment="Top" Width="130" BorderThickness="1" />
+                    </Grid>
+                    <Grid Grid.Column="2" Grid.Row="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition MinHeight="50"  />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250*" MaxWidth="500" />
+                            <ColumnDefinition Width="250*" MaxWidth="500" />
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0" Grid.Row="0" Content="TeacherName" Margin="5"/>
+                        <ComboBox Grid.Column="0" Grid.Row="0" BorderBrush="DarkGray" Margin="10,30,0,0" Height="30" HorizontalAlignment="Left"  x:Name="TeacherName" VerticalAlignment="Top" Width="130" BorderThickness="1" >
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Person.FirstName}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+                        <Button Grid.Column="1" Grid.Row="0" Content="Add Period" Width="100" Height="35" Style="{DynamicResource RoundCorner}" VerticalAlignment="Bottom" Margin="7,7,7,7" HorizontalAlignment="Left" Click="AddPeriod_Click"  />
+
+                    </Grid>
+                    <Grid Grid.Column="0" Grid.Row="4" ColumnSpan="3" MinHeight="170"  MaxHeight="250">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="95*"/>
+                            <ColumnDefinition Width="141*"/>
+                        </Grid.ColumnDefinitions>
+                        <Border Name="DataGridBorder" BorderThickness="1" BorderBrush="DarkGray" Margin="10,10,10.2,10" Grid.ColumnSpan="2">
+                            <!--<DataGrid x:Name="TimeTableDataGrid"
+                                      VerticalScrollBarVisibility="Auto"
+                                      SelectionMode="Single"
+                                      BorderBrush="{x:Null}" IsReadOnly="True">
+                            </DataGrid>-->
+                            <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                                <Grid x:Name="TimeTableGrid">
+
+                                </Grid>
+                            </ScrollViewer>
+                        </Border>
+                    </Grid>
+                    <Grid Grid.Column="2" Grid.Row="5">
+                        <Grid.RowDefinitions>
+                            <RowDefinition MinHeight="50"  />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250*" MaxWidth="500" />
+                            <ColumnDefinition Width="250*" MaxWidth="500" />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="1" Grid.Row="0" Content="Save Time Table" Width="100" Height="35" Style="{DynamicResource RoundCorner}" VerticalAlignment="Bottom" Margin="7,7,7,7" HorizontalAlignment="Left" Click="Save_Click" />
+                    </Grid>
+                </Grid>
+            </DockPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

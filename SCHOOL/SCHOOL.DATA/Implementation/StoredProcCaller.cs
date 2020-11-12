@@ -13,10 +13,10 @@ namespace SCHOOL.DATA.Implementation
         private readonly SqlConnection _Requestconnection;
         public StoredProcCaller()
         {
-            var connStr = ConfigurationManager.ConnectionStrings["SmsConnection"].ConnectionString;
+            var connStr = ConfigurationManager.ConnectionStrings["SchoolSystem"].ConnectionString;
             _connection = new SqlConnection(connStr);
 
-            var connStrr = ConfigurationManager.ConnectionStrings["SMSRequest"].ConnectionString;
+            var connStrr = ConfigurationManager.ConnectionStrings["SchoolSystem"].ConnectionString;
             _Requestconnection = new SqlConnection(connStrr);
         }
 

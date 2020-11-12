@@ -40,6 +40,22 @@ namespace SCHOOL.Services.Implementation
             };
             return timeTablesList;
         }
+        public TimeTableList Get(int pageNumber, int pageSize)
+        {
+            var timeTables = _repository.Get().Where(tt => tt.IsDeleted == false).OrderByDescending(lp => lp.CreatedDate).Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
+            var timeTableCount = _repository.Get().Count(st => st.IsDeleted == false);
+            var timeTableList = new List<DTOTimeTable>();
+            foreach (var timeTable in timeTables)
+            {
+                timeTableList.Add(_mapper.Map<TimeTable, DTOTimeTable>(timeTable));
+            }
+            var timeTablesList = new TimeTableList()
+            {
+                TimeTables = timeTableList,
+                TimeTablesCount = timeTableCount
+            };
+            return timeTablesList;
+        }
         public GenericApiResponse Create(DTOTimeTable dtoTimeTable)
         {
             try
@@ -51,14 +67,12 @@ namespace SCHOOL.Services.Implementation
                     dtoTimeTable.Id = Guid.NewGuid();
                 }
 
-                HelpingMethodForRelationship(dtoTimeTable);
                 //old one
-                //var timeTable = _repository.Add(_mapper.Map<DTOTimeTable, TimeTable>(dtoTimeTable));
+                var timeTable = _repository.Add(_mapper.Map<DTOTimeTable, TimeTable>(dtoTimeTable));
                 if (dtoTimeTable.TimeTableDetails != null)
                     foreach (var timeTableDetail in dtoTimeTable.TimeTableDetails)
                     {
-                        timeTableDetail.TimeTableId = Guid.NewGuid();
-                        //timeTableDetail.TimeTableId = timeTable.Id;
+                        timeTableDetail.TimeTableId = timeTable.Id;
                         timeTableDetail.CreatedBy = dtoTimeTable.CreatedBy;
                         _timeTableDetailService.Create(timeTableDetail);
                     }
@@ -70,13 +84,7 @@ namespace SCHOOL.Services.Implementation
             }
 
         }
-        private void HelpingMethodForRelationship(DTOTimeTable dtoTimeTable)
-        {
-            dtoTimeTable.SchoolId = dtoTimeTable.School.Id;
-            dtoTimeTable.School = null;
-            dtoTimeTable.ClassId = dtoTimeTable.Class.Id;
-            dtoTimeTable.Class = null;
-        }
+        
 
         private GenericApiResponse PrepareFailureResponse(string errorMessage, string descriptionMessage)
         {

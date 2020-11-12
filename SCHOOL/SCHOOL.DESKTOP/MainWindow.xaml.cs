@@ -4,6 +4,7 @@ using AutoMapper;
 using SCHOOL.DESKTOP.ModulesPages.Dashboard;
 using SCHOOL.DESKTOP.ModulesPages.Employee;
 using SCHOOL.DESKTOP.ModulesPages.Student;
+using SCHOOL.DESKTOP.ModulesPages.TimeTable;
 using SCHOOL.DESKTOP.ModulesPages.Worksheet;
 using SCHOOL.DESKTOP.ModulesPages.LessonPlan;
 using SCHOOL.DESKTOP.ModulesPages;
@@ -20,10 +21,11 @@ namespace SCHOOL.DESKTOP
     public partial class MainWindow : Window
     {
         private readonly IClassService _classService;
+        private readonly StudentBase _studentBase;
+        private readonly TimeTableBase _timeTableBase;
         private readonly Dashboard _dashboard;
         private readonly AddStudent _addStudent;
-        private readonly StudentBase _studentBase;
-
+        private readonly AddTimeTable _addTimeTable;
         private readonly IStudentService _studentService;
         private readonly IEmployeeService _employeeService;
         private readonly ILessonPlanService _lessonPlanService;
@@ -50,7 +52,7 @@ namespace SCHOOL.DESKTOP
             IWorksheetService worksheetService,
             ILessonPlanService lessonPlanService,
             ICourseService courseService,
-
+            , ITimeTableService timeTableService,
             IMapper mapper)
         {
             _classService = classService;
@@ -61,10 +63,14 @@ namespace SCHOOL.DESKTOP
             _courseService = courseService;
 
             _mapper = mapper;
+            _courseService = courseService;
+            _employeeService = employeeService;
+            _timeTableService = timeTableService;
             _dashboard = new Dashboard();
 
 
             _studentBase = new StudentBase(_studentService, _mapper);
+            _timeTableBase = new TimeTableBase(_mapper, _timeTableService);
             _addStudent = new AddStudent(_studentService, _classService, _mapper);
 
             _employeeBase = new EmployeeBase(_employeeService, _mapper);
@@ -79,6 +85,7 @@ namespace SCHOOL.DESKTOP
             _courseBase = new CourseBase(_courseService, _mapper);
             _addCourse = new AddCourse(_courseService, _classService, _mapper);
 
+            _addTimeTable = new AddTimeTable(classService, courseService, employeeService, timeTableService);
             InitializeComponent();
             DashboardPage.Content = _dashboard;
         }
@@ -140,6 +147,12 @@ namespace SCHOOL.DESKTOP
 
         //
         private void AddCourseTabItem_GotFocus(object sender, RoutedEventArgs e)
+        private void TimeTableTab_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TimeTableBase.Content = _timeTableBase;
+        }
+
+        private void DashboardTab_GotFocus(object sender, RoutedEventArgs e)
         {
             AddCourse.Content = _addCourse;
         }
@@ -147,7 +160,10 @@ namespace SCHOOL.DESKTOP
         {
             CourseBase.Content = _courseBase;
         }
-
+        private void AddTimeTableTabItem_GotFocus(object sender, RoutedEventArgs e)
+        {
+            AddTimeTable.Content = _addTimeTable;
+        }
     }
 
 }

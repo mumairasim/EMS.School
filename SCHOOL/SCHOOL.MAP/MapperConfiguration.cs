@@ -1,8 +1,12 @@
 ﻿using AutoMapper;
 using SCHOOL.DTOs.DTOs;
 using SCHOOL.DTOs.ViewModels.Student;
+using SCHOOL.DTOs.ViewModels.TimeTable;
 using Class = SCHOOL.DATA.Models.Class;
 using DTOClass = SCHOOL.DTOs.DTOs.Class;
+
+using Course = SCHOOL.DATA.Models.Course;
+using DTOCourse = SCHOOL.DTOs.DTOs.Course;
 
 using Student = SCHOOL.DATA.Models.Student;
 using DTOStudent = SCHOOL.DTOs.DTOs.Student;
@@ -24,9 +28,28 @@ using DTOPerson = SCHOOL.DTOs.DTOs.Person;
 
 using File = SCHOOL.DATA.Models.File;
 using DTOFile = SCHOOL.DTOs.DTOs.File;
+
+using Employee = SCHOOL.DATA.Models.Employee;
+using DTOEmployee = SCHOOL.DTOs.DTOs.Employee;
+
+using Designation = SCHOOL.DATA.Models.Designation;
+using DTODesignation = SCHOOL.DTOs.DTOs.Designation;
+
+using TimeTable = SCHOOL.DATA.Models.TimeTable;
+using DTOTimeTable = SCHOOL.DTOs.DTOs.TimeTable;
+
+using TimeTableDetail = SCHOOL.DATA.Models.TimeTableDetail;
+using DTOTimeTableDetail = SCHOOL.DTOs.DTOs.TimeTableDetail;
+
+using Period = SCHOOL.DATA.Models.Period;
+using DTOPeriod = SCHOOL.DTOs.DTOs.Period;
+
+
 using SCHOOL.DTOs.ViewModels.Employee;
 using SCHOOL.DTOs.ViewModels.Worksheet;
 using SCHOOL.DTOs.ViewModels.LessonPlan;
+
+
 
 namespace SCHOOL.MAP
 {
@@ -39,6 +62,10 @@ namespace SCHOOL.MAP
 
             CreateMap<Class, DTOClass>();
             CreateMap<DTOClass, DTOClass>()
+                .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
+
+            CreateMap<Course, DTOCourse>();
+            CreateMap<DTOCourse, DTOCourse>()
                 .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
 
             CreateMap<Student, DTOStudent>();
@@ -69,6 +96,26 @@ namespace SCHOOL.MAP
             CreateMap<DTOFile, DTOFile>()
                 .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
 
+            CreateMap<Employee, DTOEmployee>();
+            CreateMap<DTOEmployee, DTOEmployee>()
+                .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
+
+            CreateMap<Designation, DTODesignation>();
+            CreateMap<DTODesignation, DTODesignation>()
+                .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
+
+            CreateMap<TimeTable, DTOTimeTable>();
+            CreateMap<DTOTimeTable, DTOTimeTable>()
+                .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
+
+            CreateMap<TimeTableDetail, DTOTimeTableDetail>();
+            CreateMap<DTOTimeTableDetail, DTOTimeTableDetail>()
+                .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
+
+            CreateMap<Period, DTOPeriod>();
+            CreateMap<DTOPeriod, DTOPeriod>()
+                .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
+
 
             #endregion
 
@@ -76,6 +123,8 @@ namespace SCHOOL.MAP
 
             //DTO to Db
             CreateMap<DTOClass, Class>();
+
+            CreateMap<DTOCourse, Course>();
 
             CreateMap<DTOStudent, Student>();
             CreateMap<DTOWorksheet, Worksheet>();
@@ -86,6 +135,13 @@ namespace SCHOOL.MAP
             CreateMap<DTOPerson, Person>();
 
             CreateMap<DTOFile, File>();
+            CreateMap<DTOEmployee, Employee>();
+
+            CreateMap<DTODesignation, Designation>();
+
+            CreateMap<DTOTimeTable, TimeTable>();
+            CreateMap<DTOTimeTableDetail, TimeTableDetail>();
+            CreateMap<DTOPeriod, Period>();
 
             #endregion
 
@@ -108,6 +164,9 @@ namespace SCHOOL.MAP
                 .ForMember(x => x.PersonName, y => y.MapFrom(x => x.Person.FirstName + " " + x.Person.LastName))
                 .ForMember(x => x.PersonNationality, y => y.MapFrom(x => x.Person.Nationality))
                 .ForMember(x => x.PersonReligion, y => y.MapFrom(x => x.Person.Religion));
+
+            CreateMap<DTOTimeTable, TimeTableBaseViewModel>()
+                .ForMember(x => x.ClassName, y => y.MapFrom(x => x.Class.ClassName));
 
             CreateMap<DTOWorksheet, WorksheetBaseViewModel>()
                 .ForMember(x => x.InstructorId, y => y.MapFrom(x => x.InstructorId))

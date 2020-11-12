@@ -45,6 +45,16 @@ namespace SCHOOL.Services.Implementation
             };
             return employeesList;
         }
+        public List<DTOEmployee> GetTeachers()
+        {
+            var teachers = _repository.Get().Where(em => em.IsDeleted == false && em.Designation.Name.Equals("Teacher")).OrderByDescending(em => em.CreatedDate).ToList();
+            var employeeTempList = new List<DTOEmployee>();
+            foreach (var employee in teachers)
+            {
+                employeeTempList.Add(_mapper.Map<Employee, DTOEmployee>(employee));
+            }
+            return employeeTempList;
+        }
         public EmployeesList Get(string searchString, int pageNumber, int pageSize)
         {
             if (string.IsNullOrWhiteSpace(searchString))

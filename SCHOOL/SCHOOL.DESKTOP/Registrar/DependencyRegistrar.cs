@@ -14,6 +14,8 @@ namespace SCHOOL.DESKTOP.Registrar
             var builder = new ContainerBuilder();
             builder.RegisterGeneric(typeof(EFRepository<>)).As(typeof(IRepository<>)).InstancePerLifetimeScope();
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>().InstancePerLifetimeScope();
+            builder.RegisterType<StoredProcCaller>().As<IStoredProcCaller>().InstancePerLifetimeScope();
+
             builder.RegisterAssemblyTypes(Assembly.Load("SCHOOL.DESKTOP"))
                 .Where(t => t.Name.EndsWith("Window"))
                 .InstancePerLifetimeScope();
