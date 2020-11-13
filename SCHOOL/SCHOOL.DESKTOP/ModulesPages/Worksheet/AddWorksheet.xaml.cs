@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using SCHOOL.DTOs.ViewModels.Common;
 using SCHOOL.Services.Infrastructure;
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -30,12 +31,13 @@ namespace SCHOOL.DESKTOP.ModulesPages.Worksheet
             _worksheetService.Create(GetFormData());
         }
 
-       
+
         private DTOWorksheet GetFormData()
         {
             return new DTOWorksheet
             {
-                
+                Text = Text.Text,
+                ForDate = Convert.ToDateTime(ForDate.Text),
             };
         }
     }

@@ -1,17 +1,18 @@
-﻿using System.Collections.Generic;
-using System.Windows;
-using AutoMapper;
+﻿using AutoMapper;
+using SCHOOL.DESKTOP.ModulesPages.Course;
 using SCHOOL.DESKTOP.ModulesPages.Dashboard;
 using SCHOOL.DESKTOP.ModulesPages.Employee;
+using SCHOOL.DESKTOP.ModulesPages.LessonPlan;
 using SCHOOL.DESKTOP.ModulesPages.Student;
+using SCHOOL.DESKTOP.ModulesPages.StudentDiary;
+using SCHOOL.DESKTOP.ModulesPages.TeacherDiary;
 using SCHOOL.DESKTOP.ModulesPages.TimeTable;
 using SCHOOL.DESKTOP.ModulesPages.Worksheet;
-using SCHOOL.DESKTOP.ModulesPages.LessonPlan;
-using SCHOOL.DESKTOP.ModulesPages;
 using SCHOOL.DTOs.DTOs;
 using SCHOOL.Services.Infrastructure;
 using SCHOOL.SERVICES.Infrastructure;
-using SCHOOL.DESKTOP.ModulesPages.Course;
+using System.Collections.Generic;
+using System.Windows;
 
 namespace SCHOOL.DESKTOP
 {
@@ -30,6 +31,8 @@ namespace SCHOOL.DESKTOP
         private readonly IEmployeeService _employeeService;
         private readonly ILessonPlanService _lessonPlanService;
         private readonly ITimeTableService _timeTableService;
+        private readonly ITeacherDiaryService _teacherDiaryService;
+        private readonly IStudentDiaryService _studentDiaryService;
 
         private readonly IWorksheetService _worksheetService;
         private readonly ICourseService _courseService;
@@ -43,9 +46,14 @@ namespace SCHOOL.DESKTOP
         private readonly AddLessonPlan _addLessonPlan;
         private readonly LessonPlanBase _lessonPlanBase;
 
-
         private readonly AddCourse _addCourse;
         private readonly CourseBase _courseBase;
+
+        private readonly AddTeacherDiary _addTeacherDiary;
+        private readonly TeacherDiaryBase _teacherDiaryBase;
+
+        private readonly AddStudentDiary _addStudentDiary;
+        private readonly StudentDiaryBase _studentDiaryBase;
 
 
         private readonly IMapper _mapper;
@@ -55,6 +63,8 @@ namespace SCHOOL.DESKTOP
             ILessonPlanService lessonPlanService,
             ICourseService courseService,
            ITimeTableService timeTableService,
+           ITeacherDiaryService teacherDiaryService,
+           IStudentDiaryService studentDiaryService,
             IMapper mapper)
         {
             _classService = classService;
@@ -63,13 +73,14 @@ namespace SCHOOL.DESKTOP
             _worksheetService = worksheetService;
             _lessonPlanService = lessonPlanService;
             _courseService = courseService;
+            _teacherDiaryService = teacherDiaryService;
+            _studentDiaryService = studentDiaryService;
 
             _mapper = mapper;
             _courseService = courseService;
             _employeeService = employeeService;
             _timeTableService = timeTableService;
             _dashboard = new Dashboard();
-
 
             _studentBase = new StudentBase(_studentService, _mapper);
             _timeTableBase = new TimeTableBase(_mapper, _timeTableService);
@@ -86,6 +97,12 @@ namespace SCHOOL.DESKTOP
 
             _courseBase = new CourseBase(_courseService, _mapper);
             _addCourse = new AddCourse(_courseService, _classService, _mapper);
+
+            _teacherDiaryBase = new TeacherDiaryBase(_teacherDiaryService, _mapper);
+            _addTeacherDiary = new AddTeacherDiary(_teacherDiaryService, _classService, _mapper);
+
+            _studentDiaryBase = new StudentDiaryBase(_studentDiaryService, _mapper);
+            _addStudentDiary = new AddStudentDiary(_studentDiaryService, _classService, _mapper);
 
             _addTimeTable = new AddTimeTable(classService, courseService, employeeService, timeTableService);
             InitializeComponent();
@@ -148,10 +165,14 @@ namespace SCHOOL.DESKTOP
         }
 
         //
-        
+
         private void TimeTableTab_GotFocus(object sender, RoutedEventArgs e)
         {
             TimeTableBase.Content = _timeTableBase;
+        }
+        private void AddTimeTableTabItem_GotFocus(object sender, RoutedEventArgs e)
+        {
+            AddTimeTable.Content = _addTimeTable;
         }
 
         private void AddCourseTabItem_GotFocus(object sender, RoutedEventArgs e)
@@ -162,10 +183,28 @@ namespace SCHOOL.DESKTOP
         {
             CourseBase.Content = _courseBase;
         }
-        private void AddTimeTableTabItem_GotFocus(object sender, RoutedEventArgs e)
+
+        //
+        private void AddTeacherDiaryTabItem_GotFocus(object sender, RoutedEventArgs e)
         {
-            AddTimeTable.Content = _addTimeTable;
+            AddTeacherDiary.Content = _addTeacherDiary;
         }
+        private void TeacherDiaryTab_GotFocus(object sender, RoutedEventArgs e)
+        {
+            TeacherDiaryBase.Content = _teacherDiaryBase;
+        }
+        //
+
+        //
+        private void AddStudentDiaryTabItem_GotFocus(object sender, RoutedEventArgs e)
+        {
+            AddStudentDiary.Content = _addStudentDiary;
+        }
+        private void StudentDiaryTab_GotFocus(object sender, RoutedEventArgs e)
+        {
+            StudentDiaryBase.Content = _studentDiaryBase;
+        }
+        //
     }
 
 }

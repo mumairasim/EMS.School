@@ -39,10 +39,18 @@ using DTOTimeTableDetail = SCHOOL.DTOs.DTOs.TimeTableDetail;
 using Period = SCHOOL.DATA.Models.Period;
 using DTOPeriod = SCHOOL.DTOs.DTOs.Period;
 
+using TeacherDiary = SCHOOL.DATA.Models.TeacherDiary;
+using DTOTeacherDiary = SCHOOL.DTOs.DTOs.TeacherDiary;
+
+using StudentDiary = SCHOOL.DATA.Models.StudentDiary;
+using DTOStudentDiary = SCHOOL.DTOs.DTOs.StudentDiary;
+
 
 using SCHOOL.DTOs.ViewModels.Employee;
 using SCHOOL.DTOs.ViewModels.Worksheet;
 using SCHOOL.DTOs.ViewModels.LessonPlan;
+using SCHOOL.DTOs.ViewModels.TeacherDiary;
+using SCHOOL.DTOs.ViewModels.StudentDiary;
 
 
 
@@ -111,6 +119,14 @@ namespace SCHOOL.MAP
             CreateMap<DTOPeriod, DTOPeriod>()
                 .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
 
+            CreateMap<TeacherDiary, DTOTeacherDiary>();
+            CreateMap<DTOTeacherDiary, DTOTeacherDiary>()
+                .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
+
+            CreateMap<StudentDiary, DTOStudentDiary>();
+            CreateMap<DTOStudentDiary, DTOStudentDiary>()
+                .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
+
 
             #endregion
 
@@ -137,6 +153,8 @@ namespace SCHOOL.MAP
             CreateMap<DTOTimeTable, TimeTable>();
             CreateMap<DTOTimeTableDetail, TimeTableDetail>();
             CreateMap<DTOPeriod, Period>();
+            CreateMap<DTOTeacherDiary, TeacherDiary>();
+            CreateMap<DTOStudentDiary, StudentDiary>();
 
             #endregion
 
@@ -170,6 +188,8 @@ namespace SCHOOL.MAP
                 .ForMember(x => x.EmployeeName, y => y.MapFrom(x => (x.Employee.Person.FirstName + " " + x.Employee.Person.LastName)));
 
             CreateMap<DTOLessonPlan, LessonPlanBaseViewModel>();
+            CreateMap<DTOTeacherDiary, TeacherDiaryBaseViewModel>();
+            CreateMap<DTOStudentDiary, StudentDiaryBaseViewModel>();
 
             CreateMap<DTOEmployee, EmployeeBaseViewModel>()
     .ForMember(x => x.PersonCnic, y => y.MapFrom(x => x.Person.Cnic))

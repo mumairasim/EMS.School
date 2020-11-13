@@ -93,6 +93,8 @@
     <Compile Include="ViewModels\Common\CustomComboBoxItem.cs" />
     <Compile Include="ViewModels\Course\CourseBaseViewModel.cs" />
     <Compile Include="ViewModels\LessonPlan\LessonPlanBaseViewModel.cs" />
+    <Compile Include="ViewModels\StudentDiary\StudentDiaryBaseViewModel.cs" />
+    <Compile Include="ViewModels\TeacherDiary\TeacherDiaryBaseViewModel.cs" />
     <Compile Include="ViewModels\Worksheet\WorksheetBaseViewModel.cs" />
     <Compile Include="ViewModels\Employee\EmployeeBaseViewModel.cs" />
     <Compile Include="ViewModels\Student\StudentBaseViewModel.cs" />

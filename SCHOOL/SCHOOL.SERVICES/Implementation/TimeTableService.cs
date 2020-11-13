@@ -42,19 +42,20 @@ namespace SCHOOL.Services.Implementation
         }
         public TimeTableList Get(int pageNumber, int pageSize)
         {
-            var timeTables = _repository.Get().Where(tt => tt.IsDeleted == false).OrderByDescending(lp => lp.CreatedDate).Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
-            var timeTableCount = _repository.Get().Count(st => st.IsDeleted == false);
-            var timeTableList = new List<DTOTimeTable>();
-            foreach (var timeTable in timeTables)
-            {
-                timeTableList.Add(_mapper.Map<TimeTable, DTOTimeTable>(timeTable));
-            }
-            var timeTablesList = new TimeTableList()
-            {
-                TimeTables = timeTableList,
-                TimeTablesCount = timeTableCount
-            };
-            return timeTablesList;
+            //var timeTables = _repository.Get().Where(tt => tt.IsDeleted == false).OrderByDescending(lp => lp.CreatedDate).Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
+            //var timeTableCount = _repository.Get().Count(st => st.IsDeleted == false);
+            //var timeTableList = new List<DTOTimeTable>();
+            //foreach (var timeTable in timeTables)
+            //{
+            //    timeTableList.Add(_mapper.Map<TimeTable, DTOTimeTable>(timeTable));
+            //}
+            //var timeTablesList = new TimeTableList()
+            //{
+            //    TimeTables = timeTableList,
+            //    TimeTablesCount = timeTableCount
+            //};
+            //return timeTablesList;
+            return new TimeTableList();
         }
         public GenericApiResponse Create(DTOTimeTable dtoTimeTable)
         {
@@ -84,7 +85,7 @@ namespace SCHOOL.Services.Implementation
             }
 
         }
-        
+
 
         private GenericApiResponse PrepareFailureResponse(string errorMessage, string descriptionMessage)
         {

@@ -13,6 +13,7 @@ namespace SCHOOL.Services.Infrastructure
         TeacherDiaryResponse Create(DTOTeacherDiary teacherDiary);
         TeacherDiaryResponse Update(DTOTeacherDiary dtoTeacherDiary);
         void Delete(Guid? id, string DeletedBy);
+        TeacherDiariesList Get(string searchString, int pageNumber, int pageSize);
         #endregion
     }
 }

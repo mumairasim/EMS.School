@@ -13,32 +13,29 @@ namespace SCHOOL.DESKTOP.ModulesPages.Worksheet
     /// </summary>
     public partial class UpdateWorksheet : Window
     {
-        private readonly IWorksheetService _studentService;
-        private Guid _studentId;
-        public UpdateWorksheet(WorksheetBaseViewModel model, IWorksheetService studentService)
+        private readonly IWorksheetService _worksheetService;
+        private Guid _worksheetId;
+        public UpdateWorksheet(WorksheetBaseViewModel model, IWorksheetService worksheetService)
         {
-            _studentService = studentService;
+            _worksheetService = worksheetService;
             InitializeComponent();
             FetchAndPopulateWorksheet(model.Id);
-            _studentId = model.Id;
-        }
-
-        public void MapData(DTOWorksheet model)
-        {
-
+            _worksheetId = model.Id;
         }
 
         private DTOWorksheet GetFormData()
         {
             return new DTOWorksheet
             {
-
+                Text = Text.Text,
+                ForDate = Convert.ToDateTime(ForDate.Text),
             };
         }
+
         private void FetchAndPopulateWorksheet(Guid id)
         {
-            var student = _studentService.Get(id);
-            MapData(student);
+            var worksheet = _worksheetService.Get(id);
+            MapData(worksheet);
         }
 
         private void CloseBtn_Click(object sender, RoutedEventArgs e)
@@ -46,11 +43,17 @@ namespace SCHOOL.DESKTOP.ModulesPages.Worksheet
             Close();
         }
 
+        void MapData(DTOWorksheet model)
+        {
+            Text.Text = model.Text;
+            ForDate.Text = model.ForDate.ToString();
+        }
+
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            var studentUpdated = GetFormData();
-            studentUpdated.Id = _studentId;
-            _studentService.Update(studentUpdated);
+            var worksheetUpdated = GetFormData();
+            worksheetUpdated.Id = _worksheetId;
+            _worksheetService.Update(worksheetUpdated);
         }
     }
 }

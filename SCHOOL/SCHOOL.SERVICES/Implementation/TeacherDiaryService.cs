@@ -23,6 +23,35 @@ namespace SCHOOL.Services.Implementation
             _mapper = mapper;
         }
         #region SMS Section
+        public TeacherDiariesList Get(string searchString, int pageNumber, int pageSize)
+        {
+            if (string.IsNullOrWhiteSpace(searchString))
+                return Get(pageNumber, pageSize);
+            var teacherDiaries = _repository.Get().Where(st =>
+                (
+                    st.DairyText.ToString().Equals(searchString)
+                ) &&
+                st.IsDeleted == false
+                ).OrderByDescending(st => st.Id).Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
+
+
+            var teacherDiaryCount = _repository.Get().Count(st => (st.DairyText.ToString().Equals(searchString)
+                                                             ) && st.IsDeleted == false);
+
+            var teacherDiaryTempList = new List<DTOTeacherDiary>();
+            foreach (var teacherDiary in teacherDiaries)
+            {
+                teacherDiaryTempList.Add(_mapper.Map<TeacherDiary, DTOTeacherDiary>(teacherDiary));
+            }
+
+            var teacherDiariesList = new TeacherDiariesList()
+            {
+                TeacherDiaries = teacherDiaryTempList,
+                TeacherDiariesCount = teacherDiaryCount
+            };
+
+            return teacherDiariesList;
+        }
         public TeacherDiariesList Get(int pageNumber, int pageSize)
         {
             var teacherDiaries = _repository.Get().Where(td => td.IsDeleted == false).OrderByDescending(st => st.DairyDate).Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList(); ;

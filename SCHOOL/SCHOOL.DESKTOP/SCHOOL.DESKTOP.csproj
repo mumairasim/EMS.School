@@ -147,6 +147,24 @@
     <Compile Include="ModulesPages\LessonPlan\UpdateLessonPlan.xaml.cs">
       <DependentUpon>UpdateLessonPlan.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ModulesPages\StudentDiary\StudentDiary.xaml.cs">
+      <DependentUpon>StudentDiary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesPages\StudentDiary\StudentDiaryBase.xaml.cs">
+      <DependentUpon>StudentDiaryBase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesPages\StudentDiary\UpdateStudentDiary.xaml.cs">
+      <DependentUpon>UpdateStudentDiary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesPages\TeacherDiary\AddTeacherDiary.xaml.cs">
+      <DependentUpon>AddTeacherDiary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesPages\TeacherDiary\UpdateTeacherDiary.xaml.cs">
+      <DependentUpon>UpdateTeacherDiary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesPages\TeacherDiary\TeacherDiaryBase.xaml.cs">
+      <DependentUpon>TeacherDiaryBase.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ModulesPages\Worksheet\AddWorksheet.xaml.cs">
       <DependentUpon>AddWorksheet.xaml</DependentUpon>
     </Compile>
@@ -216,6 +234,30 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ModulesPages\LessonPlan\UpdateLessonPlan.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModulesPages\StudentDiary\StudentDiary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModulesPages\StudentDiary\StudentDiaryBase.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModulesPages\StudentDiary\UpdateStudentDiary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModulesPages\TeacherDiary\AddTeacherDiary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModulesPages\TeacherDiary\UpdateTeacherDiary.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModulesPages\TeacherDiary\TeacherDiaryBase.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
