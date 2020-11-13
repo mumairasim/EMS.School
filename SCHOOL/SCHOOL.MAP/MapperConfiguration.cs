@@ -29,11 +29,6 @@ using DTOPerson = SCHOOL.DTOs.DTOs.Person;
 using File = SCHOOL.DATA.Models.File;
 using DTOFile = SCHOOL.DTOs.DTOs.File;
 
-using Employee = SCHOOL.DATA.Models.Employee;
-using DTOEmployee = SCHOOL.DTOs.DTOs.Employee;
-
-using Designation = SCHOOL.DATA.Models.Designation;
-using DTODesignation = SCHOOL.DTOs.DTOs.Designation;
 
 using TimeTable = SCHOOL.DATA.Models.TimeTable;
 using DTOTimeTable = SCHOOL.DTOs.DTOs.TimeTable;

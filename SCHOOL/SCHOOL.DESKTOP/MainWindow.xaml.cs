@@ -29,6 +29,7 @@ namespace SCHOOL.DESKTOP
         private readonly IStudentService _studentService;
         private readonly IEmployeeService _employeeService;
         private readonly ILessonPlanService _lessonPlanService;
+        private readonly ITimeTableService _timeTableService;
 
         private readonly IWorksheetService _worksheetService;
         private readonly ICourseService _courseService;
@@ -42,6 +43,7 @@ namespace SCHOOL.DESKTOP
         private readonly AddLessonPlan _addLessonPlan;
         private readonly LessonPlanBase _lessonPlanBase;
 
+
         private readonly AddCourse _addCourse;
         private readonly CourseBase _courseBase;
 
@@ -52,7 +54,7 @@ namespace SCHOOL.DESKTOP
             IWorksheetService worksheetService,
             ILessonPlanService lessonPlanService,
             ICourseService courseService,
-            , ITimeTableService timeTableService,
+           ITimeTableService timeTableService,
             IMapper mapper)
         {
             _classService = classService;
@@ -146,13 +148,13 @@ namespace SCHOOL.DESKTOP
         }
 
         //
-        private void AddCourseTabItem_GotFocus(object sender, RoutedEventArgs e)
+        
         private void TimeTableTab_GotFocus(object sender, RoutedEventArgs e)
         {
             TimeTableBase.Content = _timeTableBase;
         }
 
-        private void DashboardTab_GotFocus(object sender, RoutedEventArgs e)
+        private void AddCourseTabItem_GotFocus(object sender, RoutedEventArgs e)
         {
             AddCourse.Content = _addCourse;
         }
