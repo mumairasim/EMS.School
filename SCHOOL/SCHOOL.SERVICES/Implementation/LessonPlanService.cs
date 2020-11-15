@@ -67,6 +67,39 @@ namespace SCHOOL.Services.Implementation
             return validationResult;
         }
 
+        public LessonPlansList Get(string searchString, int pageNumber, int pageSize)
+        {
+            if (string.IsNullOrWhiteSpace(searchString))
+                return Get(pageNumber, pageSize);
+            var lessonPlans = _repository.Get().Where(st =>
+                (
+                    st.Name.ToString().Equals(searchString) ||
+                 st.Text.Contains(searchString)
+                ) &&
+                st.IsDeleted == false
+                ).OrderByDescending(st => st.Name).Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
+
+
+            var lessonPlanCount = _repository.Get().Count(st => (
+                                                                 st.Name.ToString().Equals(searchString) ||
+                                                                 st.Text.Contains(searchString)
+                                                             ) && st.IsDeleted == false);
+
+            var lessonPlanTempList = new List<DTOLessonPlan>();
+            foreach (var lessonPlan in lessonPlans)
+            {
+                lessonPlanTempList.Add(_mapper.Map<LessonPlan, DTOLessonPlan>(lessonPlan));
+            }
+
+            var lessonPlansList = new LessonPlansList()
+            {
+                LessonPlans = lessonPlanTempList,
+                LessonPlansCount = lessonPlanCount
+            };
+
+            return lessonPlansList;
+        }
+
         public LessonPlanResponse Update(DTOLessonPlan dtoLessonplan)
         {
             var validationResult = Validation(dtoLessonplan);
@@ -175,9 +208,6 @@ namespace SCHOOL.Services.Implementation
             };
         }
         #endregion
-
-
-
 
 
     }

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SCHOOL.DATA.Infrastructure;
+using SCHOOL.DTOs.DTOs;
 using SCHOOL.DTOs.ReponseDTOs;
 using SCHOOL.Services.Infrastructure;
 using System;
@@ -76,6 +77,58 @@ namespace SCHOOL.Services.Implementation
             }
         }
 
+        public CoursesList Get(string searchString, int pageNumber, int pageSize)
+        {
+            if (string.IsNullOrWhiteSpace(searchString))
+                return Get(pageNumber, pageSize);
+            var courses = _repository.Get().Where(st =>
+                (
+                    st.CourseName.Contains(searchString) ||
+                    st.CourseCode.Contains(searchString)
+                ) &&
+                st.IsDeleted == false
+                ).OrderByDescending(st => st.Id).Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
+
+            var courseCount = _repository.Get().Count(st => (
+            st.CourseName.Contains(searchString) ||
+            st.CourseCode.Contains(searchString)
+            ) && st.IsDeleted == false);
+
+            var courseTempList = new List<DTOCourse>();
+            foreach (var course in courses)
+            {
+                courseTempList.Add(_mapper.Map<Course, DTOCourse>(course));
+            }
+
+            var coursesList = new CoursesList()
+            {
+                Courses = courseTempList,
+                CoursesCount = courseCount
+            };
+
+            return coursesList;
+        }
+
+
+        public CoursesList Get(int pageNumber, int pageSize)
+        {
+            var courses = _repository.Get().Where(st => st.IsDeleted == false).OrderByDescending(st => st.Id).Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
+            var courseCount = _repository.Get().Count(st => st.IsDeleted == false);
+            var courseTempList = new List<DTOCourse>();
+            foreach (var course in courses)
+            {
+                courseTempList.Add(_mapper.Map<Course, DTOCourse>(course));
+            }
+
+            var coursesList = new CoursesList()
+            {
+                Courses = courseTempList,
+                CoursesCount = courseCount
+            };
+
+            return coursesList;
+        }
+
         /// <summary>
         /// Retruns a Single Record of a Course
         /// </summary>
@@ -126,7 +179,7 @@ namespace SCHOOL.Services.Implementation
         /// Service level call : Return all records of course
         /// </summary>
         /// <returns></returns>
-        List<DTOCourse> ICourseService.GetAll()
+        public List<DTOCourse> GetAll()
         {
             var courses = _repository.Get().Where(x => (x.IsDeleted == false || x.IsDeleted == null)).ToList();
             var courseList = new List<DTOCourse>();
@@ -168,6 +221,7 @@ namespace SCHOOL.Services.Implementation
                 Description = descriptionMessage
             };
         }
+
 
     }
 }

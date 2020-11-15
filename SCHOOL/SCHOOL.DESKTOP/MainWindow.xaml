@@ -72,6 +72,8 @@
                     <Frame x:Name="DashboardPage"/>
                 </Grid>
             </TabItem>
+            
+            
             <TabItem x:Name="StudentTab" Header="Student" Width="200" Height="45" Margin="0" GotFocus="StudentTab_GotFocus">
                 <Grid Background="#E2E5E7">
                     <TabControl>
@@ -88,6 +90,127 @@
                     </TabControl>
                 </Grid>
             </TabItem>
+
+            <TabItem x:Name="CourseTab" Header="Course" Width="200" Height="45" Margin="0" GotFocus="CourseTab_GotFocus">
+                <Grid Background="#E2E5E7">
+                    <TabControl>
+                        <TabItem x:Name="SearchCourse" Header="Search Course ">
+                            <Grid>
+                                <Frame x:Name="CourseBase"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem x:Name="AddCourseTabItem" Header="Add Course" GotFocus="AddCourseTabItem_GotFocus">
+                            <Grid Width="1100" Height="550" Margin="0,-70,0,0">
+                                <Frame x:Name="AddCourse"/>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+            
+            <TabItem x:Name="LessonPlanTab" Header="LessonPlan" Width="200" Height="45" Margin="0" GotFocus="LessonPlanTab_GotFocus">
+                <Grid Background="#E2E5E7">
+                    <TabControl>
+                        <TabItem x:Name="SearchLessonPlan" Header="Search LessonPlan ">
+                            <Grid>
+                                <Frame x:Name="LessonPlanBase"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem x:Name="AddLessonPlanTabItem" Header="Add LessonPlan" GotFocus="AddLessonPlanTabItem_GotFocus">
+                            <Grid Width="1100" Height="550" Margin="0,-70,0,0">
+                                <Frame x:Name="AddLessonPlan"/>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="WorksheetTab" Header="Worksheet" Width="200" Height="45" Margin="0" >
+                <Grid Background="#E2E5E7">
+                    <TabControl>
+                        <TabItem x:Name="SearchWorksheet" Header="Search Worksheet " GotFocus="WorksheetTab_GotFocus" >
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="28*"/>
+                                    <ColumnDefinition Width="143*"/>
+                                    <ColumnDefinition Width="931*"/>
+                                </Grid.ColumnDefinitions>
+                                <Frame x:Name="WorksheetBase" Grid.ColumnSpan="3"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem x:Name="AddWorksheetTabItem" Header="Add Worksheet" GotFocus="AddWorksheetTabItem_GotFocus">
+                            <Grid Width="1100" Height="550" Margin="0,-70,0,0">
+                                <Frame x:Name="AddWorksheet"/>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+
+
+            <TabItem x:Name="TeacherDiaryTab" Header="TeacherDiary" Width="200" Height="45" Margin="0" >
+                <Grid Background="#E2E5E7">
+                    <TabControl>
+                        <TabItem x:Name="SearchTeacherDiary" Header="Search TeacherDiary " GotFocus="TeacherDiaryTab_GotFocus" >
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="28*"/>
+                                    <ColumnDefinition Width="143*"/>
+                                    <ColumnDefinition Width="931*"/>
+                                </Grid.ColumnDefinitions>
+                                <Frame x:Name="TeacherDiaryBase" Grid.ColumnSpan="3"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem x:Name="AddTeacherDiaryTabItem" Header="Add TeacherDiary" GotFocus="AddTeacherDiaryTabItem_GotFocus">
+                            <Grid Width="1100" Height="550" Margin="0,-70,0,0">
+                                <Frame x:Name="AddTeacherDiary"/>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="StudentDiaryTab" Header="StudentDiary" Width="200" Height="45" Margin="0" >
+                <Grid Background="#E2E5E7">
+                    <TabControl>
+                        <TabItem x:Name="SearchStudentDiary" Header="Search StudentDiary " GotFocus="StudentDiaryTab_GotFocus" >
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="28*"/>
+                                    <ColumnDefinition Width="143*"/>
+                                    <ColumnDefinition Width="931*"/>
+                                </Grid.ColumnDefinitions>
+                                <Frame x:Name="StudentDiaryBase" Grid.ColumnSpan="3"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem x:Name="AddStudentDiaryTabItem" Header="Add StudentDiary" GotFocus="AddStudentDiaryTabItem_GotFocus">
+                            <Grid Width="1100" Height="550" Margin="0,-70,0,0">
+                                <Frame x:Name="AddStudentDiary"/>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+
+            <TabItem x:Name="EmployeeTab" Header="Employee" Width="200" Height="45" Margin="0" >
+                <Grid Background="#E2E5E7">
+                    <TabControl>
+                        <TabItem x:Name="SearchEmployee" Header="Search Employee " GotFocus="EmployeeTab_GotFocus" >
+                            <Grid>
+                                <Frame x:Name="EmployeeBase"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem x:Name="AddEmployeeTabItem" Header="Add Employee" GotFocus="AddEmployeeTabItem_GotFocus">
+                            <Grid Width="1100" Height="550" Margin="0,-70,0,0">
+                                <Frame x:Name="AddEmployee"/>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
+
+
+
             <TabItem x:Name="ClassTab" Header="Class" Width="200" Height="45"  Margin="0" MouseDown="ClassTab_MouseDown">
                 <Grid Background="#E2E5E7">
                     <Grid.RowDefinitions>

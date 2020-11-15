@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SCHOOL.DATA.Infrastructure;
+using SCHOOL.DTOs.DTOs;
 using SCHOOL.DTOs.ReponseDTOs;
 using SCHOOL.Services.Infrastructure;
 using System;
@@ -144,6 +145,54 @@ namespace SCHOOL.Services.Implementation
                 worksheetList.Add(_mapper.Map<DBWorksheet, DTOWorksheet>(worksheet));
             }
             return worksheetList;
+        }
+
+
+        public WorksheetList Get(string searchString, int pageNumber, int pageSize)
+        {
+            if (string.IsNullOrWhiteSpace(searchString))
+                return Get(pageNumber, pageSize);
+            var worksheets = _repository.Get().Where(st =>
+                (
+                    st.Text.ToString().Equals(searchString)
+                ) &&
+                st.IsDeleted == false
+                ).Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
+
+            var worksheetTempList = new List<DTOWorksheet>();
+            foreach (var worksheet in worksheets)
+            {
+                worksheetTempList.Add(_mapper.Map<DBWorksheet, DTOWorksheet>(worksheet));
+            }
+
+            var worksheetsList = new WorksheetList()
+            {
+                Worksheets = worksheetTempList
+            };
+
+            return worksheetsList;
+        }
+
+
+        /// <summary>
+        /// Service level call : Return all records of a Worksheet
+        /// </summary>
+        /// <returns></returns>
+        public WorksheetList Get(int pageNumber, int pageSize)
+        {
+            var worksheets = _repository.Get().Where(st => st.IsDeleted == false).OrderByDescending(x => x.Id).Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
+            var worksheetTempList = new List<DTOWorksheet>();
+            foreach (var worksheet in worksheets)
+            {
+                worksheetTempList.Add(_mapper.Map<DBWorksheet, DTOWorksheet>(worksheet));
+            }
+
+            var worksheetsList = new WorksheetList()
+            {
+                Worksheets = worksheetTempList,
+            };
+
+            return worksheetsList;
         }
 
         #endregion

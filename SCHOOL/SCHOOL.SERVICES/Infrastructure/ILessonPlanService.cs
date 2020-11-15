@@ -14,6 +14,8 @@ namespace SCHOOL.Services.Infrastructure
         LessonPlanResponse Create(DTOLessonPlan lessonplan);
         LessonPlanResponse Update(DTOLessonPlan dtolessonplan);
         void Delete(Guid? id, string DeletedBy);
+
+         LessonPlansList Get(string searchString, int pageNumber, int pageSize);
         #endregion
     }
 }

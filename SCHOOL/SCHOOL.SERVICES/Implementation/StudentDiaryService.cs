@@ -33,6 +33,35 @@ namespace SCHOOL.Services.Implementation
             HelpingMethodForRelationship(dtoStudentDiary);
             _repository.Add(_mapper.Map<DTOStudentDiary, StudentDiary>(dtoStudentDiary));
         }
+        public StudentDiariesList Get(string searchString, int pageNumber, int pageSize)
+        {
+            if (string.IsNullOrWhiteSpace(searchString))
+                return Get(pageNumber, pageSize);
+            var studentDiaries = _repository.Get().Where(st =>
+                (
+                    st.DiaryText.ToString().Equals(searchString)
+                ) &&
+                st.IsDeleted == false
+                ).OrderByDescending(st => st.Id).Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
+
+
+            var studentDiaryCount = _repository.Get().Count(st => (st.DiaryText.ToString().Equals(searchString)
+                                                             ) && st.IsDeleted == false);
+
+            var studentDiaryTempList = new List<DTOStudentDiary>();
+            foreach (var studentDiary in studentDiaries)
+            {
+                studentDiaryTempList.Add(_mapper.Map<StudentDiary, DTOStudentDiary>(studentDiary));
+            }
+
+            var studentDiariesList = new StudentDiariesList()
+            {
+                StudentDiaries = studentDiaryTempList,
+                StudentDiariesCount = studentDiaryCount
+            };
+
+            return studentDiariesList;
+        }
         public StudentDiariesList Get(int pageNumber, int pageSize)
         {
             var StudentDiaries = _repository.Get().Where(cl => cl.IsDeleted == false).OrderByDescending(st => st.Id).Skip(pageSize * (pageNumber - 1)).Take(pageSize).ToList();
@@ -77,7 +106,6 @@ namespace SCHOOL.Services.Implementation
         }
         #endregion
 
-
         #region private
         private void HelpingMethodForRelationship(DTOStudentDiary dtoStudentDiary)
         {
@@ -86,7 +114,6 @@ namespace SCHOOL.Services.Implementation
             dtoStudentDiary.School = null;
             dtoStudentDiary.Employee = null;
         }
-
         #endregion
     }
      

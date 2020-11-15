@@ -38,6 +38,10 @@ namespace SCHOOL.Services.Infrastructure
         /// </summary>
         /// <param name="id"></param>
         GenericApiResponse Delete(Guid? id);
+
+        WorksheetList Get(int pageNumber, int pageSize);
+
+        WorksheetList Get(string searchString, int pageNumber, int pageSize);
         #endregion
     }
 }

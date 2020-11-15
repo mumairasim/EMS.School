@@ -8,6 +8,7 @@ namespace SCHOOL.Services.Infrastructure
     {
         #region SMS Section
         StudentDiariesList Get(int pageNumber, int pageSize);
+        StudentDiariesList Get(string searchString, int pageNumber, int pageSize);
         DTOStudentDiary Get(Guid? id);
         void Create(DTOStudentDiary StudentDiary);
         void Update(DTOStudentDiary dtoStudentDiary);
