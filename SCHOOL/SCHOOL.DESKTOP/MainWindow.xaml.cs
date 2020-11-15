@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using AutoMapper;
+using SCHOOL.DESKTOP.ModulesPages.Attendance;
 using SCHOOL.DESKTOP.ModulesPages.Dashboard;
 using SCHOOL.DESKTOP.ModulesPages.Student;
 using SCHOOL.DESKTOP.ModulesPages.TimeTable;
@@ -24,6 +25,7 @@ namespace SCHOOL.DESKTOP
         private readonly Dashboard _dashboard;
         private readonly AddStudent _addStudent;
         private readonly AddTimeTable _addTimeTable;
+        private readonly AddAttendance _addAttendance;
         private readonly IStudentService _studentService;
         private readonly IMapper _mapper;
         public List<Class> ClassList { get; set; } = new List<Class>();
@@ -40,6 +42,7 @@ namespace SCHOOL.DESKTOP
             _timeTableBase = new TimeTableBase(_mapper, _timeTableService);
             _addStudent = new AddStudent(_studentService, _classService, _mapper);
             _addTimeTable = new AddTimeTable(classService, courseService, employeeService, timeTableService);
+            _addAttendance = new AddAttendance(classService, studentService, mapper);
             InitializeComponent();
             DashboardPage.Content = _dashboard;
         }
@@ -78,6 +81,16 @@ namespace SCHOOL.DESKTOP
         private void AddTimeTableTabItem_GotFocus(object sender, RoutedEventArgs e)
         {
             AddTimeTable.Content = _addTimeTable;
+        }
+
+        private void AttendanceTab_GotFocus(object sender, RoutedEventArgs e)
+        {
+            //throw new System.NotImplementedException();
+        }
+
+        private void MarkTimeTableTabItem_GotFocus(object sender, RoutedEventArgs e)
+        {
+            MarkAttendance.Content = _addAttendance;
         }
     }
 

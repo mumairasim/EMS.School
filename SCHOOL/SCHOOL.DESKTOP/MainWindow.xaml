@@ -116,6 +116,22 @@
                     </TabControl>
                 </Grid>
             </TabItem>
+            <TabItem x:Name="AttendanceTab" Header="Attendance" Width="200" Height="45" Margin="0" GotFocus="AttendanceTab_GotFocus">
+                <Grid Background="#E2E5E7">
+                    <TabControl>
+                        <TabItem x:Name="SearchAttendance" Header="Search Attendance ">
+                            <Grid>
+                                <Frame x:Name="AttendanceBase"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem x:Name="MarkAttendanceTabItem" Header="Mark Attendance" GotFocus="MarkTimeTableTabItem_GotFocus">
+                            <Grid Width="1100" Height="550" Margin="0,-70,0,0">
+                                <Frame x:Name="MarkAttendance"/>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>
