@@ -90,8 +90,8 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <StackPanel Orientation="Horizontal">
-                                            <ComboBox>
-                                                <ComboBoxItem>Present</ComboBoxItem>
+                                            <ComboBox BorderBrush="DarkGray"  HorizontalAlignment="Left"  x:Name="ClassName" MinWidth="100" BorderThickness="1" IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False">
+                                                <ComboBoxItem IsSelected="True" >Present</ComboBoxItem>
                                                 <ComboBoxItem>Absent</ComboBoxItem>
                                                 <ComboBoxItem>Leave</ComboBoxItem>
                                             </ComboBox>

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SCHOOL.DTOs.DTOs;
+using SCHOOL.DTOs.ViewModels.Course;
 using SCHOOL.DTOs.ViewModels.Student;
 using SCHOOL.DTOs.ViewModels.TimeTable;
 using Class = SCHOOL.DATA.Models.Class;
@@ -192,10 +193,12 @@ namespace SCHOOL.MAP
             CreateMap<DTOStudentDiary, StudentDiaryBaseViewModel>();
 
             CreateMap<DTOEmployee, EmployeeBaseViewModel>()
-    .ForMember(x => x.PersonCnic, y => y.MapFrom(x => x.Person.Cnic))
-    .ForMember(x => x.PersonName, y => y.MapFrom(x => x.Person.FirstName + " " + x.Person.LastName))
-    .ForMember(x => x.PersonNationality, y => y.MapFrom(x => x.Person.Nationality))
-    .ForMember(x => x.PersonReligion, y => y.MapFrom(x => x.Person.Religion));
+                .ForMember(x => x.PersonCnic, y => y.MapFrom(x => x.Person.Cnic))
+                .ForMember(x => x.PersonName, y => y.MapFrom(x => x.Person.FirstName + " " + x.Person.LastName))
+                .ForMember(x => x.PersonNationality, y => y.MapFrom(x => x.Person.Nationality))
+                .ForMember(x => x.PersonReligion, y => y.MapFrom(x => x.Person.Religion));
+            CreateMap<DTOCourse, CourseBaseViewModel>();
+
 
             #endregion
         }
