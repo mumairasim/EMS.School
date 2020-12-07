@@ -105,9 +105,9 @@
                     <Label Grid.Column="1" Grid.Row="2" Content="Religion" Margin="178.6,9.6,254.967,0.8" Grid.ColumnSpan="2"/>
                     <TextBox Grid.Column="1" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="178.6,29.6,0,0" x:Name="Religion" VerticalAlignment="Top" Width="150" BorderThickness="1" Grid.RowSpan="2" />
                     <Label Grid.Column="0" Grid.Row="3" Content="Age" Margin="5,10.2,0.4,0"/>
-                    <TextBox Grid.Column="0" Grid.Row="3" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="5,30.2,0,0" x:Name="Age" VerticalAlignment="Top" Width="150" BorderThickness="1" Grid.RowSpan="2" />
+                    <TextBox Grid.Column="0" Grid.Row="3" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="5,30.2,0,0" x:Name="Age" VerticalAlignment="Top" Width="150" BorderThickness="1" Grid.RowSpan="2" IsEnabled="False" />
                     <Label Grid.Column="0" Grid.Row="3" Content="Date of Birth" Margin="179,10.2,0.4,0"/>
-                    <TextBox Grid.Column="0" Grid.Row="3" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="179,30.2,0,0" x:Name="Dob" VerticalAlignment="Top" Width="150" BorderThickness="1" Grid.RowSpan="2" />
+                    <DatePicker Grid.Column="0" Grid.Row="3" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="179,30.2,0,0" x:Name="Dob" VerticalAlignment="Top" Width="150" BorderThickness="1" Grid.RowSpan="2" />
                     <Label Grid.Column="1" Grid.Row="3" Content="Gender" Margin="4.6,10.2,254.967,0" Grid.ColumnSpan="2"/>
                     <Label Grid.Column="1" Grid.Row="3" Content="Male" Margin="4.6,35.2,254.967,0" Grid.ColumnSpan="2"/>
                     <RadioButton Grid.Column="1" Grid.Row="3" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="49.6,30.2,0,0" x:Name="MaleGender" VerticalAlignment="Top" Width="50" BorderThickness="1" Grid.RowSpan="2" />

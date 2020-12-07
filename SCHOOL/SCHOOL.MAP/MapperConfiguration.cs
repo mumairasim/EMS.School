@@ -1,5 +1,7 @@
-﻿using AutoMapper;
+﻿using System.Collections.Generic;
+using AutoMapper;
 using SCHOOL.DTOs.DTOs;
+using SCHOOL.DTOs.ViewModels.Attendance;
 using SCHOOL.DTOs.ViewModels.Course;
 using SCHOOL.DTOs.ViewModels.Student;
 using SCHOOL.DTOs.ViewModels.TimeTable;
@@ -198,7 +200,8 @@ namespace SCHOOL.MAP
                 .ForMember(x => x.PersonNationality, y => y.MapFrom(x => x.Person.Nationality))
                 .ForMember(x => x.PersonReligion, y => y.MapFrom(x => x.Person.Religion));
             CreateMap<DTOCourse, CourseBaseViewModel>();
-
+            CreateMap<StudentBaseViewModel, AttendanceBaseViewModel>();
+            //.ForMember(x => x.AttendanceStatus, y => y.MapFrom(x => new List<string>{"Present", "Absent","Leave" }));
 
             #endregion
         }

@@ -68,39 +68,50 @@
                         <Label Grid.Column="1" Content="Attendance Date" Margin="10,10,10,10"/>
                         <DatePicker Grid.Column="1" BorderBrush="DarkGray" Margin="10,40,10,10" HorizontalAlignment="Left"  x:Name="AttendanceDate" Width="300" BorderThickness="1">
                         </DatePicker>
-                        <Button Grid.Column="2" Content="Get Students" Width="100" Height="35" Style="{DynamicResource RoundCorner}" VerticalAlignment="Bottom" Margin="10" HorizontalAlignment="Left" Click="GetStudents_Click"  />
+                        <Grid Grid.Column="2" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition MinHeight="50"  />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150*" MaxWidth="500" />
+                                <ColumnDefinition Width="200*" MaxWidth="500" />
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" Content="Get Students" Width="100" Height="35" Style="{DynamicResource RoundCorner}" VerticalAlignment="Bottom" Margin="10" HorizontalAlignment="Left" Click="GetStudents_Click"  />
+                            <Button Grid.Column="1" Content="Mark Attendance" Width="140" Height="35" Style="{DynamicResource RoundCorner}" VerticalAlignment="Bottom" Margin="10" HorizontalAlignment="Left" Click="MarkAttendance_Click"  />
+                        </Grid>
+
                     </Grid>
                 </StackPanel>
             </Grid>
             <Grid Margin="0,30,0,0" DockPanel.Dock="Top" MinHeight="270" MaxHeight="470" >
                 <Border Name="DataGridBorder" BorderThickness="1" BorderBrush="DarkGray" Margin="10,10,10,10">
-                    <DataGrid x:Name="AttendanceDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" CanUserAddRows="False" AutoGenerateColumns="False" Style="{StaticResource DynamicGridColumns}" 
-                          Background="{x:Null}" 
+                    <DataGrid x:Name="AttendanceDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" CanUserAddRows="False" AutoGenerateColumns="False" Style="{StaticResource DynamicGridColumns}"
+                              Background="{x:Null}" 
                           VerticalScrollBarVisibility="Auto"
                           SelectionMode="Single"
-                          BorderBrush="{x:Null}" IsReadOnly="True">
+                          BorderBrush="{x:Null}" >
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Registration Number" Binding="{Binding RegistrationNumber}" >
+                            <DataGridTextColumn Header="Registration Number" Binding="{Binding RegistrationNumber}" x:Name="RegNumber" >
                             </DataGridTextColumn>
-                            <DataGridTextColumn Header="Name" Binding="{Binding PersonName}" />
-                            <DataGridTextColumn Header="CNIC" Binding="{Binding PersonCnic}" />
-                            <DataGridTextColumn Header="Nationality" Binding="{Binding PersonNationality}" />
-                            <DataGridTextColumn Header="Religion" Binding="{Binding PersonReligion}" />
-                            <DataGridTemplateColumn Header="Action">
+                            <DataGridTextColumn Header="Name" Binding="{Binding PersonName}" x:Name="Name" />
+                            <DataGridTextColumn Header="CNIC" Binding="{Binding PersonCnic}" x:Name="Cnic"/>
+                            <DataGridTextColumn Header="Nationality" Binding="{Binding PersonNationality}" x:Name="Nationality"/>
+                            <DataGridTextColumn Header="Religion" Binding="{Binding PersonReligion}" x:Name="Religion"/>
+                            <DataGridTemplateColumn Header="Action" x:Name="AttendanceStatusCol" >
                                 <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <StackPanel Orientation="Horizontal">
-                                            <ComboBox BorderBrush="DarkGray"  HorizontalAlignment="Left"  x:Name="ClassName" MinWidth="100" BorderThickness="1" IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False">
-                                                <ComboBoxItem IsSelected="True" >Present</ComboBoxItem>
-                                                <ComboBoxItem>Absent</ComboBoxItem>
-                                                <ComboBoxItem>Leave</ComboBoxItem>
-                                            </ComboBox>
-                                        </StackPanel>
+                                    <DataTemplate >
+                                        <ComboBox BorderBrush="DarkGray"  HorizontalAlignment="Left" SelectedValue="{Binding AttendanceStatus}" MinWidth="100" BorderThickness="1" IsTextSearchEnabled="True" IsTextSearchCaseSensitive="False" x:Name="ComboBox">
+                                            <ComboBoxItem IsSelected="True" >Present</ComboBoxItem>
+                                            <ComboBoxItem>Absent</ComboBoxItem>
+                                            <ComboBoxItem>Leave</ComboBoxItem>
+                                        </ComboBox>
+
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
+
                 </Border>
             </Grid>
         </DockPanel>
