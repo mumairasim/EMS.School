@@ -14,6 +14,12 @@ using DTOCourse = SCHOOL.DTOs.DTOs.Course;
 using Student = SCHOOL.DATA.Models.Student;
 using DTOStudent = SCHOOL.DTOs.DTOs.Student;
 
+using FinanceType = SCHOOL.DATA.Models.FinanceType;
+using DTOFinanceType = SCHOOL.DTOs.DTOs.FinanceType;
+
+using DBStudentFinanceDetails = SCHOOL.DATA.Models.StudentFinanceDetail;
+using DTOStudentFinanceDetails = SCHOOL.DTOs.DTOs.StudentFinanceDetail;
+
 using Worksheet = SCHOOL.DATA.Models.Worksheet;
 using DTOWorksheet = SCHOOL.DTOs.DTOs.Worksheet;
 
@@ -76,6 +82,13 @@ namespace SCHOOL.MAP
 
             CreateMap<Student, DTOStudent>();
             CreateMap<DTOStudent, DTOStudent>()
+                .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
+            
+            CreateMap<FinanceType, DTOFinanceType>();
+            CreateMap<DTOFinanceType, DTOFinanceType>()
+                .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
+            CreateMap<DTOStudentFinanceDetails,DBStudentFinanceDetails>();
+            CreateMap<DBStudentFinanceDetails, DBStudentFinanceDetails>()
                 .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
 
             CreateMap<Worksheet, DTOWorksheet>();

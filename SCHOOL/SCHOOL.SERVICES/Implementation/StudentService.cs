@@ -16,14 +16,15 @@ namespace SCHOOL.SERVICES.Implementation
         private readonly IRepository<Student> _repository;
         private readonly IPersonService _personService;
         private readonly IFinanceTypeService _financeTypeService;
-
+        private readonly IStudentFinanceDetailsService _studentFinanceDetailsService;
         private readonly IMapper _mapper;
-        public StudentService(IRepository<Student> repository, IPersonService personService, IFinanceTypeService financeTypeService, IMapper mapper)
+        public StudentService(IRepository<Student> repository, IPersonService personService, IFinanceTypeService financeTypeService, IMapper mapper, IStudentFinanceDetailsService studentFinanceDetailsService)
         {
             _repository = repository;
             _personService = personService;
             _financeTypeService = financeTypeService;
             _mapper = mapper;
+            _studentFinanceDetailsService = studentFinanceDetailsService;
         }
 
         public StudentsList Get(int pageNumber, int pageSize)
@@ -132,7 +133,7 @@ namespace SCHOOL.SERVICES.Implementation
             dtoStudent.PersonId = _personService.Create(dtoStudent.Person);
             HelpingMethodForRelationship(dtoStudent);
             _repository.Add(_mapper.Map<DTOStudent, Student>(dtoStudent));
-            //InsertStudentFinanceDetail(dtoStudent);
+            InsertStudentFinanceDetail(dtoStudent);
             return;
 
         }
@@ -149,32 +150,32 @@ namespace SCHOOL.SERVICES.Implementation
             _repository.Update(_mapper.Map<DTOStudent, Student>(student));
         }
 
-        //private void InsertStudentFinanceDetail(DTOStudent dtoStudent)
-        //{
-        //    var listOfTypeIds = new[] { new { _financeTypeService.GetByName("Admission").Id, FeeAmount = dtoStudent.AdmissionFee },
-        //        new { _financeTypeService.GetByName("Monthly").Id, FeeAmount = dtoStudent.MonthlyFee }
-        //    }.ToList();
+        private void InsertStudentFinanceDetail(DTOStudent dtoStudent)
+        {
+            var listOfTypeIds = new[] { new { _financeTypeService.GetByName("Admission").Id, FeeAmount = dtoStudent.AdmissionFee },
+                new { _financeTypeService.GetByName("Monthly").Id, FeeAmount = dtoStudent.MonthlyFee }
+            }.ToList();
 
-        //    foreach (var type in listOfTypeIds)
-        //    {
-        //        var stdFinance = new DTOStudentFinanceDetail
-        //        {
-        //            StudentId = dtoStudent.Id,
-        //            IsDeleted = false,
-        //            Fee = type.FeeAmount,
-        //            CreatedDate = dtoStudent.CreatedDate,
-        //            CreatedBy = dtoStudent.CreatedBy,
-        //            FinanceTypeId = type.Id
-        //        };
-        //        if (stdFinance.Id == Guid.Empty)
-        //        {
-        //            stdFinance.Id = Guid.NewGuid();
-        //        }
-        //        _studentFinanceDetailsService.Create(stdFinance);
-        //    }
+            foreach (var type in listOfTypeIds)
+            {
+                var stdFinance = new StudentFinanceDetail
+                {
+                    StudentId = dtoStudent.Id,
+                    IsDeleted = false,
+                    Fee = type.FeeAmount,
+                    CreatedDate = dtoStudent.CreatedDate,
+                    CreatedBy = dtoStudent.CreatedBy,
+                    FinanceTypeId = type.Id
+                };
+                if (stdFinance.Id == Guid.Empty)
+                {
+                    stdFinance.Id = Guid.NewGuid();
+                }
+                _studentFinanceDetailsService.Create(stdFinance);
+            }
 
 
-        //}
+        }
 
 
 

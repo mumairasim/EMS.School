@@ -65,7 +65,8 @@ namespace SCHOOL.DESKTOP.ModulesPages.Student
 
             //
             model.Class.ClassName = ClassDdl.Text;
-
+            model.AdmissionFee = Convert.ToDecimal(AdmissionFee.Text);
+            model.MonthlyFee = Convert.ToDecimal(MonthlyFee.Text);
             model.PreviousSchoolName = PreviousSchool.Text;
             model.ReasonForLeaving = ReasonForLeaving.Text;
             model.Person.ParentName = ParentName.Text;
