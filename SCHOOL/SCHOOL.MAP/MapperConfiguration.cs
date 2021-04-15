@@ -7,7 +7,8 @@ using SCHOOL.DTOs.ViewModels.Student;
 using SCHOOL.DTOs.ViewModels.TimeTable;
 using Class = SCHOOL.DATA.Models.Class;
 using DTOClass = SCHOOL.DTOs.DTOs.Class;
-
+using DBStudentFinances = SCHOOL.DATA.Models.Student_Finances;
+using DTOStudentFinances = SCHOOL.DTOs.DTOs.StudentFinances;
 using Course = SCHOOL.DATA.Models.Course;
 using DTOCourse = SCHOOL.DTOs.DTOs.Course;
 
@@ -60,8 +61,7 @@ using SCHOOL.DTOs.ViewModels.Worksheet;
 using SCHOOL.DTOs.ViewModels.LessonPlan;
 using SCHOOL.DTOs.ViewModels.TeacherDiary;
 using SCHOOL.DTOs.ViewModels.StudentDiary;
-
-
+using SCHOOL.DTOs.ViewModels.Finance;
 
 namespace SCHOOL.MAP
 {
@@ -87,9 +87,34 @@ namespace SCHOOL.MAP
             CreateMap<FinanceType, DTOFinanceType>();
             CreateMap<DTOFinanceType, DTOFinanceType>()
                 .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
-            CreateMap<DTOStudentFinanceDetails,DBStudentFinanceDetails>();
+            //CreateMap<DBStudentFinanceDetails, DTOStudentFinanceDetails>();
+
+            CreateMap<DTOStudentFinanceDetails, DBStudentFinanceDetails>();
             CreateMap<DBStudentFinanceDetails, DBStudentFinanceDetails>()
                 .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
+
+            CreateMap<DBStudentFinances, StudentFinanceViewModel>()
+                .ForMember(dst => dst.RegNo, opts => opts.MapFrom(source => source.StudentFinanceDetails.Student.RegistrationNumber))
+                .ForMember(dst => dst.FirstName, opts => opts.MapFrom(source => source.StudentFinanceDetails.Student.Person.FirstName))
+                .ForMember(dst => dst.LastName, opts => opts.MapFrom(source => source.StudentFinanceDetails.Student.Person.LastName))
+                 .ForMember(dst => dst.StId, opts => opts.MapFrom(source => source.StudentFinanceDetails.Student.Id))
+                .ForMember(dst => dst.Month, opts => opts.MapFrom(source => source.FeeMonth))
+                .ForMember(dst => dst.Year, opts => opts.MapFrom(source => source.FeeYear))
+                .ForMember(dst => dst.Arears, opts => opts.MapFrom(source => source.Arears))
+                .ForMember(dst => dst.DepositeFee, opts => opts.MapFrom(source => source.FeeSubmitted))
+                .ForMember(dst => dst.Fee, opts => opts.MapFrom(source => source.StudentFinanceDetails.Fee))
+                .ForMember(dst => dst.FinanceId, opts => opts.MapFrom(source => source.Id))
+                .ForMember(dst => dst.Class, opts => opts.MapFrom(source => source.StudentFinanceDetails.Student.Class.ClassName));
+                
+
+            CreateMap<DTOStudentFinances, DBStudentFinances>();
+            CreateMap<DBStudentFinances, DBStudentFinances>()
+                .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
+
+            CreateMap< DBStudentFinances, DTOStudentFinances>();
+            CreateMap<DTOStudentFinances, DTOStudentFinances>()
+                .ForAllMembers(o => o.Condition((source, destination, member) => member != null));
+
 
             CreateMap<Worksheet, DTOWorksheet>();
             CreateMap<DTOWorksheet, DTOWorksheet>()

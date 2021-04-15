@@ -131,7 +131,7 @@ namespace SCHOOL.SERVICES.Implementation
                 dtoStudent.Id = Guid.NewGuid();
             }
             dtoStudent.PersonId = _personService.Create(dtoStudent.Person);
-            HelpingMethodForRelationship(dtoStudent);
+           HelpingMethodForRelationship(dtoStudent);
             _repository.Add(_mapper.Map<DTOStudent, Student>(dtoStudent));
             InsertStudentFinanceDetail(dtoStudent);
             return;
@@ -183,7 +183,7 @@ namespace SCHOOL.SERVICES.Implementation
         private void HelpingMethodForRelationship(DTOStudent dtoStudent)
         {
             //dtoStudent.SchoolId = dtoStudent.School.Id;
-            //dtoStudent.ClassId = dtoStudent.Class.Id;
+            dtoStudent.ClassId = dtoStudent.Class.Id;
             dtoStudent.Person = null;
             dtoStudent.Class = null;
             dtoStudent.School = null;

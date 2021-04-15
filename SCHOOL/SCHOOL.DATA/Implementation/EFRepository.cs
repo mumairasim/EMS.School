@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Migrations;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace SCHOOL.DATA.Implementation
     public class EFRepository<T> : IRepository<T> where T : BaseEntity
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly  DbSet<T> dbSet;
         public EFRepository(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
@@ -34,7 +36,11 @@ namespace SCHOOL.DATA.Implementation
         {
             return _unitOfWork.Context.Set<T>().Where(predicate);
         }
+       public  IQueryable<T> GetAll()
+        {
 
+            return dbSet as IQueryable<T>;
+        }
         public void Update(T entity)
         {
             //_unitOfWork.Context.Entry(entity).State = EntityState.Modified;

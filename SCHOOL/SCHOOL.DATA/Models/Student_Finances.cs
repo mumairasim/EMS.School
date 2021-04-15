@@ -21,6 +21,6 @@ namespace SCHOOL.DATA.Models
 
         public DateTime? LastDateSubmission { get; set; }
 
-        public virtual StudentFinanceDetail StudentFinanceDetail { get; set; }
+        public virtual StudentFinanceDetail StudentFinanceDetails { get; set; }
     }
 }

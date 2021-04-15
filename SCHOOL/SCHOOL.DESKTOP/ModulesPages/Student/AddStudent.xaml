@@ -121,8 +121,8 @@
                     <ComboBox  Grid.Column="0" Grid.Row="4" Margin="5,30,0,0" x:Name="ClassDdl"
                                ItemsSource="{Binding Path=ClassEntries}"
                                DisplayMemberPath="ClassName"
-                               SelectedValuePath="ClassName"
-                               SelectedValue="{Binding Path=ClassEntry}">
+                               SelectedValuePath="ClassId"
+                               SelectedValue="{Binding Path=Id}">
                     </ComboBox>
 
                     <Label Grid.Column="1" Grid.Row="4" Content="City" Margin="5,10,0.4,0.6"/>

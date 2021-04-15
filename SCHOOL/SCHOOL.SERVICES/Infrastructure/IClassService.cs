@@ -10,7 +10,8 @@ namespace SCHOOL.Services.Infrastructure
     {
         #region SMS Section
 
-        List<DTOClass> Get();
+        List<DTOClass> Get(string SearchParam = null);
+
         ClassesList Get(int pageNumber, int pageSize);
         DTOClass Get(Guid? id);
         GenericApiResponse Create(DTOClass Class);

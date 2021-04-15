@@ -20,7 +20,7 @@ namespace SCHOOL.DATA.Models
 
         public Guid? FinanceTypeId { get; set; }
 
-        public virtual FinanceType FinanceType { get; set; }
+        public virtual FinanceType FinanceTypes { get; set; }
 
         public virtual Student Student { get; set; }
 

@@ -1,0 +1,125 @@
+﻿<Window x:Class="SCHOOL.DESKTOP.ModulesPages.StudentFinance.FinanceUpdate"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SCHOOL.DESKTOP.ModulesPages.StudentFinance"
+        mc:Ignorable="d"
+        Title="FinanceUpdate" 
+        Height="700" 
+        Width="1250">
+    <Window.Resources>
+        <Style x:Key="DynamicGridColumns" TargetType="DataGrid">
+            <Setter Property="ColumnWidth" Value="*" />
+        </Style>
+        <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="grid">
+                            <Border x:Name="border" CornerRadius="5" BorderBrush="DarkGray" BorderThickness="1" Background="{x:Null}">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                                  VerticalAlignment="Center"
+                                                  TextElement.FontWeight="Normal">
+                                </ContentPresenter>
+                            </Border>
+
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="border" Value="LightSkyBlue" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="border" Value="LightSkyBlue" />
+                                <Setter Property="Cursor" TargetName="border" Value="Hand" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <ScrollViewer Margin="40,0,10,0" VerticalScrollBarVisibility="Visible" CanContentScroll="True" >
+            <DockPanel>
+                <Grid DockPanel.Dock="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition MinHeight="50"  />
+                        <!--0-->
+                        <RowDefinition MinHeight="50"/>
+                        <!--1-->
+                        <RowDefinition MinHeight="50"/>
+                        <!--2-->
+                        <RowDefinition MinHeight="50"/>
+                        <!--3-->
+                        <RowDefinition MinHeight="50"/>
+                        <!--4-->
+                        <RowDefinition MinHeight="50"/>
+                        <!--5-->
+                        <RowDefinition MinHeight="50" Height="110"/>
+                        <!--6-->
+                        <RowDefinition MinHeight="50" Height="110"/>
+                        <!--7-->
+                        <RowDefinition MinHeight="50"/>
+                        <!--8-->
+                        <RowDefinition MinHeight="50"/>
+                        <!--9-->
+                        <RowDefinition MinHeight="50"/>
+                        <!--10-->
+                        <RowDefinition MinHeight="50" Height="80"/>
+                        <!--11-->
+                        <RowDefinition MinHeight="50"/>
+                        <!--12-->
+                        <RowDefinition MinHeight="50"/>
+                        <!--13-->
+                        <RowDefinition MinHeight="50"/>
+                        <!--14-->
+                        <RowDefinition MinHeight="60"/>
+                        <!--15-->
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="350*" MaxWidth="500" />
+                        <ColumnDefinition Width="350*" MaxWidth="500" />
+                        <ColumnDefinition Width="298*" MaxWidth="500"/>
+                        <ColumnDefinition Width="75*" MaxWidth="500"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Row="0" Content="Update Student Finances" FontSize="30" FontWeight="SemiBold" Foreground="#FF00A2DD" Height="55" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Name="Label3" VerticalAlignment="Top" Width="400" Margin="450,5,0,0" Grid.ColumnSpan="3" Grid.Column="0" Grid.RowSpan="2" />
+
+                    <Label Grid.Column="0" Grid.Row="2" Content="First Name" Margin="100,10,0.4,0.4"/>
+                    <TextBox Grid.Column="0" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="100,30,0,0" x:Name="FirstName" VerticalAlignment="Top" IsReadOnly="True" Width="324" BorderThickness="1" Grid.ColumnSpan="3" Grid.RowSpan="2" />
+                    <Label Grid.Column="1" Grid.Row="2" Content="Last Name" Margin="100,10,254.967,0.4" Grid.ColumnSpan="2"/>
+                    <TextBox Grid.Column="1" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="100,30,0,0" x:Name="LastName" VerticalAlignment="Top" IsReadOnly="True"  Width="324" BorderThickness="1" Grid.ColumnSpan="3" Grid.RowSpan="2" />
+                    
+                    <Label Grid.Column="2" Grid.Row="2" Content="RegNo" Margin="100,10,254.967,0.4" Grid.ColumnSpan="2"/>
+                    <TextBox Grid.Column="2" Grid.Row="2" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="100,30,0,0" x:Name="RegNo" VerticalAlignment="Top" IsReadOnly="True" Width="324" BorderThickness="1" Grid.ColumnSpan="3" Grid.RowSpan="2" />
+
+                    <Label Grid.Column="0" Grid.Row="3" Content="Month" Margin="100,20,0.4,0.4"/>
+                    <TextBox Grid.Column="0" Grid.Row="3" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="100,50,0,0" x:Name="Month" VerticalAlignment="Top" IsReadOnly="True" Width="550" BorderThickness="1" Grid.ColumnSpan="3" Grid.RowSpan="2" />
+                    <Label Grid.Column="1" Grid.Row="3" Content="Year" Margin="300,20,254.967,0.4" Grid.ColumnSpan="2"/>
+                    <TextBox Grid.Column="1" Grid.Row="3" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="300,50,0,0" x:Name="Year" VerticalAlignment="Top" IsReadOnly="True" Width="550" BorderThickness="1" Grid.ColumnSpan="3" Grid.RowSpan="2" />
+
+                    <Label Grid.Column="0" Grid.Row="4" Content="Admission Fee" Margin="100,40,254.967,0.4" Grid.ColumnSpan="2"/>
+                    <TextBox Grid.Column="0" Grid.Row="4" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="100,70,0,0" x:Name="AdmissionFee" VerticalAlignment="Top" Width="550" BorderThickness="1" Grid.ColumnSpan="3" Grid.RowSpan="2" />
+                    <CheckBox Grid.Column="1" Grid.Row="4" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="250,70,0,0" x:Name="AdmissionFeeCheckBox" VerticalAlignment="Top" Width="550" BorderThickness="1" Grid.ColumnSpan="3" Grid.RowSpan="2" />
+                    <Label Grid.Column="0" Grid.Row="5" Content="Monthly Fee" Margin="100,40,254.967,0.4" Grid.ColumnSpan="2"/>
+                    <TextBox Grid.Column="0" Grid.Row="5" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="100,70,0,0" x:Name="MonthlyFee" VerticalAlignment="Top" Width="550" BorderThickness="1" Grid.ColumnSpan="3" Grid.RowSpan="2" />
+                    <CheckBox Grid.Column="1" Grid.Row="5" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="250,70,0,0" x:Name="MonthlyFeeCheckBox" VerticalAlignment="Top" Width="550" BorderThickness="1" Grid.ColumnSpan="3" Grid.RowSpan="2" />
+                    <Label Grid.Column="0" Grid.Row="6" Content="Arears" Margin="100,40,254.967,0.4" Grid.ColumnSpan="2"/>
+                    <TextBox Grid.Column="0" Grid.Row="6" BorderBrush="DarkGray" Height="30" HorizontalAlignment="Left" Margin="100,70,0,0" x:Name="Arears" VerticalAlignment="Top" Width="550" BorderThickness="1" Grid.ColumnSpan="3" Grid.RowSpan="2" />
+                    <Button Grid.Column="0" Grid.Row="7" Content="Save" Height="40" HorizontalAlignment="Left" Margin="100,30,0,0" x:Name="SaveBtn" VerticalAlignment="Top" Width="100" Style="{DynamicResource RoundCorner}" Click="SaveBtn_Click" />
+                    <Button Grid.Column="0" Grid.Row="7" Content="Cancel" HorizontalAlignment="Left" Margin="230,30,0,0" x:Name="CancelBtn" Width="100" Style="{DynamicResource RoundCorner}" Click="CancelBtn_Click" Height="40" VerticalAlignment="Top" />
+
+                </Grid>
+
+            </DockPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

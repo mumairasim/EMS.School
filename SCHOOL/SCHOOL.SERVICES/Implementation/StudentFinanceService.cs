@@ -46,7 +46,8 @@ namespace SCHOOL.Services.Implementation
                 CreatedDate = DateTime.UtcNow,
                 FeeYear = dtoStudentFinances.FeeYear,
                 IsDeleted = false,
-                CreatedBy = dtoStudentFinances.CreatedBy
+                CreatedBy = dtoStudentFinances.CreatedBy,
+                Arears= dtoStudentFinances.Arears
             };
 
             if (newFinance.Id == Guid.Empty)
@@ -92,7 +93,7 @@ namespace SCHOOL.Services.Implementation
             }
 
             var StudentFinances = _repository.Get().FirstOrDefault(x => x.Id == id && (x.IsDeleted == false || x.IsDeleted == null));
-            var StudentFinancesDto = _mapper.Map<DBStudentFinances, DTOStudentFinances>(StudentFinances);
+            var StudentFinancesDto = _mapper.Map<DTOStudentFinances>(StudentFinances);
 
             return StudentFinancesDto;
         }
@@ -121,8 +122,8 @@ namespace SCHOOL.Services.Implementation
             {
                 DTOStudentFinances.UpdateDate = DateTime.UtcNow;
                 DTOStudentFinances.IsDeleted = false;
+                DTOStudentFinances.FeeSubmitted = true;
                 var updated = _mapper.Map(DTOStudentFinances, StudentFinances);
-
                 _repository.Update(_mapper.Map<DTOStudentFinances, DBStudentFinances>(updated));
             }
         }
@@ -142,7 +143,43 @@ namespace SCHOOL.Services.Implementation
             return StudentFinancesList;
         }
 
+        List<DBStudentFinances> IStudentFinanceService.GetAllByFilter(bool isSubmit,string Year , string month)
+        {
+            if(string.IsNullOrEmpty(Year))
+            {
+                Year = DateTime.Now.Year.ToString();
+            }
+            if (string.IsNullOrEmpty(month))
+            {
+                month = DateTime.Now.ToString("MMM");
+            }
+            var StudentFinancess = _repository.Get().Where(x => (x.IsDeleted == false || x.IsDeleted == null) && x.FeeYear==Year && x.FeeMonth==month && x.FeeSubmitted== isSubmit).ToList();
+            var StudentFinancesList = new List<DBStudentFinances>();
+            foreach (var StudentFinances in StudentFinancess)
+            {
+                StudentFinancesList.Add(_mapper.Map<DBStudentFinances>(StudentFinances));
+            }
+            return StudentFinancesList;
+        }
 
+        List<DBStudentFinances> IStudentFinanceService.GetAllByMonth(string Year, string month)
+        {
+            if (string.IsNullOrEmpty(Year))
+            {
+                Year = DateTime.Now.Year.ToString();
+            }
+            if (string.IsNullOrEmpty(month))
+            {
+                month = DateTime.Now.ToString("MMM");
+            }
+            var StudentFinancess = _repository.Get().Where(x => (x.IsDeleted == false || x.IsDeleted == null) && x.FeeYear == Year && x.FeeMonth == month).ToList();
+            var StudentFinancesList = new List<DBStudentFinances>();
+            foreach (var StudentFinances in StudentFinancess)
+            {
+                StudentFinancesList.Add(_mapper.Map<DBStudentFinances>(StudentFinances));
+            }
+            return StudentFinancesList;
+        }
 
         #endregion
     }

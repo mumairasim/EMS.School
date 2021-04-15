@@ -15,6 +15,7 @@ namespace SCHOOL.DATA.Infrastructure
         void ExecuteSqlCommand(string sqlQuery);
         IQueryable<T> TableNoTracking { get; }
         IQueryable<T> Table { get; }
+        IQueryable<T> GetAll();
         //DbQuery<T> ViewDbQuery { get; }
     }
 }

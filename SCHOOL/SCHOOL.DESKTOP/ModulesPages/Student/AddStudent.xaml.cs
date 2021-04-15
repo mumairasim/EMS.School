@@ -33,11 +33,16 @@ namespace SCHOOL.DESKTOP.ModulesPages.Student
             _mapper = mapper;
             InitializeComponent();
             InitComboBox();
+            string value = ClassDdl.Text;
+           
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             _studentService.Create(GetFormData());
+            string message = "Your details have been saved successfully.";
+            MessageBox.Show(message);
+            PopulationData();
         }
 
         private void InitComboBox()
@@ -64,7 +69,7 @@ namespace SCHOOL.DESKTOP.ModulesPages.Student
             model.Person.DOB = Convert.ToDateTime(Dob.Text);
 
             //
-            model.Class.ClassName = ClassDdl.Text;
+            model.Class = (DTOClass)ClassDdl.SelectedItem;
             model.AdmissionFee = Convert.ToDecimal(AdmissionFee.Text);
             model.MonthlyFee = Convert.ToDecimal(MonthlyFee.Text);
             model.PreviousSchoolName = PreviousSchool.Text;
@@ -86,6 +91,34 @@ namespace SCHOOL.DESKTOP.ModulesPages.Student
             model.Person.PresentAddress = new TextRange(PresentAddress.Document.ContentStart, PresentAddress.Document.ContentEnd).Text;
             model.Person.PermanentAddress = new TextRange(PermanentAddress.Document.ContentStart, PermanentAddress.Document.ContentEnd).Text;
             return model;
+        }
+        private void PopulationData()
+        {
+            Firstname.Text = string.Empty;
+            Lastname.Text = string.Empty;
+            Cnic.Text = string.Empty;
+            Phone.Text = string.Empty;
+            Nationality.Text = string.Empty;
+            Religion.Text = string.Empty;
+            Dob.Text = string.Empty;
+            ClassDdl.Text = string.Empty;
+            AdmissionFee.Text = string.Empty;
+            MonthlyFee.Text = string.Empty;
+            PreviousSchool.Text = string.Empty;
+            ReasonForLeaving.Text = string.Empty;
+            ParentName.Text = string.Empty;
+            ParentCnic.Text = string.Empty;
+            Relation.Text = string.Empty;
+            Occupation.Text = string.Empty;
+            HighestEducation.Text = string.Empty;
+            ParentNationality.Text = string.Empty;
+            Email.Text = string.Empty;
+            ParentCity.Text = string.Empty;
+            Mobile1.Text = string.Empty;
+            Mobile2.Text = string.Empty;
+            Name.Text = string.Empty;
+            EmergencyRelation.Text = string.Empty;
+            Mobile.Text = string.Empty;
         }
     }
 
@@ -116,5 +149,7 @@ namespace SCHOOL.DESKTOP.ModulesPages.Student
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+
     }
 }
