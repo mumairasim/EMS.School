@@ -94,6 +94,7 @@
     <Compile Include="ViewModels\Attendance\AttendanceStatusViewModel.cs" />
     <Compile Include="ViewModels\Common\CustomComboBoxItem.cs" />
     <Compile Include="ViewModels\Course\CourseBaseViewModel.cs" />
+    <Compile Include="ViewModels\Finance\StudentFinanceViewModel.cs" />
     <Compile Include="ViewModels\LessonPlan\LessonPlanBaseViewModel.cs" />
     <Compile Include="ViewModels\StudentDiary\StudentDiaryBaseViewModel.cs" />
     <Compile Include="ViewModels\TeacherDiary\TeacherDiaryBaseViewModel.cs" />

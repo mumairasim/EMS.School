@@ -8,7 +8,79 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="ClassBase">
 
+    <Page.Resources>
+        <Style x:Key="DynamicGridColumns" TargetType="DataGrid">
+            <Setter Property="ColumnWidth" Value="*" />
+        </Style>
+        <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+            <Setter Property="Background" Value="{x:Null}" />
+        </Style>
+        <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="grid">
+                            <Border x:Name="border" CornerRadius="5" BorderBrush="DarkGray" BorderThickness="1" Background="{x:Null}">
+                                <ContentPresenter HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          TextElement.FontWeight="Normal">
+                                </ContentPresenter>
+                            </Border>
+
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" TargetName="border" Value="LightSkyBlue" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" TargetName="border" Value="LightSkyBlue" />
+                                <Setter Property="Cursor" TargetName="border" Value="Hand" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Opacity" TargetName="grid" Value="0.25"/>
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
     <Grid>
-        
+        <DockPanel>
+            <Grid DockPanel.Dock="Top">
+                <StackPanel>
+                    <TextBox x:Name="SearchClassTextBox" MinWidth="100" MaxWidth="400" MinHeight="30" MaxHeight="40" Margin="495,10,40,10" KeyDown="OnKeyDownHandlerSearch"/>
+                    <Button Click="SearchClass"  Content="Search" MinWidth="90" MaxWidth="150" MinHeight="30" MaxHeight="40" Margin="750,0,40,10" Style="{DynamicResource RoundCorner}"/>
+                </StackPanel>
+            </Grid>
+            <Grid Margin="0,30,0,0" DockPanel.Dock="Top" MinHeight="270" MaxHeight="470" >
+                <Border Name="DataGridBorder" BorderThickness="1" BorderBrush="DarkGray" Margin="10,10,10,10">
+                    <DataGrid x:Name="ClassDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" CanUserAddRows="False" AutoGenerateColumns="False" Style="{StaticResource DynamicGridColumns}" 
+                          Background="{x:Null}" 
+                          VerticalScrollBarVisibility="Auto"
+                          SelectionMode="Single" 
+                          BorderBrush="{x:Null}" IsReadOnly="True">
+                        <DataGrid.Resources>
+                            <Style TargetType="ScrollBar">
+                                <Setter Property="Background" Value="Red" />
+                            </Style>
+                        </DataGrid.Resources>
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ClassName" Binding="{Binding ClassName}" >
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="CteatedOn" Binding="{Binding CreatedDate}" />
+                            <DataGridTextColumn Header="CreatedBy" Binding="{Binding CreatedBy}" />
+                            <DataGridTextColumn Header="UpdatedOn" Binding="{Binding UpdateDate}" />
+                            <DataGridTextColumn Header="UpdatedBy" Binding="{Binding UpdateBy}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Border>
+            </Grid>
+        </DockPanel>
     </Grid>
 </Page>

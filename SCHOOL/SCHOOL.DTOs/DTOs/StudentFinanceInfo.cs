@@ -14,6 +14,7 @@ namespace SCHOOL.DTOs.DTOs
         public Guid StudentId { get; set; }
         public Guid? StudentFinanceDetailsId { get; set; }
         public string FeeYear { get; set; }
+        public decimal Arears { get; set; }
 
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DTOStudentFinanceDetails = SCHOOL.DTOs.DTOs.StudentFinanceDetail;
-
+using DBStudentFinanceDetails = SCHOOL.DATA.Models.StudentFinanceDetail;
 namespace SCHOOL.Services.Infrastructure
 {
     public interface IStudentFinanceDetailsService
@@ -25,7 +25,8 @@ namespace SCHOOL.Services.Infrastructure
         /// </summary>
         /// <param name="studentId"></param>
         /// <returns></returns>
-        List<DTOStudentFinanceDetails> GetByStudentId(Guid? studentId);
+        List<DBStudentFinanceDetails> GetByStudentId(Guid? studentId);
+     
 
         /// <summary>
         /// Retruns List of Record of a StudentFinanceDetails by Fee type and student Id

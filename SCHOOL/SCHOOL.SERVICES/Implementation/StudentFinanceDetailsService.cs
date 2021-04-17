@@ -42,6 +42,11 @@ namespace SCHOOL.Services.Implementation
             {
                 dTOStudentFinanceDetails.Id = Guid.NewGuid();
             }
+            if(dTOStudentFinanceDetails.FinanceTypeId== Guid.Empty)
+            {
+                var financeType=_financeTypeService.GetByName("Admission");
+                dTOStudentFinanceDetails.FinanceTypeId = financeType.Id;
+            }
 
             _repository.Add(_mapper.Map<DTOStudentFinanceDetails, DBStudentFinanceDetails>(dTOStudentFinanceDetails));
         }
@@ -100,7 +105,7 @@ namespace SCHOOL.Services.Implementation
         /// </summary>
         /// <param name="studentId"></param>
         /// <returns></returns>
-        public List<DTOStudentFinanceDetails> GetByStudentId(Guid? studentId)
+        public List<DBStudentFinanceDetails> GetByStudentId(Guid? studentId)
         {
             if (studentId == null)
             {
@@ -108,7 +113,8 @@ namespace SCHOOL.Services.Implementation
             }
 
             var StudentFinances = _repository.Get().Where(x => x.StudentId == studentId && (x.IsDeleted == false || x.IsDeleted == null)).ToList();
-            var StudentFinancesDto = _mapper.Map<List<DBStudentFinanceDetails>, List<DTOStudentFinanceDetails>>(StudentFinances);
+          
+            var StudentFinancesDto = _mapper.Map<List<DBStudentFinanceDetails>>(StudentFinances);
 
             return StudentFinancesDto;
         }

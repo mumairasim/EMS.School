@@ -81,6 +81,7 @@
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -158,6 +159,21 @@
     </Compile>
     <Compile Include="ModulesPages\StudentDiary\UpdateStudentDiary.xaml.cs">
       <DependentUpon>UpdateStudentDiary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesPages\StudentFinance\ChallanForm.xaml.cs">
+      <DependentUpon>ChallanForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesPages\StudentFinance\FeeChallan.xaml.cs">
+      <DependentUpon>FeeChallan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesPages\StudentFinance\FinanceUpdate.xaml.cs">
+      <DependentUpon>FinanceUpdate.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesPages\StudentFinance\SearchStudentFinance.xaml.cs">
+      <DependentUpon>SearchStudentFinance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ModulesPages\StudentFinance\StudentFinance.xaml.cs">
+      <DependentUpon>StudentFinance.xaml</DependentUpon>
     </Compile>
     <Compile Include="ModulesPages\TeacherDiary\AddTeacherDiary.xaml.cs">
       <DependentUpon>AddTeacherDiary.xaml</DependentUpon>
@@ -255,6 +271,26 @@
     <Page Include="ModulesPages\StudentDiary\UpdateStudentDiary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ModulesPages\StudentFinance\ChallanForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModulesPages\StudentFinance\FeeChallan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModulesPages\StudentFinance\FinanceUpdate.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModulesPages\StudentFinance\SearchStudentFinance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ModulesPages\StudentFinance\StudentFinance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ModulesPages\TeacherDiary\AddTeacherDiary.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -363,6 +399,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Asserts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\HBL.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\School.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Logo AMS.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.1.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.1.0\build\MaterialDesignThemes.targets')" />

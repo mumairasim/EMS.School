@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DTOStudentFinances = SCHOOL.DTOs.DTOs.StudentFinances;
+using DBStudentFinances = SCHOOL.DATA.Models.Student_Finances;
 using DTOStudentFinanceCustom = SCHOOL.DTOs.DTOs.StudentFinanceInfo;
 
 namespace SCHOOL.Services.Infrastructure
@@ -13,7 +14,8 @@ namespace SCHOOL.Services.Infrastructure
         /// </summary>
         /// <returns></returns>
         List<DTOStudentFinances> GetAll();
-
+        List<DBStudentFinances> GetAllByFilter(bool isSubmit,string Year=null,string month=null);
+        List<DBStudentFinances> GetAllByMonth(string Year = null, string month = null);
         /// <summary>
         /// Service level call : Return filtered records of a StudentFinances, pass null to ignore filters
         /// </summary>

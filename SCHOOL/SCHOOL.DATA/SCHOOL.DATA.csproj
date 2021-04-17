@@ -59,6 +59,11 @@
     <Compile Include="Infrastructure\IRepository.cs" />
     <Compile Include="Infrastructure\IStoredProcCaller.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
+    <Compile Include="Migrations\202103291515588_abc.cs" />
+    <Compile Include="Migrations\202103291515588_abc.Designer.cs">
+      <DependentUpon>202103291515588_abc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Assignment.cs" />
     <Compile Include="Models\AttendanceStatus.cs" />
     <Compile Include="Models\Class.cs" />
@@ -94,10 +99,14 @@
     <Compile Include="Models\Worksheet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202103291515588_abc.resx">
+      <DependentUpon>202103291515588_abc.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

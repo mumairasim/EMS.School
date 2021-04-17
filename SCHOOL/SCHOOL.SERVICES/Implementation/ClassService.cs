@@ -46,9 +46,15 @@ namespace SCHOOL.Services.Implementation
             }
 
         }
-        public List<DTOClass> Get()
+        public List<DTOClass> Get(string SearchParam = null)
         {
-            var classes = _repository.Get().Where(cl => cl.IsDeleted == false).ToList();
+            var classes= new List<Class>();
+            if (string.IsNullOrEmpty(SearchParam))
+                classes = _repository.Get().Where(cl => cl.IsDeleted == false).ToList();
+            else
+            {
+                classes = _repository.Get().Where(cl => cl.IsDeleted == false && cl.ClassName.Contains(SearchParam)).ToList();
+            }
             return _mapper.Map<List<Class>, List<DTOClass>>(classes);
         }
         public ClassesList Get(int pageNumber, int pageSize)

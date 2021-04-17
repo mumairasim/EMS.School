@@ -1,5 +1,6 @@
 using System.Data.Entity;
 using SCHOOL.DATA.Infrastructure;
+using SCHOOL.DATA.Migrations;
 
 namespace SCHOOL.DATA.Models
 {
@@ -9,6 +10,7 @@ namespace SCHOOL.DATA.Models
             : base("name=SchoolSystem")
         {
             //Configuration.LazyLoadingEnabled = false;
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<SchoolSystem, SCHOOL.DATA.Migrations.Configuration>());
         }
         public virtual new DbSet<TEntity> Set<TEntity>() where TEntity : BaseEntity
         {
@@ -91,8 +93,9 @@ namespace SCHOOL.DATA.Models
 
             modelBuilder.Entity<StudentFinanceDetail>()
                 .HasMany(e => e.Student_Finances)
-                .WithOptional(e => e.StudentFinanceDetail)
+                .WithOptional(e => e.StudentFinanceDetails)
                 .HasForeignKey(e => e.StudentFinanceDetailsId);
+
         }
         public int ExecuteSqlCommand(string sql, bool doNotEnsureTransaction = false, int? timeout = null, params object[] parameters)
         {

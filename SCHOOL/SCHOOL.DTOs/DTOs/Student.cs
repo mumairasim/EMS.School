@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace SCHOOL.DTOs.DTOs
 {
@@ -12,6 +13,7 @@ namespace SCHOOL.DTOs.DTOs
         public Person Person { get; set; }
         public File Image { get; set; }
         public Class Class { get; set; }
+       // public ICollection <StudentFinanceDetail> StudentFinanceDetails { get; set;}
         public string PreviousSchoolName { get; set; }
         public string ReasonForLeaving { get; set; }
         public decimal? AdmissionFee { get; set; }

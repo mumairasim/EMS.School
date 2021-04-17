@@ -1,11 +1,13 @@
 ﻿using AutoMapper;
 using SCHOOL.DESKTOP.ModulesPages.Attendance;
+using SCHOOL.DESKTOP.ModulesPages.Class;
 using SCHOOL.DESKTOP.ModulesPages.Course;
 using SCHOOL.DESKTOP.ModulesPages.Dashboard;
 using SCHOOL.DESKTOP.ModulesPages.Employee;
 using SCHOOL.DESKTOP.ModulesPages.LessonPlan;
 using SCHOOL.DESKTOP.ModulesPages.Student;
 using SCHOOL.DESKTOP.ModulesPages.StudentDiary;
+using SCHOOL.DESKTOP.ModulesPages.StudentFinance;
 using SCHOOL.DESKTOP.ModulesPages.TeacherDiary;
 using SCHOOL.DESKTOP.ModulesPages.TimeTable;
 using SCHOOL.DESKTOP.ModulesPages.Worksheet;
@@ -35,10 +37,13 @@ namespace SCHOOL.DESKTOP
         private readonly ITimeTableService _timeTableService;
         private readonly ITeacherDiaryService _teacherDiaryService;
         private readonly IStudentDiaryService _studentDiaryService;
-
+        private readonly StudentFinance _studentFinance;
+        private readonly SearchStudentFinance _searchStudentFinance;
+        private readonly FeeChallan _feeChallan;
         private readonly IWorksheetService _worksheetService;
         private readonly ICourseService _courseService;
 
+        private readonly ClassBase _classbase;
         private readonly AddEmployee _addEmployee;
         private readonly EmployeeBase _employeeBase;
 
@@ -56,8 +61,8 @@ namespace SCHOOL.DESKTOP
 
         private readonly AddStudentDiary _addStudentDiary;
         private readonly StudentDiaryBase _studentDiaryBase;
-
-
+        private readonly IStudentFinanceService _studentFinanceService;
+        private readonly IStudentFinanceDetailsService _studentFinanceDetailsServic;
         private readonly IMapper _mapper;
         public List<Class> ClassList { get; set; } = new List<Class>();
         public MainWindow(IClassService classService, IStudentService studentService, IEmployeeService employeeService,
@@ -67,6 +72,8 @@ namespace SCHOOL.DESKTOP
            ITimeTableService timeTableService,
            ITeacherDiaryService teacherDiaryService,
            IStudentDiaryService studentDiaryService,
+           IStudentFinanceService studentFinanceService,
+           IStudentFinanceDetailsService studentFinanceDetailsServic,
             IMapper mapper)
         {
             _classService = classService;
@@ -77,20 +84,25 @@ namespace SCHOOL.DESKTOP
             _courseService = courseService;
             _teacherDiaryService = teacherDiaryService;
             _studentDiaryService = studentDiaryService;
-
+            _studentFinanceService = studentFinanceService;
+            _studentFinanceDetailsServic = studentFinanceDetailsServic;
             _mapper = mapper;
             _courseService = courseService;
             _employeeService = employeeService;
             _timeTableService = timeTableService;
             _dashboard = new Dashboard();
-
+            _feeChallan = new FeeChallan(_studentFinanceService, _mapper,_studentFinanceDetailsServic);
+            _searchStudentFinance = new SearchStudentFinance(_studentFinanceService, _mapper);
+            _studentFinance = new StudentFinance(_studentService, _mapper, _classService, _studentFinanceService, _studentFinanceDetailsServic);
             _studentBase = new StudentBase(_studentService, _mapper);
             _timeTableBase = new TimeTableBase(_mapper, _timeTableService);
             _addStudent = new AddStudent(_studentService, _classService, _mapper);
 
             _employeeBase = new EmployeeBase(_employeeService, _mapper);
+
             _addEmployee = new AddEmployee(_employeeService, _mapper);
 
+            _classbase = new ClassBase(_classService, _mapper);
             _worksheetBase = new WorksheetBase(_worksheetService, _mapper);
             _addWorksheet = new AddWorksheet(_worksheetService, _classService, _mapper);
 
@@ -115,16 +127,15 @@ namespace SCHOOL.DESKTOP
 
         private void ClassTab_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            var classList = _classService.Get();
-            ClassDatagrid.ItemsSource = classList;
+            
         }
 
 
-        private void getClass_Click(object sender, RoutedEventArgs e)
-        {
-            var classList = _classService.Get();
-            ClassDatagrid.ItemsSource = classList;
-        }
+        //private void getClass_Click(object sender, RoutedEventArgs e)
+        //{
+        //    var classList = _classService.Get();
+        //    ClassDatagrid.ItemsSource = classList;
+        //}
 
 
         private void DashboardTab_GotFocus(object sender, RoutedEventArgs e)
@@ -216,6 +227,24 @@ namespace SCHOOL.DESKTOP
         private void MarkTimeTableTabItem_GotFocus(object sender, RoutedEventArgs e)
         {
             MarkAttendance.Content = _addAttendance;
+        }
+
+        private void FinanceTab_GotFocus(object sender, RoutedEventArgs e)
+        {
+            StudentFinance.Content = _studentFinance;
+        }
+
+        private void FeeChallanForm_GotFocus(object sender, RoutedEventArgs e)
+        {
+            FeeChallan.Content = _feeChallan;
+        }
+        private void ClassTab_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ClassBase.Content = _classbase;
+        }
+        private void SearchStudentFinanceTab_GotFocus(object sender, RoutedEventArgs e)
+        {
+            SearchStudentFinance.Content = _searchStudentFinance;
         }
     }
 

@@ -90,7 +90,27 @@
                     </TabControl>
                 </Grid>
             </TabItem>
-
+            <TabItem x:Name="FinanceTab" Header="Student Finance" Width="200" Height="45" Margin="0" GotFocus="FinanceTab_GotFocus">
+                <Grid Background="#E2E5E7">
+                    <TabControl>
+                        <TabItem x:Name="ManageFinance" Header="Search Finance ">
+                            <Grid>
+                                <Frame x:Name="StudentFinance"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem x:Name="SearchFinance" Header="Search Student Finance" GotFocus="SearchStudentFinanceTab_GotFocus">
+                            <Grid Width="1100" Height="550" Margin="0,-70,0,0">
+                                <Frame x:Name="SearchStudentFinance"/>
+                            </Grid>
+                        </TabItem>
+                        <TabItem x:Name="StudentFeeChallan" Header="Fee Challan" GotFocus="FeeChallanForm_GotFocus">
+                            <Grid Width="1100" Height="550" Margin="0,-70,0,0">
+                                <Frame x:Name="FeeChallan"/>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+                </Grid>
+            </TabItem>
             <TabItem x:Name="CourseTab" Header="Course" Width="200" Height="45" Margin="0" GotFocus="CourseTab_GotFocus">
                 <Grid Background="#E2E5E7">
                     <TabControl>
@@ -213,14 +233,13 @@
 
             <TabItem x:Name="ClassTab" Header="Class" Width="200" Height="45"  Margin="0" MouseDown="ClassTab_MouseDown">
                 <Grid Background="#E2E5E7">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="86*"/>
-                        <RowDefinition Height="85*"/>
-                    </Grid.RowDefinitions>
-                    <DataGrid x:Name="ClassDatagrid" HorizontalAlignment="Left" Height="684" VerticalAlignment="Top" Width="1108" Grid.RowSpan="2" CanUserAddRows="False" AutoGenerateColumns="True">
-                    </DataGrid>
-                    <Button Content="Get Classes
-                            " x:Name="getclass" HorizontalAlignment="Left" Margin="50,42,0,0" VerticalAlignment="Top"  Click="getClass_Click" Width="110" RenderTransformOrigin="0.677,9.634" Grid.Row="1"/>
+                    <TabControl>
+                        <TabItem x:Name="SearchClass" Header="Search Class " GotFocus="ClassTab_GotFocus" >
+                            <Grid>
+                                <Frame x:Name="ClassBase"/>
+                            </Grid>
+                        </TabItem>
+                        </TabControl>
                 </Grid>
             </TabItem>
             <TabItem x:Name="TimeTableTab" Header="Time Table" Width="200" Height="45" Margin="0" GotFocus="TimeTableTab_GotFocus">

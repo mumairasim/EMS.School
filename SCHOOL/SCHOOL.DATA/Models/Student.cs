@@ -40,5 +40,8 @@ namespace SCHOOL.DATA.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<StudentStudentDiary> StudentStudentDiaries { get; set; }
+
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<FinanceType> FinanceTypes { get; set; }
     }
 }
